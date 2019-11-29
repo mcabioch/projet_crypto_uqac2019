@@ -1,0 +1,196 @@
+%% Last modification : 12/09/2019
+
+%% New Commands
+\newcommand{\vect}[1]{$\overrightarrow{#1}$}
+\newcommand{\veci}{$\vec{\imath}$}
+\newcommand{\vecj}{$\vec{\jmath}$}
+
+\newcommand{\Sum}[2]{$\sum\limits_{#1}^{#2}$}
+
+\newcommand{\mathEnsemble}[1]{\mathbb{#1}}
+\newcommand{\mathRond}[1]{\mathcal{#1}}
+\newcommand{\R}{\mathEnsemble{R}}
+
+\newcommand{\fracpart}[2]{$\frac{\partial #1}{\partial #2}$}
+
+\newcommand{\transpose}{$\,^t$}
+
+\newcommand{\Fourier}[1][]{%
+	$%
+	\mathRond{F}%
+	\ifthenelse{\equal{#1}{}}{}{%
+		\left [%
+			#1%
+		\right ]%
+	}%
+	$%
+}
+\newcommand{\iFourier}[1][]{%
+	$%
+	\bar{\mathRond{F}}%
+	\ifthenelse{\equal{#1}{}}{}{%
+		\left [%
+			#1%
+		\right ]%
+	}%
+	$%
+}
+
+\newcommand{\Laplace}[1][]{%
+	$%
+	\ifthenelse{\equal{#1}{}}{%
+		\mathRond{L}\{f\}
+	}{%
+		{\MakeUppercase #1}%
+	}%
+	(p)$%
+}
+
+\newcommand{\enZ}[1][]{%
+	$%
+	\ifthenelse{\equal{#1}{}}{%
+		\mathRond{Z}\{s(n)\}
+	}{%
+		{\MakeUppercase #1}(z)%
+	}%
+	$%
+}
+
+\newcommand{\vectors}[1]{%
+	$%
+	\begin{pmatrix}
+		#1
+	\end{pmatrix}%
+	$%
+}
+
+\newcommandx{\func}[4][4=no]{%
+	\ifthenelse{\equal{#4}{no}}{%
+		$#1 : #2 \longmapsto #3$%
+	}{%
+		$#1(#2) = #3$%
+	}%
+}
+
+\newcommandx{\integral}[4][2=-\infty, 3=+\infty]{%
+	$%
+%
+	\ifthenelse{
+		\equal{#2}{-\infty}
+		\AND \(
+			\equal{#3}{+\infty}
+			\OR
+			\equal{#3}{\infty}
+		\)
+	}{%
+		\int\limits_{\R}%
+	}{%
+		\ifthenelse{\equal{#2}{} \AND \NOT \equal{#3}{}}{%
+			\int\limits_{-\infty}^{#3}%
+		}{%
+			\int\limits_{#2}^{#3}%
+		}%
+	}%
+%
+	{#4}d#1%
+%
+	$%
+}
+
+\newcommand{\xor}{\oplus}
+
+\renewcommand{\mod}[1]{\text{ (\textit{mod} }#1\text{)}}
+
+%% Re New Commands
+\AtBeginEnvironment{align*}{%
+	\renewcommand{\vect}[1]{\overrightarrow{#1}}%
+	\renewcommand{\veci}{\vec{\imath}}%
+	\renewcommand{\vecj}{\vec{\jmath}}%
+
+	\renewcommand{\Sum}[2]{\sum\limits_{#1}^{#2}}%
+
+	\renewcommand{\fracpart}[2]{\frac{\partial #1}{\partial #2}}%
+
+	\newcommand{\llbrace}{\left \{}%
+	\newcommand{\lrbrace}{\right \}}%
+
+	\renewcommand{\transpose}{\,^t}%
+
+	\renewcommand{\Fourier}[1][]{%
+		\mathRond{F}%
+		\ifthenelse{\equal{#1}{}}{}{%
+			\left [%
+				#1%
+			\right ]%
+		}%
+	}%
+	\renewcommand{\iFourier}[1][]{%
+		\bar{\mathRond{F}}%
+		\ifthenelse{\equal{#1}{}}{}{%
+			\left [%
+				#1%
+			\right ]%
+		}%
+	}%
+
+	\renewcommand{\Laplace}[1][]{%
+		\ifthenelse{\equal{#1}{}}{%
+			\mathRond{L}\{f\}
+		}{%
+			{\MakeUppercase #1}%
+		}%
+		(p)%
+	}%
+
+	\renewcommand{\enZ}[1][]{%
+		\ifthenelse{\equal{#1}{}}{%
+			\mathRond{Z}\{s(n)\}
+		}{%
+			{\MakeUppercase #1}(z)%
+		}%
+	}%
+
+	\renewcommand{\vectors}[1]{%
+		\begin{pmatrix}
+			#1
+		\end{pmatrix}%
+	}%
+
+	\renewcommandx{\func}[4][4=no]{%
+		\ifthenelse{\equal{#4}{no}}{%
+			#1 : #2 \longmapsto #3%
+		}{%
+			#1(#2) = #3%
+		}%
+	}%
+
+	\renewcommandx{\integral}[4][2=-\infty, 3=+\infty]{%
+		\ifthenelse{
+			\equal{#2}{-\infty}
+			\AND \(
+				\equal{#3}{+\infty}
+				\OR
+				\equal{#3}{\infty}
+			\)
+		}{%
+			\ifthenelse{\NOT \equal{#2}{} \AND \NOT \equal{#2}{-\infty} \AND \equal{#3}{}}{%
+				\int\limits_{#2}%
+			}{%
+				\int\limits_{\R}%
+			}%
+		}{%
+			\ifthenelse{\equal{#2}{} \AND \NOT \equal{#3}{}}{%
+				\int\limits_{-\infty}^{#3}%
+			}{%
+				\int\limits_{#2}^{#3}%
+			}%
+		}%
+		{#4}d#1%
+	}%
+}
+
+%% New Environments
+
+
+%% End
+\endinput

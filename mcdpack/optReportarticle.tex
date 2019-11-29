@@ -1,0 +1,78 @@
+%% Last modification : 19/04/2019
+
+%% Setups
+\dottedcontents{chapter}[4em]{\bfseries}{1.9em}{1pc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{4}
+
+%% New Commands
+\newcommandx{\setsubsubsubsection}[2][2=]{%
+	\subsubsection*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{subsubsection}{\tab{}#1}%
+	}{%
+		\addcontentsline{toc}{subsubsection}{\tab{}#2}%
+	}%
+}
+
+\newcommandx{\from}[3][2=, 3=]{%
+	\begin{flushright}%
+		\footnotesize{}\ttfamily{}%
+			\fromcommandtext{} %
+			\ifthenelse{\equal{#2}{}}{%
+				#1%
+			}{%
+				\ifthenelse{\equal{#1}{}}{}{%
+					#1 %
+				}%
+				\mail[#2]{#3}%
+			}%
+	\end{flushright}
+}
+
+%% Re-New Commands
+\renewcommandx{\setpart}[2][2=]{%
+	\renewcommand{\actualdocpart}{#1}
+%
+	\part*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{part}{#1}%
+	}{%
+		\addcontentsline{toc}{part}{#2}%
+	}%
+}
+\renewcommandx{\setchapter}{}
+\renewcommandx{\setsection}[2][2=]{%
+	\renewcommand{\actualdocpart}{#1}
+%
+	\section*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{chapter}{#1}%
+	}{%
+		\addcontentsline{toc}{chapter}{#2}%
+	}%
+}
+\renewcommandx{\setsubsection}[2][2=]{%
+	\renewcommand{\actualdocpart}{#1}
+%
+	\subsection*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{section}{\tab{}#1}%
+	}{%
+		\addcontentsline{toc}{section}{\tab{}#2}%
+	}%
+}
+\renewcommandx{\setsubsubsection}[2][2=]{%
+	\subsubsection*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{subsection}{\tab{}#1}%
+	}{%
+		\addcontentsline{toc}{subsection}{\tab{}#2}%
+	}%
+}
+
+%% New Environments
+
+
+%% End
+\endinput

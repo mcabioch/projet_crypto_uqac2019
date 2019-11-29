@@ -1,0 +1,22 @@
+%% Last modification : 22/10/2019
+
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+
+\AtBeginEnvironment{algorithm}{%
+	\createcommand{\var}[1]{%
+		$#1$%
+	}%
+	\createcommand{\to}[1]{%
+		\var{#1} $\leftarrow$ %
+	}%
+	\createcommand{\func}[2][2=]{%
+		\bsc{#1}%
+		\ifthenelse{\equal{#2}{}}{}{%
+			(#2)%
+		}%
+	}%
+	\createcommand{\RETURN}{%
+		\State \Return%
+	}%
+}

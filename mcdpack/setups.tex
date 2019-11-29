@@ -1,0 +1,34 @@
+%% Last modification : 12/09/2019
+
+%% Setups
+\hypersetup{
+	colorlinks = true,
+	%
+	citecolor = grey,
+	filecolor = green,
+	linkcolor = black,% Color used in the ToC, the ToF and the LoT
+	urlcolor = blue,
+	anchorcolor = grey,
+	%
+	breaklinks = true,
+	bookmarksopen = true,
+	pdfpagemode = UseOutlines
+}
+
+\input{mcdpack/colors}
+
+\usemintedstyle{emacs}
+\pgfplotsset{compat=1.15}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\makeindex
+\makeglossaries
+
+\if@theban
+	\setmainfont[Path=mcdpack/]{ThebanAlphabet}
+\fi
+
+%% End
+\endinput

@@ -1,0 +1,29 @@
+%% Last modification : 05/09/2019
+
+%% Extensions
+\RequirePackage{multirow}
+
+%% New Environments
+\newenvironment{owntab}[1]{
+	\begin{tabular}{|#1|}
+		\hline
+}{
+		\hline
+	\end{tabular}
+}
+
+\newenvironment{centertab}[2][]{
+	\ifthenelse{\equal{#1}{}}{}{
+		\addcontentsline{lot}{table}{#1}
+		\refstepcounter{mytables}
+	}
+	\begin{center}
+		\centering
+		\begin{owntab}{#2}
+}{
+		\end{owntab}
+	\end{center}
+}
+
+%% End
+\endinput

@@ -1,0 +1,109 @@
+DEBUG = no
+
+#
+#	Softwares
+#
+PDFLATEX = xelatex
+INDEXTEX = makeindex
+GLOSSTEX = makeglossaries
+
+#
+#	Folders
+#
+OTHDIR = other
+BINDIR = build
+TEMPDIR = $(HOME)/Bureau/Mes_Documents/Programmation/Makefiles/Templates
+
+#
+#	Needed files
+#
+TEX := $(wildcard *.tex)
+NAME := $(basename $(notdir $(TEX)))
+PDF := $(addsuffix .pdf, $(NAME))
+IST := $(addsuffix .log, $(NAME))
+IND := $(addsuffix .ind, $(NAME))
+IDX := $(addsuffix .idx, $(NAME))
+
+#
+#	Output software name
+#
+
+
+#
+#	Flags
+#
+TEXFLAGS = -shell-escape -synctex=1 -output-directory=$(BINDIR) -8bit
+INDEXFLAGS = -t $(BINDIR)/$(IST) -o $(BINDIR)/$(IND) -p odd
+GLOSFLAGS = -d $(BINDIR)
+
+#
+#	Link flags
+#
+
+#
+#	SymLinks
+#
+
+#
+#	Files
+#
+MAINFILE = newtex.tex
+GLOSSARIE = glossarie.tex
+
+#
+#	Others
+#
+TEXIN = $(TEMPDIR)
+
+LIBTEXIN = $(HOME)/Bureau/Mes_Documents/Programmation/Latex/mcdpack.sty
+LIBTEXOUT = mcdpack.sty
+
+LIBDIRTEXIN = $(HOME)/Bureau/Mes_Documents/Programmation/Latex/mcdpack
+LIBDIRTEXOUT = mcdpack
+
+#
+#	Commands
+#
+TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(TEX)
+
+#
+#	Rules
+#
+all:
+	$(TEXCOMMAND)
+	$(TEXCOMMAND)
+	$(GLOSSTEX) $(GLOSFLAGS) $(NAME)
+	$(INDEXTEX) $(INDEXFLAGS) $(BINDIR)/$(IDX)
+	$(TEXCOMMAND)
+	$(TEXCOMMAND)
+	mv build/$(PDF) ./$(PDF)
+
+#
+#	Implicit rules
+#
+.PHONY: create pdf clear remake
+
+create:
+	cp "$(TEXIN)/TEX$(MAINFILE)" "$(MAINFILE)"
+	ln -sfn $(LIBTEXIN) $(LIBTEXOUT)
+	ln -sfn $(LIBDIRTEXIN) $(LIBDIRTEXOUT)
+	mkdir $(BINDIR)
+	mkdir $(OTHDIR)
+	cp "$(TEXIN)/TEX$(GLOSSARIE)" "$(OTHDIR)/$(GLOSSARIE)"
+
+clear:
+	rm -rf $(BINDIR)
+	rm -rf *.aux
+	rm -rf *.log
+	rm -rf *.out
+	rm -rf *.pdf
+	rm -rf *.synctex.gz
+	rm -rf *.toc
+
+remake:
+	rm -rf $(BINDIR)/*
+	make
+
+pdf:
+	evince $(PDF) &
+

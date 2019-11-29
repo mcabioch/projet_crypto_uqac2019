@@ -1,0 +1,135 @@
+%% Last modification : 07/04/2019
+
+%% Packages
+\RequirePackage{acronym}
+
+%% Setups
+\geometry{hmargin=2.5cm,vmargin=2.5cm}
+
+%% New Commands
+\newcommand{\letter@name}{}
+\newcommand{\letter@address}{}
+\newcommand{\letter@tel}{}
+\newcommand{\letter@lieu}{}
+\newcommand{\letter@mail}{}
+\newcommand{\letter@sign}{}
+\newcommand{\letter@object}{}
+\newcommand{\letter@opening}{}
+\newcommand{\letter@closing}{}
+\newcommand{\letter@cc}{}
+\newcommand{\letter@encl}{}
+\newcommand{\letter@ps}{}
+
+\newcommand{\name}[1]{\renewcommand{\letter@name}{#1}}
+\newcommand{\address}[1]{\renewcommand{\letter@address}{#1}}
+\newcommand{\telephone}[1]{\renewcommand{\letter@tel}{#1}}
+\newcommand{\lieu}[1]{\renewcommand{\letter@lieu}{#1}}
+\newcommand{\email}[1]{\renewcommand{\letter@mail}{#1}}
+\newcommand{\signature}[1]{\renewcommand{\letter@sign}{#1}}
+\newcommand{\object}[1]{\renewcommand{\letter@object}{#1}}
+\newcommand{\opening}[1]{\renewcommand{\letter@opening}{#1}}
+\newcommand{\closing}[1]{\renewcommand{\letter@closing}{#1,\newline}}
+\newcommand{\cc}[1]{\renewcommand{\letter@cc}{C.c.~~#1\newline}}
+\newcommand{\encl}[1]{\renewcommand{\letter@encl}{P.j.~~#1\newline}}
+\newcommand{\ps}[2]{\renewcommand{\letter@ps}{#1~#2\newline}}
+
+%% Re-New Commands
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\renewcommand{\initdoc}{}
+\renewcommand{\lastdoc}{}
+
+\renewcommand{\makeinfos}[2][2, rue Maurice Le Flem \\ App 64 \\ 29200 \bsc{Brest}]{%
+	\author{}%
+	\date{}%
+%
+	\pagestyle{fancy}%
+%
+	\fancyhead{}%
+	\fancyfoot{}%
+%
+	\name{Mathias \bsc{Cabioch-Delalande}}%
+%
+	\address{%
+		{#1}%
+	}%
+%
+	\telephone{06-99-20-88-03}%
+%
+	\lieu{\textsc{#2}}%
+%
+	\signature{Mathias \bsc{Cabioch-Delalande}}%
+%
+	\email{matcd29@gmail.com}%
+}
+
+\renewcommand{\setsection}[2][]{%
+	% #1
+	#2
+	\newline
+
+}
+
+%% Acronyms
+\renewcommandx{\createacronym}[9][4=not, 5=not, 6=\!\!, 7=\!\!, 8=\!\!, 9=\!\!, usedefault]{%
+	\newcommand{\tmpsacronympl}{#2s}%
+	\newcommand{\tmplacronympl}{#3s}%
+%
+	\ifthenelse{\equal{#4}{not}}{}{\renewcommand{\tmpsacronympl}{#4}}%
+	\ifthenelse{\equal{#5}{not}}{}{\renewcommand{\tmplacronympl}{#5}}%
+%
+	\acrodef{#1}[#2]{#3}%
+	\acrodef{#1s}[\tmpsacronympl]{\tmplacronympl}%
+%
+	\acrodefindefinite{#1}{#6}{#7}%
+	\acrodefindefinite{#1s}{#8}{#9}%
+}
+
+\renewcommand{\gls}[1]{\iac{#1}}
+\renewcommand{\glspl}[1]{\gls{#1s}}
+\renewcommand{\Gls}[1]{\Iac{#1}}
+\renewcommand{\Glspl}[1]{\Gls{#1s}}
+
+%% New Environments
+\newenvironment{letter}[2]{
+	\begin{flushleft}
+		\letter@name
+
+		\letter@address
+		\newline
+		\newline
+		Tél. : \letter@tel
+
+		Mél : \letter@mail
+	\end{flushleft}
+
+	\begin{flushright}
+		#1
+	\end{flushright}
+
+	\begin{flushright}
+		À \letter@lieu, le #2
+	\end{flushright}
+
+	Objet~:~\letter@object
+	\newline
+
+	\letter@opening,
+	\newline
+
+}{
+
+	\letter@closing
+	\begin{flushright}
+		\letter@name
+	\end{flushright}
+	\begin{flushleft}
+		\letter@cc
+		\letter@encl
+		\letter@ps
+	\end{flushleft}
+}
+
+%% End
+\endinput

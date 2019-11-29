@@ -1,0 +1,50 @@
+%% Last modification : 19/09/2019
+
+%% First definition
+\newcommand{\definitioncontent}{Definition}
+\newcommand{\definitionlinkword}{of}
+
+\newcommand{\theoremcontent}{Theorem}
+\newcommand{\theoremlinkword}{of}
+
+\newcommand{\corollarycontent}{Corollary}
+\newcommand{\corollarylinkword}{of}
+
+\newcommand{\codelinkword}{in}
+
+\newcommand{\sieclecontent}{century}
+\newcommand{\siecleonecontent}{st}
+\newcommand{\siecletwocontent}{nd}
+\newcommand{\sieclethreecontent}{rd}
+\newcommand{\siecleothercontent}{th}
+
+\newcommand{\avjccontent}{B.C.}
+\newcommand{\apjccontent}{A.D.}
+
+\newcommand{\cclink}{https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en}
+
+\newcommand{\toctoccontent}{Table of Contents}
+\newcommand{\tocacronymscontent}{Acronyms}
+\newcommand{\toclofcontent}{List of Figures}
+\newcommand{\toclotcontent}{List of Tables}
+\newcommand{\tocindexcontent}{Index}
+
+\newcommand{\actualdocpart}{}
+
+\newcommand{\fromcommandtext}{From}
+
+%% Français
+
+\if@french
+	%% Packages options
+	\PassOptionsToPackage{french}{datetime2}
+\fi
+
+%% English
+
+\if@english
+	%% Packages options
+	\PassOptionsToPackage{english}{datetime2}
+
+	%% Commands renewal
+\fi

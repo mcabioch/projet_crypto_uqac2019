@@ -1,0 +1,28 @@
+%% Last modification : 05/09/2019
+
+%% Common Options
+\newif\if@letter \@letterfalse
+\DeclareOption{letter}{\@lettertrue}
+
+\newif\if@article \@articlefalse
+\DeclareOption{article}{\@articletrue}
+
+\DeclareOption*{}
+
+\newif\if@reportarticle \@reportarticlefalse
+\DeclareOption{reportarticle}{\@reportarticletrue}
+
+\newif\if@theban \@thebanfalse
+\DeclareOption{theban}{\@thebantrue}
+
+\newif\if@french \@frenchtrue
+\DeclareOption{french}{\@frenchtrue}
+
+\newif\if@english \@englishfalse
+\DeclareOption{english}{%
+	\@englishtrue%
+	\@frenchfalse%
+}
+
+\newif\if@toc \@toctrue
+\DeclareOption{notoc}{\@tocfalse}

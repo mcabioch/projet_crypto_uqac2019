@@ -1,0 +1,62 @@
+%% Last modification : 10/09/2019
+
+%% Comments
+%\PackageError{package-name}{error-text}{help-text} % In case of error
+%\InputIfFileExists{file-name}{true}{false} % Input file if exists
+%\PackageWarning{package-name}{warning-text}
+%\PackageWarningNoLine{package-name}{warning-text}
+%\PackageInfo{package-name}{info-text}
+
+%% General
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{mcdpack}[2019/03/19
+						  v1.0
+						  Cabioch-Delalande Mathias]
+
+%% Options
+%\newif\if@title \@titlefalse
+%\DeclareOption{title}{\@titletrue}
+
+\input{mcdpack/optionscommon}
+
+\ProcessOptions
+
+%% Extensions
+\input{mcdpack/lang_defs}
+\input{mcdpack/packages}
+
+%% Setups
+\input{mcdpack/setups}
+\input{mcdpack/language}
+
+%% Counters
+\input{mcdpack/counters}
+
+%% New Commands
+\input{mcdpack/commands}
+
+%% Re-New Commands
+\input{mcdpack/recommands}
+
+%% Acronyms
+\input{mcdpack/acronyms}
+
+%% New Environments
+\input{mcdpack/env}
+
+%% Groups
+\input{mcdpack/parts}
+\input{mcdpack/tables}
+\input{mcdpack/maths}
+\input{mcdpack/codes}
+
+%% Inputs
+\if@letter
+	\input{mcdpack/optLetter}
+\fi
+\if@reportarticle
+	\input{mcdpack/optReportarticle}
+\fi
+
+%% End
+\endinput

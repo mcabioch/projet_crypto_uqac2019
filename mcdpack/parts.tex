@@ -1,0 +1,50 @@
+%% Last modification : 12/05/2019
+
+%% New Commands
+\newcommandx{\setpart}[2][2=]{%
+	\renewcommand{\actualdocpart}{#1}
+	\part*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{part}{#1}%
+	}{%
+		\addcontentsline{toc}{part}{#2}%
+	}%
+}
+
+\newcommandx{\setchapter}[2][2=]{%
+	\renewcommand{\actualdocpart}{#1}
+%
+	\chapter*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{chapter}{#1}%
+	}{%
+		\addcontentsline{toc}{chapter}{#2}%
+	}%
+}
+
+\newcommandx{\setsection}[2][2=]{%
+	\renewcommand{\actualdocpart}{#1}
+%
+	\section*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{section}{#1}%
+	}{%
+		\addcontentsline{toc}{section}{#2}%
+	}%
+}
+
+\newcommandx{\setsubsection}[2][2=]{%
+	\subsection*{#1}%
+	\ifthenelse{\equal{#2}{}}{%
+		\addcontentsline{toc}{subsection}{#1}%
+	}{%
+		\addcontentsline{toc}{subsection}{#2}%
+	}%
+}
+
+\newcommandx{\setsubsubsection}[2][2=]{%
+	\subsubsection*{#1}%
+}
+
+%% End
+\endinput

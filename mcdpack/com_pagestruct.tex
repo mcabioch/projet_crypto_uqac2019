@@ -1,0 +1,160 @@
+%% Last modification : 12/09/2019
+
+%% Maketitle
+
+\newcommand*{\additionalText}[1]{\gdef\@additionalText{#1}}
+\newcommand*{\@additionalText}{}
+
+\renewcommand{\maketitle}{%
+	\begin{titlepage}
+		{\raggedleft\@titlepic\par}\vspace{1cm}%
+%
+		\centering%
+		\vspace{1cm}%
+%
+		\vspace{1.5cm}%
+%
+		{\huge\bfseries\@title\unskip\strut\par}%
+%
+		\vspace{2cm}%
+%
+		{\large\@author\unskip\strut\par}%
+%
+		\vfill%
+%
+		{\large\@date\par}%
+%
+		\vfill%
+%
+		\begin{flushleft}
+			{\@additionalText\par}%
+		\end{flushleft}
+	\end{titlepage}
+}
+
+%% Commands
+\newcommandx{\makeinfos}[5][2=Mathias \bsc{Cabioch-Delalande}, 3=Mathias \bsc{C-D}, 4=not, 5=, usedefault]{
+	\title{#1}
+	\author{#2}
+	\date{\textit{\small\today}}
+	\additionalText{#5}
+
+	\hypersetup{
+		pdftitle = {#1},
+		pdfauthor = {#2}
+	}
+
+	\renewcommand{\actualdocpart}{#1}
+
+	\ifthenelse{\equal{#4}{isen}}{%
+		\titlepic{\includegraphics[scale=0.5]{mcdpack/isen.jpg}}%
+	}{}
+	\ifthenelse{\equal{#4}{uqac}}{%
+		\titlepic{\includegraphics[scale=0.3]{mcdpack/uqac.jpg}}%
+	}{}
+
+	\pagestyle{fancy}
+
+	\fancyhead{}
+	\fancyfoot{}
+
+	\fancyhead[L]{\footnotesize \href{\cclink}{CC BY-NC-ND 4.0}}
+	\fancyhead[C]{}
+	\fancyhead[R]{\footnotesize #3}
+
+	\fancyfoot[L]{\footnotesize \actualdocpart}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{\thepage}
+}
+
+\newcommand{\tmpindexcontent}{}
+\newcommand{\tmpindexcontenttxt}{}
+\newcommand{\tmpindexcontentsuffix}{}
+\newcommand{\tmpindexcontentprefix}{}
+\newcommandx{\addindex}[5][1=, 2=, 4=, 5=]{%
+	\refstepcounter{myindexs}%
+%
+	\ifthenelse{\equal{#2}{}}{%
+		\renewcommand{\tmpindexcontent}{}%
+	}{%
+		\renewcommand{\tmpindexcontent}{#2@}%
+	}%
+%
+	\ifthenelse{\equal{#3}{}}{%
+		\renewcommand{\tmpindexcontenttxt}{#5}%
+	}{%
+		\renewcommand{\tmpindexcontenttxt}{#3}%
+	}%
+%
+	\ifthenelse{\equal{#1}{}}{%
+		\renewcommand{\tmpindexcontentprefix}{}%
+	}{%
+		\renewcommand{\tmpindexcontentprefix}{#1!}%
+	}%
+%
+	\ifthenelse{\equal{#4}{}}{%
+		\index{\tmpindexcontentprefix\tmpindexcontent\tmpindexcontenttxt}%
+	}{%
+		\index{\tmpindexcontentprefix\tmpindexcontent\tmpindexcontenttxt|\seename{} {#4}}%
+	}%
+}
+\newcommandx{\glsindex}[5][1=, 2=, 4=, 5=]{%
+	\textbf{\textit{#3}}%
+%
+	\addindex[#1][#2]{#3}[#4][#5]%
+}
+
+\newcommand{\initdoc}{%
+	\maketitle
+
+	\if@toc
+		\tableofcontents
+
+		\addtocontents{toc}{~\hfill\textbf{Page}\par}
+		\addcontentsline{toc}{part}{\toctoccontent}
+	\fi
+}
+
+\newcommand{\lastdoc}{
+	\input{mcdpack/language}
+
+	\ifthenelse{\equal{\themyacronyms}{0} %
+		   \AND \equal{\themyindexs}{0} %
+		   \AND \equal{\themyfigures}{0} %
+		   \AND \equal{\themytables}{0}%
+	}{}{%
+		\pagebreak%
+	}
+
+	\ifthenelse{\equal{\themyacronyms}{0}}{}{%
+		\printglossary[type=\acronymtype]
+		\addcontentsline{toc}{part}{\tocacronymscontent}
+	}
+
+	\ifthenelse{\equal{\themyfigures}{0}}{}{%
+		\newpage
+
+		\listoffigures
+		\addcontentsline{toc}{part}{\toclofcontent}
+	}
+
+	\ifthenelse{\equal{\themytables}{0}}{}{%
+		\newpage
+
+		\listoftables
+		\addcontentsline{toc}{part}{\toclotcontent}
+	}
+
+	\ifthenelse{\equal{\themyindexs}{0}}{}{%
+		\newpage
+
+		\addcontentsline{toc}{part}{\tocindexcontent}
+		\printindex
+	}
+}
+
+\AtBeginDocument{\initdoc}
+\AtEndDocument{\lastdoc}
+
+%% End
+\endinput

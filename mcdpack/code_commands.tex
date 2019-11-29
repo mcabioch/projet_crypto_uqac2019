@@ -1,0 +1,70 @@
+%% Last modification : 11/09/2019
+
+\newcommand{\beginminted}[2][]{%
+	\ifthenelse{\equal{#1}{}}{}{%
+		\refstepcounter{figure}%
+		\refstepcounter{myfigures}%
+%
+		\ifthenelse{\equal{#1}{auto}}{%
+			\addcontentsline{lof}{figure}{Figure~\thefigure}%
+		}{%
+			\addcontentsline{lof}{figure}{#1}%
+		}%
+	}%
+	\begin{minted}[mathescape, breaklines, bgcolor=lightgray, tabsize=2]{#2}%
+}
+
+\newcommand{\begincisco}[2][]{%
+	\ifthenelse{\equal{#1}{}}{%
+		\beginminted[auto]{c}%
+	}{%
+		\beginminted[#1 \codelinkword{} Cisco]{c}%
+	}%
+}
+\newcommand{\ciscoinline}[1]{%
+	\mintinline{c}{#1}%
+}
+
+\newcommand{\beginjava}[2][]{%
+	\ifthenelse{\equal{#1}{}}{%
+		\beginminted[auto]{Java}%
+	}{%
+		\beginminted[#1 \codelinkword{} Java]{Java}%
+	}%
+}
+\newcommand{\javainline}[1]{%
+	\mintinline{Java}{#1}%
+}
+
+\newcommand{\begincpp}[2][]{%
+	\ifthenelse{\equal{#1}{}}{%
+		\beginminted[auto]{c++}%
+	}{%
+		\beginminted[#1 \codelinkword{} C++]{c++}%
+	}%
+}
+\newcommand{\cppinline}[1]{%
+	\mintinline{c++}{#1}%
+}
+
+\newcommand{\beginbash}[2][]{%
+	\ifthenelse{\equal{#1}{}}{%
+		\beginminted[auto]{bash}%
+	}{%
+		\beginminted[#1 \codelinkword{} bash]{bash}%
+	}%
+}
+\newcommand{\bashinline}[1]{%
+	\mintinline{bash}{#1}%
+}
+
+\newcommand{\beginlatex}[2][]{%
+	\ifthenelse{\equal{#1}{}}{%
+		\beginminted[auto]{Latex}%
+	}{%
+		\beginminted[#1 \codelinkword{} Latex]{Latex}%
+	}%
+}
+\newcommand{\latexinline}[1]{%
+	\mintinline{Latex}{#1}%
+}

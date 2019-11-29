@@ -1,0 +1,149 @@
+%% Last modification : 12/09/2019
+
+%% Inputs
+\input{mcdpack/com_pagestruct}
+
+%% New Commands
+\newcommandx{\createcommand}[4][2=no, 3=no]{%
+	\ifthenelse{\equal{#2}{no}}{%
+		\ifdefined#1%
+			\renewcommandx{#1}{#4}%
+		\else%
+			\newcommandx{#1}{#4}%
+		\fi%
+	}{%
+		\ifthenelse{\equal{#3}{no}}{%
+			\ifdefined#1%
+				\renewcommandx{#1}[#2]{#4}%
+			\else%
+				\newcommandx{#1}[#2]{#4}%
+			\fi%
+		}{%
+			\ifdefined#1%
+				\renewcommandx{#1}[#2][#3]{#4}%
+			\else%
+				\newcommandx{#1}[#2][#3]{#4}%
+			\fi%
+		}%
+	}%
+}
+
+\newcommand{\tab}[1][1cm]{\hspace*{#1}}
+
+\newcommand{\nospace}[1]{{\NoAutoSpaceBeforeFDP{}#1}}
+
+\newcommand{\siecle}[1]{%
+	\uppercase\expandafter{\romannumeral #1}%
+	\ifnum #1=1%
+		\textsuperscript{\siecleonecontent}%
+	\else%
+		\ifnum #1=2%
+			\textsuperscript{\siecletwocontent}%
+		\else%
+			\ifnum #1=3%
+				\textsuperscript{\sieclethreecontent}%
+			\else%
+				\textsuperscript{\siecleothercontent}%
+			\fi%
+		\fi%
+	\fi%
+	~\sieclecontent{}%
+}
+\newcommand{\avjc}{\avjccontent{}\xspace}
+\newcommand{\apjc}{\apjccontent{}\xspace}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\mail}[2][]{%
+	\href{mailto:#2}{%
+		\ttfamily%
+		\ifthenelse{\equal{#1}{}}{%
+			#2
+		}{%
+			#1
+		}%
+	}%
+}
+
+\newcommand{\surround}[1]{%
+	\noindent\fbox{%
+		\parbox{\linewidth-2\fboxrule-2\fboxsep}{%
+			#1%
+		}%
+	}%
+}
+
+\newcommand{\isennote}[1]{\marginpar{\tiny #1}}
+
+\newcommand{\sto}{$\rightarrow$}
+\newcommand{\lsto}{$\longrightarrow$}
+\newcommand{\bsc}[1]{\textsc{#1}}
+
+\newcommand{\noformat}[1]{%
+	{%
+		\upshape%
+		\ttfamily%
+		\color{darkgray}%
+		%\nospace{#1}%
+		#1%
+	}%
+}
+
+\newcommandx{\ipvq}[5][1=255, 2=255, 3=255, 4=255, 5=no, usedefault]{%
+	\noformat{#1.#2.#3.#4%
+		\ifthenelse{\equal{#5}{no}}{}{%
+			\nospace{/#5}%
+		}%
+	}%
+}
+
+\newcommand{\alexcat}{%
+	%
+}
+
+\newcommand{\dollarscad}{~\$~\text{\small CA}}
+\newcommand{\exposant}[1]{$^{\text{#1}}$}
+\newcommand{\indice}[1]{$_{\text{#1}}$}
+\newcommand{\amp}{{\&} }
+
+\newcommand{\define}[2]{%
+	\underline{\textbf{#1}} : {#2}
+}
+
+\newcommand{\ownbox}[2]{%
+	\fbox{%
+		\begin{minipage}{#1}
+			#2
+		\end{minipage}%
+	}%
+}
+
+\newcommand{\blank}{%
+	{%
+		\color{red}%
+		[...]$^{(\theblanks)}$%
+		\addindex{blank \theblanks}%
+		\refstepcounter{blanks}%
+	}%
+}
+
+\newcommandx{\mcdhref}[2]{%
+	\english%
+	\href{#1}{#2}%
+	\french%
+}
+
+\newcommandx{\setlocallanguage}[1][1=french, usedefault]{%
+	\ifthenelse{\equal{#1}{french}}{%
+		\@frenchtrue%
+		\@englishfalse%
+	}{}%
+	\ifthenelse{\equal{#1}{english}}{%
+		\@englishtrue%
+		\@frenchfalse%
+	}{}%
+}
+
+%% End
+\endinput

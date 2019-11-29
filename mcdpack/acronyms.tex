@@ -1,0 +1,39 @@
+%% Last modification : 07/04/2019
+
+%% New Commands
+\newcommandx{\createacronym}[7][1=, 5=, 6=, 7=]{%
+	\newacronym[#1]{#2}{%
+		\glsindex[#5][#6]{#3}[#7][#3]%
+	}{#4}%
+}
+
+%% Re Commands
+\let\lastgls\gls
+\renewcommand{\gls}[1]{%
+	\refstepcounter{myindexs}%
+	\refstepcounter{myacronyms}%
+	\lastgls{#1}%
+}
+
+\let\lastGls\Gls
+\renewcommand{\Gls}[1]{%
+	\refstepcounter{myindexs}%
+	\refstepcounter{myacronyms}%
+	\lastGls{#1}%
+}
+
+%% Acronyms
+\createacronym[%
+	%plural={},
+	firstplural={variables aléatoires (VAs)}%
+]{va}{VA}{variable aléatoire}
+
+\createacronym[%
+	%plural={},
+	firstplural={indépendantes identiquements distibuées (IIDs)}%
+]{iid}{IID}{indépendante identiquement distibuée}
+
+\createacronym{algo}{algo}{algorithme}
+
+%% End
+\endinput
