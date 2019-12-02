@@ -74,6 +74,10 @@ TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(TEX)
 #	Rules
 #
 all:
+	git pull
+	git add .
+	git commit -m "makefile auto update"
+	git push
 	mkdir -p $(BINDIR)
 	reset
 	$(TEXCOMMAND)
