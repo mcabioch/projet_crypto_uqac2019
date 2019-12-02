@@ -80,7 +80,7 @@ all:
 	git push
 	mkdir -p $(BINDIR)
 	reset
-	$(TEXCOMMAND) > /dev/null
+	$(TEXCOMMAND)
 	$(TEXCOMMAND) > /dev/null
 	$(GLOSSTEX) $(GLOSFLAGS) $(NAME)
 	$(INDEXTEX) $(INDEXFLAGS) $(BINDIR)/$(IDX)
