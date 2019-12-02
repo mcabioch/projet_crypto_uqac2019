@@ -89,16 +89,7 @@ endif
 #
 #	Implicit rules
 #
-.PHONY: create pdf clear remake
-
-create:
-	cp "$(TEXIN)/TEX$(MAINFILE)" "$(MAINFILE)"
-	ln -sfn $(LIBTEXIN) $(LIBTEXOUT)
-	ln -sfn $(LIBDIRTEXIN) $(LIBDIRTEXOUT)
-	mkdir $(BINDIR)
-	mkdir $(OTHDIR)
-	cp "$(TEXIN)/TEX$(GLOSSARIE)" "$(OTHDIR)/$(GLOSSARIE)"
-	cp "$(TEXIN)/TEX$(BIB)" "$(OTHDIR)/$(BIB)"
+.PHONY: pdf clear remake
 
 clear:
 	rm -rf $(BINDIR)
