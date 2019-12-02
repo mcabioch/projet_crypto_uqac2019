@@ -9,9 +9,13 @@
 
 	La cryptanalyse est un problème de recherche permettant les deux extrêmes de recherches exhaustive ($T=N$, $M=1$) et ($T=1$, $M=N$). Cependant, avant E. Hellman\cite{ehellman}, aucun papier n'avait été publié sur un compromis entre les deux. De plus, avec des résultats de temps-mémoire tels que $T = M = N^{2/3}$ ou une compléxité de $M + T$, le compromis est effectivement plus efficace et rentable qu'une recherche exhaustive ou une recherche de table. Ainsi, casser un DES 56-bit avec cette méthode est moins complèxe que de casser un DES 38-bit avec une recherche exhaustive.
 
-	Cependant, pour les problèmes cités plus haut, le compromis temps-mémoire n'est pas des plus efficace, des solutions existants avec $T = M = N^{1/2}$. Cela ne montre pas l'inefficacité du compromis mais le son amélioration possible.\\
+	Cependant, pour les problèmes cités plus haut, le compromis temps-mémoire n'est pas des plus efficace, des solutions existants avec $T = M = N^{1/2}$. Cela ne montre pas l'inefficacité du compromis mais que son amélioration est possible.\\
 
-	Une recherche exhaustive peut
+	Une recherche exhaustive peut se faire avec une attaque par \gls{plaint} connu, alors qu'une recherche par table nécessite une attaque par \gls{plaint} choisi.
+
+	Dans une recherche exhaustive, le \gls{cipher} peut être déchiffré pour chaque clé et comparé au \gls{plaint}. Si les textes sont identiques, après quelques tests additionels rejetant les fausses alertes, la clé est trouvée.
+
+	Dans une recherche par table, le cryptanalyst encrypte certains \gls{plaint}
 
 	\clearpage
 	II
