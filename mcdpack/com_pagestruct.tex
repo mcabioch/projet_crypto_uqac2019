@@ -121,35 +121,56 @@
 	\ifthenelse{\equal{\themyacronyms}{0} %
 		   \AND \equal{\themyindexs}{0} %
 		   \AND \equal{\themyfigures}{0} %
-		   \AND \equal{\themytables}{0}%
+		   \AND \equal{\themytables}{0} %
+		   \AND \equal{\themybibs}{0}%
 	}{}{%
-		\pagebreak%
+		\clearpage%
+	}
+
+	\ifthenelse{\equal{\themybibs}{0}}{}{%
+		\bibliography{other/bibtex}{}
+		\addcontentsline{toc}{part}{\tocbibliographycontent}
+		\refstepcounter{nbLastdocAdds}
 	}
 
 	\ifthenelse{\equal{\themyacronyms}{0}}{}{%
+		\ifthenelse{\equal{\thenbLastdocAdds}{0}}{}{%
+			\clearpage%
+		}%
+
 		\printglossary[type=\acronymtype]
 		\addcontentsline{toc}{part}{\tocacronymscontent}
+		\refstepcounter{nbLastdocAdds}
 	}
 
 	\ifthenelse{\equal{\themyfigures}{0}}{}{%
-		\newpage
+		\ifthenelse{\equal{\thenbLastdocAdds}{0}}{}{%
+			\clearpage%
+		}%
 
 		\listoffigures
 		\addcontentsline{toc}{part}{\toclofcontent}
+		\refstepcounter{nbLastdocAdds}
 	}
 
 	\ifthenelse{\equal{\themytables}{0}}{}{%
-		\newpage
+		\ifthenelse{\equal{\thenbLastdocAdds}{0}}{}{%
+			\clearpage%
+		}%
 
 		\listoftables
 		\addcontentsline{toc}{part}{\toclotcontent}
+		\refstepcounter{nbLastdocAdds}
 	}
 
 	\ifthenelse{\equal{\themyindexs}{0}}{}{%
-		\newpage
+		\ifthenelse{\equal{\thenbLastdocAdds}{0}}{}{%
+			\clearpage%
+		}%
 
 		\addcontentsline{toc}{part}{\tocindexcontent}
 		\printindex
+		\refstepcounter{nbLastdocAdds}
 	}
 }
 

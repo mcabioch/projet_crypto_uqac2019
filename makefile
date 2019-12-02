@@ -23,6 +23,7 @@ PDF := $(addsuffix .pdf, $(NAME))
 IST := $(addsuffix .log, $(NAME))
 IND := $(addsuffix .ind, $(NAME))
 IDX := $(addsuffix .idx, $(NAME))
+AUX := $(addsuffix .aux, $(NAME))
 
 #
 #	Output software name
@@ -49,6 +50,7 @@ GLOSFLAGS = -d $(BINDIR)
 #
 MAINFILE = newtex.tex
 GLOSSARIE = glossarie.tex
+BIB = bibtex.bib
 
 #
 #	Others
@@ -61,6 +63,8 @@ LIBTEXOUT = mcdpack.sty
 LIBDIRTEXIN = $(HOME)/Bureau/Mes_Documents/Programmation/Latex/mcdpack
 LIBDIRTEXOUT = mcdpack
 
+BIB_VALUES = $(shell cat $(OTHDIR)/$(BIB))
+
 #
 #	Commands
 #
@@ -70,10 +74,14 @@ TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(TEX)
 #	Rules
 #
 all:
+	reset
 	$(TEXCOMMAND)
 	$(TEXCOMMAND)
 	$(GLOSSTEX) $(GLOSFLAGS) $(NAME)
 	$(INDEXTEX) $(INDEXFLAGS) $(BINDIR)/$(IDX)
+ifneq ($(BIB_VALUES),)
+	bibtex $(BINDIR)/$(AUX)
+endif
 	$(TEXCOMMAND)
 	$(TEXCOMMAND)
 	mv build/$(PDF) ./$(PDF)
@@ -90,6 +98,7 @@ create:
 	mkdir $(BINDIR)
 	mkdir $(OTHDIR)
 	cp "$(TEXIN)/TEX$(GLOSSARIE)" "$(OTHDIR)/$(GLOSSARIE)"
+	cp "$(TEXIN)/TEX$(BIB)" "$(OTHDIR)/$(BIB)"
 
 clear:
 	rm -rf $(BINDIR)

@@ -25,5 +25,11 @@
 	\french%
 }
 
+\let\lastcite\cite
+\renewcommandx{\cite}[1]{%
+	\refstepcounter{mybibs}%
+	\lastcite{#1}%
+}
+
 %% End
 \endinput
