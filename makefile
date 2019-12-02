@@ -65,6 +65,8 @@ LIBDIRTEXOUT = mcdpack
 
 BIB_VALUES = $(shell cat $(OTHDIR)/$(BIB))
 
+LINE = echo "--------------------------------------"
+
 #
 #	Commands
 #
@@ -82,11 +84,13 @@ all:
 	reset
 	$(TEXCOMMAND)
 	$(TEXCOMMAND) > /dev/null
+	$(LINE)
 	$(GLOSSTEX) $(GLOSFLAGS) $(NAME)
 	$(INDEXTEX) $(INDEXFLAGS) $(BINDIR)/$(IDX)
 ifneq ($(BIB_VALUES),)
 	bibtex $(BINDIR)/$(AUX)
 endif
+	$(LINE)
 	$(TEXCOMMAND) > /dev/null
 	$(TEXCOMMAND)
 	mv build/$(PDF) ./$(PDF)
