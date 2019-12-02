@@ -33,7 +33,7 @@ AUX := $(addsuffix .aux, $(NAME))
 #
 #	Flags
 #
-TEXFLAGS = -shell-escape -synctex=1 -output-directory=$(BINDIR) -8bit
+TEXFLAGS = -shell-escape -synctex=1 -output-directory=$(BINDIR) -8bit -interaction batchmode
 INDEXFLAGS = -t $(BINDIR)/$(IST) -o $(BINDIR)/$(IND) -p odd
 GLOSFLAGS = -d $(BINDIR)
 
