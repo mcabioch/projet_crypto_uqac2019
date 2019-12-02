@@ -14,7 +14,49 @@
 
 	Dans une recherche par table, le cryptanalyste encrypte certains \gls{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \gls{cipher} sont enregistrés et triés dans des tables. Pour une nouvelle clé $K$ et le \gls{cipher} par cette clé $C_0 = S_K(P_0)$, le cryptanalyste retrouvera $C_0$ et la clé correspondante en $log_2 N$ opérations.\\
 
-	La méthode du compromis temps-mémoire fonctionne avec ce type d'attaque en \gls{plaint} choisi. Cependant il fonctionne aussi avec une attaque par \gls{cipher} seulement.
+	La méthode du compromis temps-mémoire fonctionne avec ce type d'attaque en \gls{plaint} choisi. De plus il fonctionne aussi avec une attaque par \gls{cipher} seulement.
+
+	Cependant, ce compromis temps-mémoire est une méthode probabiliste. Le succès n'est pas garanti, il dépend des ressources allouées.
+
+	Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \gls{cipher} possible avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un compromis temps-mémoire. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \gls{cipher} :
+
+	\begin{align*}
+		k_i \overset{S_{k_i}(P_0)}{\longrightarrow} C_i \overset{R(C_i)}{\longrightarrow} k_{i+1}
+	\end{align*}
+
+	Cette succession de $S$ et de $R$ est appelée $f$.
+
+	Pour retrouver la clé d'un \gls{cipher}, il génère une clé avec le \gls{cipher} ( $k' = R(C')$ ) et il fait une chaîne de la taille de celles qui ont été stockées. Si une des clés générées correspond à une des clés sauvegardées, il suffit de reconstruire la chaîne concernée et de retrouver l'emplacement qui correspond à la clé avant $R(C')$.
+
+	Cependant, plus la table est grande et plus les chances que deux chaînes commençant différement entrent en collision et finissent avec les mêmes clés. La probabilité que ça arrive, d'après le papier original, dans une table de $m$ lignes de $t$ clés :
+
+	\begin{align*}
+		P_{table} \ge{} \frac{1}{N} \Sum{i=1}{m}\Sum{j=0}{t-1} (1 - \frac{it}{N})^{j+1}
+	\end{align*}
+
+	Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
+
+	\projectsubsection{Travail existant}
+
+		Rivest à suggéré d'utiliser comme points finaux des points caractéristiques, qui répondent à un critère. Ensuite, afin de réduire les calculs pour un \gls{cipher} cherché, sa chaîne sera générée jusqu'à obtention d'un point caractéristique et non d'une longueur pré-déterminée. Il est possible d'ajuster les paramètres $m$, $t$ et $l$ afin de minimiser les coûts et d'augmenter les chances de succès.
+
+		D'après Borst, ces points caractéristiques ont deux avantages :
+		\bi
+			\item Ils évitent les boucles. Il suffit de préciser un nombre d'itérations maximum. S'il n'y a pas de points caractéristiques alors la chaîne est abandonnée.
+			\item Il est possible d'éviter les collisions si deux chaînes ont le même point caractéristique.
+		\ei
+
+\projectsection{Résultats de la méthode originale}
+
+	\projectsubsection{Limites et paramètres}
+
+		Il y a, dans cette méthode, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$ :
+
+		\begin{align*}
+			M &= m*l*m_0\\
+			T &= t*l*t_0\\
+			P_{success} &\ge{} 1 - (1 - \frac{1}{N} \Sum{i=1}{m}\Sum{j=0}{t-1} (1 - \frac{it}{N})^{j+1})^l
+		\end{align*}
 
 	\clearpage
 	II
