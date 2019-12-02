@@ -36,7 +36,7 @@
 
 	Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
 
-	\projectsubsection{Travail existant}
+%	\projectsubsection{Travail existant}
 
 		Rivest à suggéré d'utiliser comme points finaux des points caractéristiques, qui répondent à un critère. Ensuite, afin de réduire les calculs pour un \gls{cipher} cherché, sa chaîne sera générée jusqu'à obtention d'un point caractéristique et non d'une longueur pré-déterminée. Il est possible d'ajuster les paramètres $m$, $t$ et $l$ afin de minimiser les coûts et d'augmenter les chances de succès.
 
@@ -46,9 +46,9 @@
 			\item Il est possible d'éviter les collisions si deux chaînes ont le même point caractéristique.
 		\ei
 
-\projectsection{Résultats de la méthode originale}
+%\projectsection{Résultats de la méthode originale}
 
-	\projectsubsection{Limites et paramètres}
+%	\projectsubsection{Limites et paramètres}
 
 		Il y a, dans cette méthode, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$ :
 
