@@ -74,6 +74,7 @@ TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(TEX)
 #	Rules
 #
 all:
+	mkdir -p $(BINDIR)
 	reset
 	$(TEXCOMMAND)
 	$(TEXCOMMAND)
@@ -89,7 +90,7 @@ endif
 #
 #	Implicit rules
 #
-.PHONY: pdf clear remake
+.PHONY: pdf clear remake install_dependencies
 
 clear:
 	rm -rf $(BINDIR)
@@ -106,4 +107,7 @@ remake:
 
 pdf:
 	evince $(PDF) &
+
+install_dependencies:
+	sudo apt install texlive-full
 
