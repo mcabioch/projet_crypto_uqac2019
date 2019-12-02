@@ -109,5 +109,6 @@ pdf:
 	evince $(PDF) &
 
 install_dependencies:
-	sudo apt install texlive-full
+	sudo apt install texlive-xetex
+	sudo apt install texlive-science
 
