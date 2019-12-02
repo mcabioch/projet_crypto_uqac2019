@@ -69,6 +69,7 @@ BIB_VALUES = $(shell cat $(OTHDIR)/$(BIB))
 #	Commands
 #
 TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(TEX)
+GREP = grep -v "(/usr/share/texlive/.+)"
 
 #
 #	Rules
@@ -88,7 +89,7 @@ ifneq ($(BIB_VALUES),)
 	bibtex $(BINDIR)/$(AUX)
 endif
 	$(TEXCOMMAND) > /dev/null
-	$(TEXCOMMAND)
+	$(TEXCOMMAND) | $(GREP)
 	mv build/$(PDF) ./$(PDF)
 
 #
