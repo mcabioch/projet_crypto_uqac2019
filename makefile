@@ -80,14 +80,14 @@ all:
 	git push
 	mkdir -p $(BINDIR)
 	reset
-	$(TEXCOMMAND)
-	$(TEXCOMMAND)
+	$(TEXCOMMAND) > /dev/null
+	$(TEXCOMMAND) > /dev/null
 	$(GLOSSTEX) $(GLOSFLAGS) $(NAME)
 	$(INDEXTEX) $(INDEXFLAGS) $(BINDIR)/$(IDX)
 ifneq ($(BIB_VALUES),)
 	bibtex $(BINDIR)/$(AUX)
 endif
-	$(TEXCOMMAND)
+	$(TEXCOMMAND) > /dev/null
 	$(TEXCOMMAND)
 	mv build/$(PDF) ./$(PDF)
 
