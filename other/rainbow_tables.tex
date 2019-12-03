@@ -1,11 +1,49 @@
 \setsection{Rainbow Tables}
 
-	\clearpage
+	Le problème des précédentes tables est que si deux chaînes entrent en collision, elles fusionnent. Il existe des méthodes pour que deux chaînes en collision ne fusionnent pas, les chaînes arc-en-ciel. Le principe : elles utilisent des fonctions de réductions différentes à chaque point de la chaîne.
 
-	a
+	Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique, avec les chaînes arc-en-ciel les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
 
-	\clearpage
+	\begin{align*}
+		P_{table} &= 1 - \overset{t}{\underset{i=1}{\Pi}}(1 - \frac{m_i}{N})
+	\end{align*}
 
-	b
+	Il est intéressant de noter que la probabilité de succès de $t$ tables classiques $m*t$ est la même qu'une table arc-en-ciel $mt*t$.
+
+	Ces tables offres les mêmes avantages que les tables classiques avec point finaux caractéristiques sans certains inconvénients :
+	\bi
+		\item La recherche dans les tables est diminuée d'un facteur $t$.
+		\item Il est facile de générer des tables sans fusion mais elles comporteront alors forcément des collisions.
+		\item Les chaînes arc-en-ciel ont une taille constante tandis que les chaînes à point caractéristiques ont une taille variable. Ce qui réduit considérablement les fausses alertes.
+	\ei
+
+%\projectsection{Résultats expérimentaux}
+
+	Il utilise comme test le crack de mots de passes du LanManager de MS Windows car il peut être effectué sur n'importe quel poste de travail standard.
+
+	En se basant sur ce qu'il a expliqué plus haut (Limites et paramètres), il a choisit les paramètres suivant pour les deux types de tables afin de comparer les résultats (après 500 mots de passes craqués) ;
+
+	\begin{owntab}{l|c|c}
+		 & Classique avec PC & Arc-en-ciel \\
+		\hline
+		$t$, $m$, $l$ & 4666, 8192, 4666 & 4666, 38 223 872, 1 \\
+		\hline
+		predicted coverage & 75.5\% & 77.5\%\\
+		measured coverage & 75.8\% & 78.8\%\\
+	\end{owntab}
+
+	Cette expérimentation montre que pour la même quantité de données, les tables arc-en-ciel ont la même probabilité de succès que les tables classiques avec points caractéristiques.
+
+	En comparant le temps de cryptanalyse et le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la table arc-en-ciel est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.
+
+%	\projectsubsection{L'importance d'être constant}
+
+	Attraction fatale : La variation de la longueur des chaînes entraîne une variation de la probabilité de fusion. Cela pose problème avec les fausses alertes. Elles aparaîtront plus fréquemment dans des grandes chaînes de par la fusion.\\
+
+	Frais plus important : Une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.
+
+%	\projectsubsection{Augmenter encore le gain}
+
+	Pour les tables arc-en-ciel, la quantité de calculs augmente de façon quadratique de 1 à $\frac{t^2-1}{2}$. Pour les tables classiques, c'est une augmentation linéaire $t^2$. Pour augmenter les chances de succès et la rapidité, il faut augmenter le nombre de tables arc-en-ciel et regarder les lignes de toutes les tables en même temps. En prenant l'exemple précédent avec 78\% de succès avec une table, avec 5 tables le succès passe à 99.9\%. Le résultat se trouvant dans les premières lignes, cela diminue le temps de recherche nécessaire.
 
 \endinput{}
