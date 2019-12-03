@@ -35,15 +35,17 @@
 
 	Cette expérimentation montre que pour la même quantité de données, les tables arc-en-ciel ont la même probabilité de succès que les tables classiques avec points caractéristiques.\\
 
-	En comparant le temps de cryptanalyse, le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la table arc-en-ciel est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.
+	En comparant le temps de cryptanalyse, le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la table arc-en-ciel est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.\\
 
 	On voit alors ressortir l'importance pour les chaînes d'être constante. Deux points ressortent concernant la constance des chaînes\cite{Oech03} :
 
 	\bi
 		\item Attraction fatale : La variation de la longueur des chaînes entraîne une variation de la probabilité de fusion. Cela pose problème avec les fausses alertes. Elles aparaîtront plus fréquemment dans des grandes chaînes de par la fusion.
-		\item Frais plus important : Une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.
+		\item Frais plus important : Une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.\\
 	\ei
 
-	La méthode de calcul peut encore être améliorée. Pour les tables arc-en-ciel, la quantité de calculs augmente de façon quadratique de 1 à $\frac{t^2-1}{2}$. Pour les tables classiques, c'est une augmentation linéaire $t^2$. Pour augmenter les chances de succès et la rapidité, il faut augmenter le nombre de tables arc-en-ciel et regarder les lignes de toutes les tables en même temps. En prenant l'exemple précédent avec 78\% de succès avec une table, avec 5 tables le succès passe à 99.9\%. Le résultat se trouvant dans les premières lignes, cela diminue le temps de recherche nécessaire.
+	La méthode de calcul peut encore être améliorée. Pour les tables arc-en-ciel, la quantité de calculs augmente de façon quadratique de 1 à $\frac{t^2-1}{2}$. Pour les tables classiques, c'est une augmentation linéaire $t^2$.\\
+
+	Pour augmenter les chances de succès et la rapidité, il faut augmenter le nombre de tables arc-en-ciel et regarder les lignes de toutes les tables en même temps. En prenant l'exemple précédent avec 78\% de succès avec une table, avec 5 tables le succès passe à 99.9\%. Le résultat se trouvant dans les premières lignes, cela diminue le temps de recherche nécessaire. Ce n'est évidemment pas la seule amélioration possible.
 
 \endinput{}
