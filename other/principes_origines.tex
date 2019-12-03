@@ -2,7 +2,7 @@
 
 	Dans son article \og{}A Cryptanalytic Time-Memory Trade-Off\fg{}\cite{ehellman} publié en juillet 1980, Martin \bsc{E. Hellman} décrit pour la première fois un compromis temps-mémoire. Cette technique est à la base de nombreuses méthodes de cryptanalyse.\\
 
-	De nombreux problèmes comme le logarithme discret ou le problème du sac à dos permettent l'utilisation de ce compromis. Pour $N$ solutions à vérifier, le compromis temps-mémoire permet de trouver la solution en $T$ opérations avec $M$ mots de mémoire. On obtient alors le produit temps mémoire suivant : $TM = N$.
+	De nombreux problèmes comme le logarithme discret ou le problème du sac à dos permettent l'utilisation de ce compromis. Pour $N$ solutions à vérifier, le compromis temps-mémoire permet de trouver la solution en $T$ opérations avec $M$ mots de mémoire. On obtient alors le produit temps mémoire suivant : $TM = N$.\\
 
 	La cryptanalyse est un problème de recherche permettant les deux extrêmes de recherches exhaustive ($T=N$, $M=1$) et ($T=1$, $M=N$). Cependant, avant E. Hellman\cite{ehellman}, aucun papier n'avait été publié sur un compromis entre les deux. De plus, avec des résultats de temps-mémoire tels que $T = M = N^{2/3}$ ou une compléxité de $M + T$, le compromis est effectivement plus efficace et rentable qu'une recherche exhaustive ou une recherche de table. Ainsi, casser un DES 56-bit avec cette méthode est moins complèxe que de casser un DES 38-bit avec une recherche exhaustive.
 
@@ -28,13 +28,13 @@
 
 	Pour retrouver la clé d'un \gls{cipher}, il génère une clé avec le \gls{cipher} ( $k' = R(C')$ ) et il fait une chaîne de la taille de celles qui ont été stockées. Si une des clés générées correspond à une des clés sauvegardées, il suffit de reconstruire la chaîne concernée et de retrouver l'emplacement qui correspond à la clé avant $R(C')$.
 
-	Cependant, plus la table est grande et plus les chances que deux chaînes commençant différement entrent en collision et finissent avec les mêmes clés. La probabilité que ça arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :
+	Cependant, plus la table est grande et plus les chances que deux chaînes commençant différement entrent en collision et finissent avec les mêmes clés. La probabilité que ça arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :\\
 
 	\begin{align*}
 		P_{table} \ge{} \frac{1}{N} \Sum{i=1}{m}\Sum{j=0}{t-1} (1 - \frac{it}{N})^{j+1}
 	\end{align*}
 
-	Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
+	Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.\\
 
 	Il y a, dans cette méthode de compromis temps-mémoire, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :
 
