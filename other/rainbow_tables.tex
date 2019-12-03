@@ -16,7 +16,7 @@
 		\item La recherche dans les tables est diminuée d'un facteur $t$.
 		\item Il est facile de générer des tables sans fusion mais elles comporteront alors forcément des collisions.
 		\item Les chaînes arc-en-ciel ont une taille constante tandis que les chaînes à point caractéristiques ont une taille variable. Ce qui réduit considérablement les fausses alertes.
-	\ei\\
+	\ei
 
 %\projectsection{Résultats expérimentaux}
 
@@ -42,7 +42,7 @@
 	\bi
 		\item Attraction fatale : La variation de la longueur des chaînes entraîne une variation de la probabilité de fusion. Cela pose problème avec les fausses alertes. Elles aparaîtront plus fréquemment dans des grandes chaînes de par la fusion.
 		\item Frais plus important : Une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.
-	\ei\\
+	\ei
 
 	La méthode de calcul peut encore être améliorée. Pour les tables arc-en-ciel, la quantité de calculs augmente de façon quadratique de 1 à $\frac{t^2-1}{2}$. Pour les tables classiques, c'est une augmentation linéaire $t^2$. Pour augmenter les chances de succès et la rapidité, il faut augmenter le nombre de tables arc-en-ciel et regarder les lignes de toutes les tables en même temps. En prenant l'exemple précédent avec 78\% de succès avec une table, avec 5 tables le succès passe à 99.9\%. Le résultat se trouvant dans les premières lignes, cela diminue le temps de recherche nécessaire.
 
