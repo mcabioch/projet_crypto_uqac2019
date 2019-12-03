@@ -83,10 +83,6 @@ TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(TEX)
 #	Rules
 #
 all:
-	git pull
-	git add .
-	git commit -m "makefile auto update"
-	git push
 	mkdir -p $(BINDIR)
 	reset
 	$(TEXCOMMAND)
@@ -107,7 +103,7 @@ endif
 #
 #	Implicit rules
 #
-.PHONY: pdf clear remake install_dependencies
+.PHONY: pdf clear remake install_dependencies sync
 
 clear:
 	rm -rf $(BINDIR)
@@ -128,4 +124,10 @@ pdf:
 install_dependencies:
 	sudo apt install texlive-xetex
 	sudo apt install texlive-science
+
+sync:
+	git pull
+	git add .
+	git commit -m "makefile auto update"
+	git push
 
