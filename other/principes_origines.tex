@@ -6,7 +6,7 @@
 		k_i \overset{S_{k_i}(P_0)}{\longrightarrow} C_i \overset{R(C_i)}{\longrightarrow} k_{i+1}
 	\end{align*}
 
-	Cette succession de $S$ et de $R$ est appelée $f$.\\
+	Cette succession de $S$ et de $R$ est appelée $f$.
 
 	Pour retrouver la clé d'un \gls{cipher}, il génère une clé avec le \gls{cipher} ( $k' = R(C')$ ) et il fait une chaîne de la taille de celles qui ont été stockées. Si une des clés générées correspond à une des clés sauvegardées, il suffit de reconstruire la chaîne concernée et de retrouver l'emplacement qui correspond à la clé avant $R(C')$.\\
 
@@ -18,7 +18,7 @@
 
 	Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.\\
 
-	Il y a, dans cette méthode de compromis temps-mémoire, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :
+	Il y a, dans cette méthode de compromis temps-mémoire, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :\\
 
 	\begin{align*}
 		M &= m*l*m_0\\
