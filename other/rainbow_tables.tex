@@ -3,7 +3,7 @@
 
 	Le problème des précédentes tables est que si deux chaînes entrent en collision, elles fusionnent. Il existe des méthodes pour que deux chaînes en collision ne fusionnent pas, les chaînes arc-en-ciel. Le principe : elles utilisent des fonctions de réductions différentes à chaque point de la chaîne.
 
-	Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique\cite{oech03}, avec les chaînes arc-en-ciel les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
+	Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique\cite{Oech03}, avec les chaînes arc-en-ciel les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
 
 	\begin{align*}
 		P_{table} &= 1 - \overset{t}{\underset{i=1}{\Pi}}(1 - \frac{m_i}{N})
@@ -20,7 +20,7 @@
 
 %\projectsection{Résultats expérimentaux}
 
-	Le travail de Philippe Oechslin\cite{oech03} nous permet d'obtenir des résultats expérimentaux comparant les tables à points distincts et les tables arc-en-ciel. Oechslin utilise comme test le crack de mots de passes du LanManager de MS Windows car il peut être effectué sur n'importe quel poste de travail standard.
+	Le travail de Philippe Oechslin\cite{Oech03} nous permet d'obtenir des résultats expérimentaux comparant les tables à points distincts et les tables arc-en-ciel. Oechslin utilise comme test le crack de mots de passes du LanManager de MS Windows car il peut être effectué sur n'importe quel poste de travail standard.
 
 	En se basant sur les paramètres exprimés plus haut, il a choisit les valeurs suivantes pour les deux types de tables afin de comparer les résultats (après 500 mots de passes craqués) ;
 
@@ -33,9 +33,9 @@
 		measured coverage & 75.8\% & 78.8\%\\
 	\end{owntab}
 
-	Cette expérimentation montre que pour la même quantité de données, les tables arc-en-ciel ont la même probabilité de succès que les tables classiques avec points caractéristiques.
+	Cette expérimentation montre que pour la même quantité de données, les tables arc-en-ciel ont la même probabilité de succès que les tables classiques avec points caractéristiques.\\
 
-	En comparant le temps de cryptanalyse, le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la table arc-en-ciel est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.\\
+	En comparant le temps de cryptanalyse, le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la table arc-en-ciel est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.
 
 	On voit alors ressortir l'importance pour les chaînes d'être constante. Deux points ressortent concernant la constance des chaînes\cite{oech03} :
 

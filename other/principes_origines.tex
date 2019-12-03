@@ -36,7 +36,7 @@
 
 	Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
 
-	Il y a, dans cette méthode de compromis temps-mémoire, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{oech03} :
+	Il y a, dans cette méthode de compromis temps-mémoire, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :
 
 	\begin{align*}
 		M &= m*l*m_0\\
