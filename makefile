@@ -97,7 +97,7 @@ endif
 #
 #	Implicit rules
 #
-.PHONY: pdf clear remake install_dependencies sync show_dependencies
+.PHONY: pdf clear remake install_dependencies sync
 
 clear:
 	rm -rf $(BINDIR)
@@ -119,8 +119,8 @@ install_dependencies:
 	sudo apt install texlive-binaries texlive-latex-extra texlive-xetex
 	sudo apt install findutils texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-fonts-recommended texlive-lang-english texlive-lang-european texlive-lang-french texlive-lang-other texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-pictures texlive-plain-generic texlive-pstricks texlive-science texlive-xetex wfrench xindy
 
-GIT_COMMIT_SAMPLE = "makefile auto update"
-GIT_COMMIT = "$(GIT_COMMIT_SAMPLE)"
+GIT_COMMIT_SAMPLE = makefile auto update
+GIT_COMMIT = $(GIT_COMMIT_SAMPLE)
 
 sync:
 ifeq ($(GIT_COMMIT),$(GIT_COMMIT_SAMPLE))
