@@ -2,7 +2,7 @@
 
 	Le problème des précédentes tables est que si deux chaînes entrent en collision, elles fusionnent. Il existe des méthodes pour que deux chaînes en collision ne fusionnent pas, les chaînes arc-en-ciel. Le principe : elles utilisent des fonctions de réductions différentes à chaque point de la chaîne.
 
-	Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique, avec les chaînes arc-en-ciel les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
+	Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique\cite{Oech03}, avec les chaînes arc-en-ciel les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
 
 	\begin{align*}
 		P_{table} &= 1 - \overset{t}{\underset{i=1}{\Pi}}(1 - \frac{m_i}{N})
@@ -10,7 +10,7 @@
 
 	Il est intéressant de noter que la probabilité de succès de $t$ tables classiques $m*t$ est la même qu'une table arc-en-ciel $mt*t$.
 
-	Ces tables offres les mêmes avantages que les tables classiques avec point finaux caractéristiques sans certains inconvénients :
+	Ces tables offrent les mêmes avantages que les tables classiques avec point finaux distincts sans certains inconvénients :
 	\bi
 		\item La recherche dans les tables est diminuée d'un facteur $t$.
 		\item Il est facile de générer des tables sans fusion mais elles comporteront alors forcément des collisions.
