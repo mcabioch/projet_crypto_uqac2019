@@ -1,8 +1,8 @@
 \setsection{Rainbow Tables}
 
-	Le problème des précédentes tables est que si deux chaînes entrent en collision, elles fusionnent. Il existe des méthodes pour que deux chaînes en collision ne fusionnent pas, les \glsp{rainbow}. Le principe : elles utilisent des fonctions de réductions différentes à chaque point de la chaîne.
+	Le problème des précédentes tables est que si deux chaînes entrent en collision, elles fusionnent. Il existe des méthodes pour que deux chaînes en collision ne fusionnent pas, les chaînes arc-en-ciel. Le principe : elles utilisent des fonctions de réductions différentes à chaque point de la chaîne.
 
-	Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique\cite{Oech03}, avec les \glsp{rainbow} les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
+	Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique\cite{Oech03}, avec les chaînes arc-en-ciel les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
 
 	\begin{align*}
 		P_{table} &= 1 - \overset{t}{\underset{i=1}{\Pi}}(1 - \frac{m_i}{N})
@@ -14,8 +14,8 @@
 	\bi
 		\item La recherche dans les tables est diminuée d'un facteur $t$.
 		\item Il est facile de générer des tables sans fusion mais elles comporteront alors forcément des collisions.
-		\item Les \glsp{rainbow} ont une taille constante tandis que les chaînes à point caractéristiques ont une taille variable. Ce qui réduit considérablement les fausses alertes.
-	\ei
+		\item Les chaînes arc-en-ciel ont une taille constante tandis que les chaînes à point caractéristiques ont une taille variable. Ce qui réduit considérablement les fausses alertes.
+	\ei\\
 
 %\projectsection{Résultats expérimentaux}
 
@@ -34,13 +34,13 @@
 
 	Cette expérimentation montre que pour la même quantité de données, les tables arc-en-ciel ont la même probabilité de succès que les tables classiques avec points caractéristiques.
 
-	En comparant le temps de cryptanalyse et le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la table arc-en-ciel est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.
+	En comparant le temps de cryptanalyse et le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la table arc-en-ciel est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.\\
 
 %	\projectsubsection{L'importance d'être constant}
 
 	Attraction fatale : La variation de la longueur des chaînes entraîne une variation de la probabilité de fusion. Cela pose problème avec les fausses alertes. Elles aparaîtront plus fréquemment dans des grandes chaînes de par la fusion.\\
 
-	Frais plus important : Une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.
+	Frais plus important : Une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.\\
 
 %	\projectsubsection{Augmenter encore le gain}
 
