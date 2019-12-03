@@ -8,7 +8,7 @@
 
 	Cette succession de $S$ et de $R$ est appelée $f$.\\
 
-	Pour retrouver la clé d'un \gls{cipher}, il génère une clé avec le \gls{cipher} ( $k' = R(C')$ ) et il fait une chaîne de la taille de celles qui ont été stockées. Si une des clés générées correspond à une des clés sauvegardées, il suffit de reconstruire la chaîne concernée et de retrouver l'emplacement qui correspond à la clé avant $R(C')$.
+	Pour retrouver la clé d'un \gls{cipher}, il génère une clé avec le \gls{cipher} ( $k' = R(C')$ ) et il fait une chaîne de la taille de celles qui ont été stockées. Si une des clés générées correspond à une des clés sauvegardées, il suffit de reconstruire la chaîne concernée et de retrouver l'emplacement qui correspond à la clé avant $R(C')$.\\
 
 	Cependant, plus la table est grande et plus les chances que deux chaînes commençant différement entrent en collision et finissent avec les mêmes clés. La probabilité que ça arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :\\
 
