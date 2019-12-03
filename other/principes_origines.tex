@@ -1,23 +1,5 @@
 \setsection{Principes et origines}
 
-	Dans son article \og{}A Cryptanalytic Time-Memory Trade-Off\fg{}\cite{ehellman} publié en juillet 1980, Martin \bsc{E. Hellman} décrit pour la première fois un compromis temps-mémoire. Cette technique est à la base de nombreuses méthodes de cryptanalyse.\\
-
-	De nombreux problèmes comme le logarithme discret ou le problème du sac à dos permettent l'utilisation de ce compromis. Pour $N$ solutions à vérifier, le compromis temps-mémoire permet de trouver la solution en $T$ opérations avec $M$ mots de mémoire. On obtient alors le produit temps mémoire suivant : $TM = N$.\\
-
-	La cryptanalyse est un problème de recherche permettant les deux extrêmes de recherches exhaustive ($T=N$, $M=1$) et ($T=1$, $M=N$). Cependant, avant E. Hellman\cite{ehellman}, aucun papier n'avait été publié sur un compromis entre les deux. De plus, avec des résultats de temps-mémoire tels que $T = M = N^{2/3}$ ou une compléxité de $M + T$, le compromis est effectivement plus efficace et rentable qu'une recherche exhaustive ou une recherche de table. Ainsi, casser un DES 56-bit avec cette méthode est moins complèxe que de casser un DES 38-bit avec une recherche exhaustive.\\
-
-	Cependant, pour les problèmes cités plus haut, le compromis temps-mémoire n'est pas des plus efficace, des solutions existants avec $T = M = N^{1/2}$. Cela ne montre pas l'inefficacité du compromis mais que son amélioration est possible.\\
-
-	Une recherche exhaustive peut se faire avec une attaque par \gls{plaint} connu, alors qu'une recherche par table nécessite une attaque par \gls{plaint} choisi.\\
-
-	Dans une recherche exhaustive, le \gls{cipher} peut être déchiffré pour chaque clé et comparé au \gls{plaint}. Si les textes sont identiques, après quelques tests additionels rejetant les fausses alertes, la clé est trouvée.\\
-
-	Dans une recherche par table, le cryptanalyste encrypte certains \gls{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \gls{cipher} sont enregistrés et triés dans des tables. Pour une nouvelle clé $K$ et le \gls{cipher} par cette clé $C_0 = S_K(P_0)$, le cryptanalyste retrouvera $C_0$ et la clé correspondante en $log_2 N$ opérations.\\
-
-	La méthode du compromis temps-mémoire fonctionne avec ce type d'attaque en \gls{plaint} choisi. De plus il fonctionne aussi avec une attaque par \gls{cipher} seulement.
-
-	Cependant, ce compromis est une méthode probabiliste. Le succès n'est pas garanti, il dépend des ressources allouées.\\
-
 	Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \gls{cipher} possible avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un compromis temps-mémoire. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \gls{cipher} :
 
 	\begin{align*}
