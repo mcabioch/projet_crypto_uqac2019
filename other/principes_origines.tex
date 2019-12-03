@@ -1,15 +1,5 @@
 \setsection{Principes et origines}
 
-	The time-memory trade-off was described for use with a block cipher, but the same approach works with a synchronous stream cipher [7]. The first k bits of keystream are taken as the f(K) function, where k is the number of bits of key. This can be done under a known plaintext attack.\\
-
-	The method works on all systems in a chosen plaintext attack [7] but does not work with a known plaintext attack on a cipher feedback system [7] if the initial load of the shift register is random and varies between conversations. Proposed Federal standards suggest this precaution.\\
-
-	Even a block cipher can foil the time-memory trade-off in a known plaintext attack through cipher block chaining [7], [8] or other techniques which introduce memory into the encipherment. Then, even when eight blanks occur in the plaintext, their encipherment depends on the preced- ing text. Even if the first block of text is fairly standard (e.g., “Login: “), this technique can be foiled by the transmission oFa random “indicator”  which is used to affect the encipherment (e.g., it is taken as the 0th plain- text block). Again, proposed standards include provision for cipher block chaining with a random indicator.\\
-
-	While this time-memory trade-off cryptanalytic tech- nique can be easily foiled, it does work on the DES in basic block mode, More importantly, it indicates that even when cipher block chaining or other techniques are added, a larger key size is needed to have a reasonable assurance of security. While table lookup and exhaustive search are currently infeasible on systems with 64-bit or larger key sizes, an N *I2 time-memory trade-off would push the minimum usable key size up to 128 bits. The N213 technique described here, coupled with the large number of N’12 time-memory tradeoffs known for other searching problems, indicates that valuable data should not be entrusted to a device with smaller key size.
-
-%	Add Hellman 36.pdf
-
 	Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \gls{cipher} possible avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un compromis temps-mémoire. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \gls{cipher} :
 
 	\begin{align*}
@@ -35,6 +25,14 @@
 		T &= t*l*t_0\\
 		P_{success} &\ge{} 1 - (1 - \frac{1}{N} \Sum{i=1}{m}\Sum{j=0}{t-1} (1 - \frac{it}{N})^{j+1})^l
 	\end{align*}
+
+	Le compromis temps-mémoire a été décrit pour une utilisation avec un chiffrement par bloc\cite{ehellman}, mais la même approche fonctionne avec un chiffrement de flux synchrone\cite{ehellman}. Les $k$ premiers bits du flux de clés sont considérés comme la fonction $f(k)$, $k$ étant le nombre de bits de la clé. Cela peut être fait sous une attaque en texte clair connue.\\
+
+	La méthode fonctionne sur tous les systèmes dans une attaque en \gls{plaint} choisi mais ne fonctionne pas avec une attaque en \gls{plaint} connu sur un système de retour de chiffrement si la charge initiale du registre à décalage est aléatoire et varie entre les conversations. Les normes fédérales proposées\cite{ehellman} suggèrent cette précaution.\\
+
+	De plus, même un chiffrement par bloc peut contrecarrer le compromis temps-mémoire d'une attaque en \gls{plaint} connu par le chaînage de blocs de chiffrement ou d'autres techniques introduisant de la mémoire dans le chiffrement. Ensuite, même lorsque huit espaces apparaissent dans le texte en clair, leur chiffrement dépend du texte précédent. Même si le premier bloc de texte est assez standard (par exemple, "Login:"), cette technique peut être déjouée par la transmission d'un "indicateur" aléatoire servant à affecter le chiffrement (par exemple, il est considéré comme le bloc de texte). Encore une fois, les normes proposées\cite{ehellman} incluent des dispositions pour l'enchaînement des blocs de chiffrement avec un indicateur aléatoire.\\
+
+	Bien que cette technique cryptanalytique de compromis temps-mémoire puisse être facilement déjouée, elle fonctionne sur le DES, en mode bloc de base, nécessaire pour avoir une assurance raisonnable de sécurité. Bien que la recherche de table et la recherche exhaustive soient actuellement irréalisables sur les systèmes dotés de tailles de clé supérieures ou égales à 64 bits, un compromis $N^{1/2}$ en termes de mémoire temps porterait la taille minimale de clé utilisable à 128 bits. La technique $N^{2/3}$ décrite ici, associée au grand nombre de compromis de mémoire temporelle $N^{1/2}$ connus pour d’autres problèmes de recherche, indique que les données de valeur ne doivent pas être confiées à un appareil avec une taille de clé inférieure.
 
 	\clearpage
 
