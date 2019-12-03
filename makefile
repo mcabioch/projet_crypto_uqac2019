@@ -6,6 +6,7 @@ DEBUG = no
 PDFLATEX = xelatex
 INDEXTEX = makeindex
 GLOSSTEX = makeglossaries
+BIBLITEX = bibtex
 
 #
 #	Folders
@@ -33,14 +34,7 @@ AUX := $(addsuffix .aux, $(NAME))
 #
 #	Flags
 #
-TEXFLAGSs = -shell-escape -synctex=1 -output-directory=$(BINDIR) -8bit
-
-ifeq ($(DEBUG),no)
-	TEXFLAGS = $(TEXFLAGSs) -interaction batchmode
-else
-	TEXFLAGS = $(TEXFLAGSs) -interaction scrollmode
-endif
-
+TEXFLAGS = -shell-escape -synctex=1 -output-directory=$(BINDIR) -8bit -interaction batchmode
 INDEXFLAGS = -t $(BINDIR)/$(IST) -o $(BINDIR)/$(IND) -p odd
 GLOSFLAGS = -d $(BINDIR)
 
@@ -92,7 +86,7 @@ all:
 	$(GLOSSTEX) $(GLOSFLAGS) $(NAME)
 	$(INDEXTEX) $(INDEXFLAGS) $(BINDIR)/$(IDX)
 ifneq ($(BIB_VALUES),)
-	bibtex $(BINDIR)/$(AUX)
+	$(BIBLITEX) $(BINDIR)/$(AUX)
 endif
 	$(LINE)
 	$(TEXCOMMAND)
@@ -103,7 +97,7 @@ endif
 #
 #	Implicit rules
 #
-.PHONY: pdf clear remake install_dependencies sync
+.PHONY: pdf clear remake install_dependencies sync show_dependencies
 
 clear:
 	rm -rf $(BINDIR)
@@ -122,12 +116,18 @@ pdf:
 	evince $(PDF) &
 
 install_dependencies:
-	sudo apt install texlive-xetex
-	sudo apt install texlive-science
+	sudo apt install texlive-binaries texlive-latex-extra texlive-xetex
+	sudo apt install findutils texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-fonts-recommended texlive-lang-english texlive-lang-european texlive-lang-french texlive-lang-other texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-pictures texlive-plain-generic texlive-pstricks texlive-science texlive-xetex wfrench xindy
+
+GIT_COMMIT_SAMPLE = "makefile auto update"
+GIT_COMMIT = "$(GIT_COMMIT_SAMPLE)"
 
 sync:
+ifeq ($(GIT_COMMIT),$(GIT_COMMIT_SAMPLE))
+	@echo "You can change the default commit message by defining GIT_COMMIT"
+endif
 	git pull
 	git add .
-	git commit -m "makefile auto update"
+	git commit -m "$(GIT_COMMIT)"
 	git push
 
