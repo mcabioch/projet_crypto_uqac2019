@@ -83,7 +83,8 @@ all:
 	mkdir -p $(BINDIR)
 	reset
 	$(TEXCOMMAND)
-	$(TEXCOMMAND) > /dev/null
+	$(LINE)
+	$(TEXCOMMAND)
 	$(LINE)
 	$(GLOSSTEX) $(GLOSFLAGS) $(NAME)
 	$(INDEXTEX) $(INDEXFLAGS) $(BINDIR)/$(IDX)
@@ -91,7 +92,8 @@ ifneq ($(BIB_VALUES),)
 	bibtex $(BINDIR)/$(AUX)
 endif
 	$(LINE)
-	$(TEXCOMMAND) > /dev/null
+	$(TEXCOMMAND)
+	$(LINE)
 	$(TEXCOMMAND)
 	mv build/$(PDF) ./$(PDF)
 
