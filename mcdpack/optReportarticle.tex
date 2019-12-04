@@ -31,6 +31,8 @@
 }
 
 %% Re-New Commands
+\newcommand{\partstexts}{}
+
 \if@numpart%
 	\renewcommand{\thepart}{\Roman{part}}
 	\renewcommand{\thesection}{\thepart{}.\arabic{chapter}}
@@ -43,13 +45,16 @@
 %
 	\if@numpart%
 		\stepcounter{part}%
+		\renewcommand{\partstexts}{\thepart{} }%
+	\else%
+		\renewcommand{\partstexts}{}%
 	\fi%
 %
-	\part*{\thepart{} #1}%
+	\part*{\partstexts{}#1}%
 	\ifthenelse{\equal{#2}{}}{%
-		\addcontentsline{toc}{part}{\thepart{} #1}%
+		\addcontentsline{toc}{part}{\partstexts{}#1}%
 	}{%
-		\addcontentsline{toc}{part}{\thepart{} #2}%
+		\addcontentsline{toc}{part}{\partstexts{}#2}%
 	}%
 }
 \renewcommandx{\setchapter}{}
@@ -58,13 +63,16 @@
 %
 	\if@numpart%
 		\stepcounter{chapter}%
+		\renewcommand{\partstexts}{\thesection{} }%
+	\else%
+		\renewcommand{\partstexts}{}%
 	\fi%
 %
-	\section*{\thesection{} #1}%
+	\section*{\partstexts{}#1}%
 	\ifthenelse{\equal{#2}{}}{%
-		\addcontentsline{toc}{chapter}{\thesection{} #1}%
+		\addcontentsline{toc}{chapter}{\partstexts{}#1}%
 	}{%
-		\addcontentsline{toc}{chapter}{\thesection{} #2}%
+		\addcontentsline{toc}{chapter}{\partstexts{}#2}%
 	}%
 }
 \renewcommandx{\setsubsection}[2][2=]{%
@@ -72,25 +80,31 @@
 %
 	\if@numpart%
 		\stepcounter{section}%
+		\renewcommand{\partstexts}{\thesubsection{} }%
+	\else%
+		\renewcommand{\partstexts}{}%
 	\fi%
 %
-	\subsection*{\thesubsection{} #1}%
+	\subsection*{\partstexts{}#1}%
 	\ifthenelse{\equal{#2}{}}{%
-		\addcontentsline{toc}{section}{\tab{}\thesubsection{} #1}%
+		\addcontentsline{toc}{section}{\tab{}\partstexts{}#1}%
 	}{%
-		\addcontentsline{toc}{section}{\tab{}\thesubsection{} #2}%
+		\addcontentsline{toc}{section}{\tab{}\partstexts{}#2}%
 	}%
 }
 \renewcommandx{\setsubsubsection}[2][2=]{%
 	\if@numpart%
 		\stepcounter{subsection}%
+		\renewcommand{\partstexts}{\thesubsubsection{} }%
+	\else%
+		\renewcommand{\partstexts}{}%
 	\fi%
 %
-	\subsubsection*{\thesubsubsection{} #1}%
+	\subsubsection*{\partstexts{}#1}%
 	\ifthenelse{\equal{#2}{}}{%
-		\addcontentsline{toc}{subsection}{\tab{}\thesubsubsection{} #1}%
+		\addcontentsline{toc}{subsection}{\tab{}\partstexts{}#1}%
 	}{%
-		\addcontentsline{toc}{subsection}{\tab{}\thesubsubsection{} #2}%
+		\addcontentsline{toc}{subsection}{\tab{}\partstexts{}#2}%
 	}%
 }
 
