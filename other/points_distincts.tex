@@ -13,8 +13,11 @@
 	Une première idée proposé dans cet article \cite{VDP}, est de faire varier la condition d'arrêt en fonction du point de départ. L'un des avantages est qu'ainsi nous avons des informations sur le point de départ dans le point final. La conséquence est que nous ne sommes plus obliger de stocker le point de départ.\\
 	
 	Malheureusement cette technique ne semble pas plus efficace qu'une table arc-en-ciel classique \cite{VDP,Wang}.\\
-	\begin{owntab}{c|c|c|c|c}
-		& nombre d'entrée par table (M) & nombre de recherche dans la table & nombre d'évaluations de fonction & équation de la courbe de compromis \\\hline
+	\begin{owntab}{l|c|c|c|c}
+		& \multicolumn{1}{l|}{nombre}	& \multicolumn{1}{l|}{nombre de}	& \multicolumn{1}{l|}{nombre}			& \multicolumn{1}{l|}{équation}		\\
+		& \multicolumn{1}{l|}{d'entrée}	& \multicolumn{1}{l|}{recherche}	& \multicolumn{1}{l|}{d'évaluations}	& \multicolumn{1}{l|}{de la courbe}	\\
+		& \multicolumn{1}{l|}{par table}	& \multicolumn{1}{l|}{dans la}	& \multicolumn{1}{l|}{de fonction}		& \multicolumn{1}{l|}{de compromis}	\\
+		& \multicolumn{1}{l|}{(M)}		& \multicolumn{1}{l|}{table}		& 										& 									\\\hline
 		Hellman & mt & $t^2$ & $t^2$ & $TM^2=N^2$ \\\hline
 		Arc-en-ciel & mt & t & $\frac{1}{2}t^2$ & $TM^2=\frac{1}{2}N^2$ \\\hline
 		Hellman+DP & mt & $t$ & $\frac{1}{2}t^2$ & $TM^2=\frac{1}{2}N^2$ \\\hline
