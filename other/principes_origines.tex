@@ -6,19 +6,31 @@
 		k_i \overset{S_{k_i}(P_0)}{\longrightarrow} C_i \overset{R(C_i)}{\longrightarrow} k_{i+1}
 	\end{align*}
 
-	Cette succession de $S$ et de $R$ est appelée $f$ avec $f(k_i) = R(S_{k_i}(P_0))$.\\
+	Cette succession de $S$ et de $R$ est appelée $f$ avec $f(k_i) = R(S_{k_i}(P_0))$.
 
-	Pour retrouver la clé d'un \gls{cipher}, l'algorithme de recherche génère une clé avec le \gls{cipher} ( $k' = R(C')$ ) et fait une chaîne de la taille de celles qui ont été stockées. Si une des clés générées correspond à une des clés sauvegardées, il suffit de reconstruire la chaîne concernée et de retrouver l'emplacement qui correspond à la clé avant $R(C')$.\\
+	\bigskip
 
-	Cependant, plus la table est grande et plus les chances que deux chaînes commençant différement entrent en collision et finissent avec les mêmes clés. La probabilité que ça arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :\\
+	Pour retrouver la clé d'un \gls{cipher}, l'algorithme de recherche génère une clé avec le \gls{cipher} ( $k' = R(C')$ ) et fait une chaîne de la taille de celles qui ont été stockées. Si une des clés générées correspond à une des clés sauvegardées, il suffit de reconstruire la chaîne concernée et de retrouver l'emplacement qui correspond à la clé avant $R(C')$.
+
+	\bigskip
+
+	Cependant, plus la table est grande et plus les chances que deux chaînes commençant différement entrent en collision et finissent avec les mêmes clés. La probabilité que ça arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :
+
+	\bigskip
 
 	\begin{align*}
 		P_{table} \ge{} \frac{1}{N} \Sum{i=1}{m}\Sum{j=0}{t-1} (1 - \frac{it}{N})^{j+1}
-	\end{align*}\\
+	\end{align*}
 
-	Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.\\
+	\bigskip
 
-	Il y a, dans cette méthode de compromis temps-mémoire, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :\\
+	Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
+
+	\bigskip
+
+	Il y a, dans cette méthode de compromis temps-mémoire, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :
+
+	\bigskip
 
 	\begin{align*}
 		M &= m*l*m_0\\
@@ -26,17 +38,31 @@
 		P_{success} &\ge{} 1 - (1 - \frac{1}{N} \Sum{i=1}{m}\Sum{j=0}{t-1} (1 - \frac{it}{N})^{j+1})^l
 	\end{align*}
 
-	Le compromis temps-mémoire a été décrit pour une utilisation avec un chiffrement par bloc\cite{ehellman}, mais la même approche fonctionne avec un chiffrement de flux synchrone\cite{ehellman}. Les $k$ premiers bits du flux de clés sont considérés comme la fonction $f(k)$, $k$ étant le nombre de bits de la clé. Cela peut être fait sous une attaque en texte clair connue.\\
+	\bigskip
 
-	La méthode fonctionne sur tous les systèmes dans une attaque en \gls{plaint} choisi mais ne fonctionne pas avec une attaque en \gls{plaint} connu sur un système de retour de chiffrement si la charge initiale du registre à décalage est aléatoire et varie entre les conversations. Les normes fédérales proposées\cite{ehellman} suggèrent cette précaution.\\
+	Le compromis temps-mémoire a été décrit pour une utilisation avec un chiffrement par bloc\cite{ehellman}, mais la même approche fonctionne avec un chiffrement de flux synchrone\cite{ehellman}. Les $k$ premiers bits du flux de clés sont considérés comme la fonction $f(k)$, $k$ étant le nombre de bits de la clé. Cela peut être fait sous une attaque en texte clair connue.
 
-	De plus, même un chiffrement par bloc peut contrecarrer le compromis temps-mémoire d'une attaque en \gls{plaint} connu par le chaînage de blocs de chiffrement ou d'autres techniques introduisant de la mémoire dans le chiffrement. Ensuite, même lorsque huit espaces apparaissent dans le texte en clair, leur chiffrement dépend du texte précédent.\\
+	\bigskip
 
-	Même si le premier bloc de texte est assez standard (par exemple, "Login:"), cette technique peut être déjouée par la transmission d'un "indicateur" aléatoire servant à affecter le chiffrement (par exemple, il est considéré comme le bloc de texte). Encore une fois, les normes proposées\cite{ehellman} incluent des dispositions pour l'enchaînement des blocs de chiffrement avec un indicateur aléatoire.\\
+	La méthode fonctionne sur tous les systèmes dans une attaque en \gls{plaint} choisi mais ne fonctionne pas avec une attaque en \gls{plaint} connu sur un système de retour de chiffrement si la charge initiale du registre à décalage est aléatoire et varie entre les conversations. Les normes fédérales proposées\cite{ehellman} suggèrent cette précaution.
 
-	Bien que cette technique cryptanalytique de compromis temps-mémoire puisse être facilement déjouée, elle fonctionne sur le DES, en mode bloc de base, nécessaire pour avoir une assurance raisonnable de sécurité.\\
+	\bigskip
 
-	Bien que la recherche de table et la recherche exhaustive soient actuellement irréalisables sur les systèmes dotés de tailles de clé supérieures ou égales à 64 bits, un compromis $N^{1/2}$ en termes de mémoire temps porterait la taille minimale de clé utilisable à 128 bits.\\
+	De plus, même un chiffrement par bloc peut contrecarrer le compromis temps-mémoire d'une attaque en \gls{plaint} connu par le chaînage de blocs de chiffrement ou d'autres techniques introduisant de la mémoire dans le chiffrement. Ensuite, même lorsque huit espaces apparaissent dans le texte en clair, leur chiffrement dépend du texte précédent.
+
+	\bigskip
+
+	Même si le premier bloc de texte est assez standard (par exemple, "Login:"), cette technique peut être déjouée par la transmission d'un "indicateur" aléatoire servant à affecter le chiffrement (par exemple, il est considéré comme le bloc de texte). Encore une fois, les normes proposées\cite{ehellman} incluent des dispositions pour l'enchaînement des blocs de chiffrement avec un indicateur aléatoire.
+
+	\bigskip
+
+	Bien que cette technique cryptanalytique de compromis temps-mémoire puisse être facilement déjouée, elle fonctionne sur le DES, en mode bloc de base, nécessaire pour avoir une assurance raisonnable de sécurité.
+
+	\bigskip
+
+	Bien que la recherche de table et la recherche exhaustive soient actuellement irréalisables sur les systèmes dotés de tailles de clé supérieures ou égales à 64 bits, un compromis $N^{1/2}$ en termes de mémoire temps porterait la taille minimale de clé utilisable à 128 bits.
+
+	\bigskip
 
 	La technique $N^{2/3}$ décrite ici, associée au grand nombre de compromis de mémoire temporelle $N^{1/2}$ connus pour d’autres problèmes de recherche, indique que les données de valeur ne doivent pas être confiées à un appareil avec une taille de clé inférieure.
 

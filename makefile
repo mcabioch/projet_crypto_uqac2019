@@ -115,7 +115,7 @@ clear:
 	rm -rf *.synctex.gz
 	rm -rf *.toc
 
-remake:
+remake: clear
 	rm -rf $(BINDIR)/*
 	make
 
@@ -128,9 +128,7 @@ install_dependencies:
 
 get:
 	git pull
-#
-	make clear
-	make all
+	make remake
 
 GIT_COMMIT_SAMPLE = makefile auto update
 GIT_COMMIT = $(GIT_COMMIT_SAMPLE)
@@ -139,7 +137,6 @@ sync: get
 ifeq ($(GIT_COMMIT),$(GIT_COMMIT_SAMPLE))
 	@echo "You can change the default commit message by defining GIT_COMMIT"
 endif
-	
 	git add .
 	git commit -m "$(GIT_COMMIT)"
 	git push

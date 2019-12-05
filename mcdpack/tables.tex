@@ -3,6 +3,11 @@
 %% Extensions
 \RequirePackage{multirow}
 
+%% New columns types
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
 %% New Environments
 \newenvironment{owntab}[1]{
 	\begin{tabular}{|#1|}
