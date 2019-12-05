@@ -137,4 +137,7 @@ endif
 	git add .
 	git commit -m "$(GIT_COMMIT)"
 	git push
+#
+	make clear
+	make all
 
