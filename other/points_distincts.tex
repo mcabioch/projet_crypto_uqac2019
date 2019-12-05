@@ -12,7 +12,7 @@
 \setsubsection{Première Variante}
 	Une première idée proposé dans cet article \cite{VDP}, est de faire varier la condition d'arrêt en fonction du point de départ. L'un des avantages est qu'ainsi nous avons des informations sur le point de départ dans le point final. La conséquence est que nous ne sommes plus obliger de stocker le point de départ.\\
 	
-	Malheureusement cette technique ne semble pas plus efficace qu'une table arc-en-ciel classique \cite{VDP,Wang}.\\
+	Malheureusement cette technique ne semble pas plus efficace qu'une table arc-en-ciel classique \cite{VDP,Wang}. Nous avons d'ailleurs les résultats d'une analyse théorique dans le tableau proposé par \cite{VDP} joint ci-dessous.\\ 
 	\begin{owntab}{l|c|c|c|c}
 		& \multicolumn{1}{l|}{nombre}	& \multicolumn{1}{l|}{nombre de}	& \multicolumn{1}{l|}{nombre}			& \multicolumn{1}{l|}{équation}		\\
 		& \multicolumn{1}{l|}{d'entrée}	& \multicolumn{1}{l|}{recherche}	& \multicolumn{1}{l|}{d'évaluations}	& \multicolumn{1}{l|}{de la courbe}	\\
@@ -25,6 +25,8 @@
 		Arc-en-ciel+DP & mt & $\hat{t}$ & $\frac{1}{2}\hat{t}^2$  & $TM^2=\frac{c^2}{2}N^2$ \\\hline
 		Arc-en-ciel+VDP & mt & $\frac{1}{2}\hat{t}^2$ & $\frac{1}{2}\hat{t}^2$ & $TM^2=\frac{c^2}{2}N^2$ \\
 	\end{owntab}\\
+
+	Où nous avons $\hat{t}=t_{max}=c*t$
 
 \setsubsection{les tables arc-en-ciel floue}
 	Une autre alternative a été proposé \cite{fuzzy} dont l'idée consiste à agréger différntes de tables de Hellman associé à la technique des points distincts. Nous obtenons ainsi une table arc-en-ciel où en lieu et place de changer de fonction de réduction pour chaque colonne, nous en changeons à chaque fois que nous respectons le critère d'arrêt.\\
