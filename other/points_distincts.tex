@@ -8,7 +8,14 @@
 
 	Etant donné que les chaînes des tables s'arrêtent au premier point distinct compris dans les bornes, si nous ne trouvons pas de correspondance entre la chaîne que nous générons et une table, alors nous pouvons être sûr que notre clé ne se trouve pas dans cette table. Ainsi par table, nous ne réalisons qu'une seule vérification. Le nombre de vérification nécessaire est estimé être réduit par un facteur de $2^d$ où $d=\frac{1}{3}\log_2 N$\\
 
+	Le plus gros défaut de cette technique est la nécessité de stocker la taille des chaînes, ce qui rajoute un coût non-négligeable. C'est une des raisons pour lesquelles cette technique n'apporte que peu d'avantage en essayant de l'appliquer aux tables arc-en-ciel.\\
 \setsubsection{Première Variante}
-	Une première idée est de 
+	Une première idée proposé dans cet article \cite{VPD}, est de faire varier la condition d'arrêt en fonction du point de départ. L'un des avantages est qu'ainsi nous avons des informations sur le point de départ dans le point final. La conséquence est que nous ne sommes plus obliger de stocker le point de départ.\\
+	
+	Malheureusement cette technique ne semble pas plus efficace qu'une table arc-en-ciel classique \cite{VDP,Wang}.\\
+\setsubsection{les tables arc-en-ciel floue}
+	Une autre alternative a été proposé \cite{fuzzy} dont l'idée consiste à agréger différntes de tables de Hellman associé à la technique des points distincts. Nous obtenons ainsi une table arc-en-ciel où en lieu et place de changer de fonction de réduction pour chaque colonne, nous en changeons à chaque fois que nous respectons le critère d'arrêt.\\
+
+	La mise en place plus pratique a été étudié par \cite{fuzzyStudy}
 	
 \endinput{}
