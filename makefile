@@ -104,7 +104,7 @@ endif
 #
 #	Implicit rules
 #
-.PHONY: pdf clear remake install_dependencies sync
+.PHONY: pdf clear remake install_dependencies get sync
 
 clear:
 	rm -rf $(BINDIR)
@@ -126,18 +126,21 @@ install_dependencies:
 	sudo apt install texlive-binaries texlive-latex-extra texlive-xetex
 	sudo apt install findutils texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-fonts-recommended texlive-lang-english texlive-lang-european texlive-lang-french texlive-lang-other texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-luatex texlive-pictures texlive-plain-generic texlive-pstricks texlive-science texlive-xetex wfrench xindy
 
-GIT_COMMIT_SAMPLE = makefile auto update
-GIT_COMMIT = $(GIT_COMMIT_SAMPLE)
-
-sync:
-ifeq ($(GIT_COMMIT),$(GIT_COMMIT_SAMPLE))
-	@echo "You can change the default commit message by defining GIT_COMMIT"
-endif
+get:
 	git pull
-	git add .
-	git commit -m "$(GIT_COMMIT)"
-	git push
 #
 	make clear
 	make all
+
+GIT_COMMIT_SAMPLE = makefile auto update
+GIT_COMMIT = $(GIT_COMMIT_SAMPLE)
+
+sync: get
+ifeq ($(GIT_COMMIT),$(GIT_COMMIT_SAMPLE))
+	@echo "You can change the default commit message by defining GIT_COMMIT"
+endif
+	
+	git add .
+	git commit -m "$(GIT_COMMIT)"
+	git push
 
