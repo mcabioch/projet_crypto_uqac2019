@@ -14,6 +14,10 @@
 
 	\bigskip
 
+	Nous pouvons noté que assez rapidement une amélioration a été proposé par Rivest \cite{Rivest}, cette amélioration consiste de fixer un critère d'arrêt au lieu de générer des chaînes de taille fixe. Ainsi Nous n'avons à réaliser la recherche d'une clé généré dans une table seulement si cette clé respecte le critère d'arrêt.
+
+	\bigskip
+
 	Cependant, plus la table est grande et plus les chances que deux chaînes commençant différement entrent en collision et finissent avec les mêmes clés. La probabilité que ça arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :
 
 	\bigskip
@@ -66,6 +70,5 @@
 
 	La technique $N^{2/3}$ décrite ici, associée au grand nombre de compromis de mémoire temporelle $N^{1/2}$ connus pour d’autres problèmes de recherche, indique que les données de valeur ne doivent pas être confiées à un appareil avec une taille de clé inférieure.
 
-%	Nous pouvons noté que assez rapidement une amélioration a été proposé par Rivest \cite{Rivest}, cette amélioration consiste de fixer un critère d'arrêt au lieu de générer des chaînes de taille fixe. Ainsi lors de la phase de recherche de l'inverse d'un cyphertext, nous n'avon
 
 \endinput{}
