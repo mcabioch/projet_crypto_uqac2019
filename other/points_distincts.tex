@@ -1,10 +1,10 @@
 \setsection{Variantes Méthode des Points Distincts}
-	Comme nous l'avons vue précédement la méthode des points distincts introduites en 1982 \cite{Rivest}, consiste à fixer un critère d'arrêt. Ainsi, nous vérifions si le dernier élément de la chaîne se trouve dans une table seulement s'il respecte le même critère d'arrêt, limitant de ce fait le nombre de ces vérification.
+\paragraph{}Comme nous l'avons vue précédement la méthode des points distincts introduites en 1982 \cite{Rivest}, consiste à fixer un critère d'arrêt. Ainsi, nous vérifions si le dernier élément de la chaîne se trouve dans une table seulement s'il respecte le même critère d'arrêt, limitant de ce fait le nombre de ces vérification.
 
-	Cette technique semble avoir un intérêt limité pour les tables arc-en-ciel, mais de nombreuses recherches ont été mené menant a des solutions novatrice.
+\paragraph{}Cette technique semble avoir un intérêt limité pour les tables arc-en-ciel, mais de nombreuses recherches ont été mené menant a des solutions novatrice.
 
 \setsubsection{Méthodes des points distincts}
-	Comme nous l'avons vue, nous créons des chaînes de taille variable, mais nous fixons des bornes par sécurité. En effet une chaîne peut réaliser une boucle en fusionnant avec elle-même et par conséquant ne jamais vérifier la condition d'arrêt. %\(\widecheck{t}=t_{max}\)	
+\pargraph{}Comme nous l'avons vue, nous créons des chaînes de taille variable, mais nous fixons des bornes par sécurité. En effet une chaîne peut réaliser une boucle en fusionnant avec elle-même et par conséquant ne jamais vérifier la condition d'arrêt. C'est pourquoi nous posons $\hat{t}=t_{max}$ la limite haute avant d'écarter une chaîne.De même, nous fixons une limite basse $\check{t}=t_{min}$ afin d'éviter d'avoir des chaînes trop courte.
 
 \setsubsection{Première Variante}
 	Une première idée est de 
