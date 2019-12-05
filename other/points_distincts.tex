@@ -1,13 +1,12 @@
 \setsection{Variantes Méthode des Points Distincts}
-\paragraph{}Comme nous l'avons vue précédement la méthode des points distincts introduites en 1982 \cite{Rivest}, consiste à fixer un critère d'arrêt. Ainsi, nous vérifions si le dernier élément de la chaîne se trouve dans une table seulement s'il respecte le même critère d'arrêt, limitant de ce fait le nombre de ces vérification.
+	Comme nous l'avons vue précédement la méthode des points distincts introduites en 1982 \cite{Rivest}, consiste à fixer un critère d'arrêt. Ainsi, nous vérifions si le dernier élément de la chaîne se trouve dans une table seulement s'il respecte le même critère d'arrêt, limitant de ce fait le nombre de ces vérification.\\
 
-\paragraph{}Cette technique semble avoir un intérêt limité pour les tables arc-en-ciel, mais de nombreuses recherches ont été mené menant a des solutions novatrice.
+	Cette technique semble avoir un intérêt limité pour les tables arc-en-ciel, mais de nombreuses recherches ont été mené menant a des solutions novatrice.\\
 
 \setsubsection{Méthodes des points distincts}
-\paragraph{}Comme nous l'avons vue, nous créons des chaînes de taille variable, mais nous fixons des bornes par sécurité. En effet une chaîne peut réaliser une boucle en fusionnant avec elle-même et par conséquant ne jamais vérifier la condition d'arrêt. C'est pourquoi nous posons $\hat{t}=t_{max}$ la limite haute avant d'écarter une chaîne. De même, nous fixons une limite basse $\check{t}=t_{min}$ afin d'éviter d'avoir des chaînes trop courte.
-	Ainsi nous pouvons appliqué la méthode des points distincts aux tables arc-en-ciel en fixant $\hat{t}$ fonctions de réduction. Toutes ne seront pas utilisés, mais nous en auront le minimun requis pour appliquer cette technique.
+	Comme nous l'avons vue, nous créons des chaînes de taille variable, mais nous fixons des bornes par sécurité. En effet une chaîne peut réaliser une boucle en fusionnant avec elle-même et par conséquant ne jamais vérifier la condition d'arrêt. C'est pourquoi nous posons $\hat{t}=t_{max}$ la limite haute avant d'écarter une chaîne. De même, nous fixons une limite basse $\check{t}=t_{min}$ afin d'éviter d'avoir des chaînes trop courte. Ainsi nous pouvons appliqué la méthode des points distincts aux tables arc-en-ciel en fixant $\hat{t}$ fonctions de réduction. Toutes ne seront pas utilisés, mais nous en auront le minimun requis pour appliquer cette technique.\\
 
-\paragraph{}Etant donné que les chaînes des tables s'arrêtent au premier point distinct compris dans les bornes, si nous ne trouvons pas de correspondance entre la chaîne que nous générons et une table, alors nous pouvons être sûr que notre clé ne se trouve pas dans cette table. Ainsi par table, nous ne réalisons qu'une seule vérification. Le nombre de vérification nécessaire est estimé être réduit par un facteur de $2^d$ où $d=\frac{1}{3}\log_2 N$
+	Etant donné que les chaînes des tables s'arrêtent au premier point distinct compris dans les bornes, si nous ne trouvons pas de correspondance entre la chaîne que nous générons et une table, alors nous pouvons être sûr que notre clé ne se trouve pas dans cette table. Ainsi par table, nous ne réalisons qu'une seule vérification. Le nombre de vérification nécessaire est estimé être réduit par un facteur de $2^d$ où $d=\frac{1}{3}\log_2 N$\\
 
 \setsubsection{Première Variante}
 	Une première idée est de 
