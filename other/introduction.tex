@@ -1,37 +1,51 @@
 \setsection{Introduction}
 
-	Dans son article \og{}A Cryptanalytic Time-Memory Trade-Off\fg{}\cite{ehellman} publié en juillet 1980, Martin \bsc{E. Hellman} décrit pour la première fois un compromis temps-mémoire. Cette technique est à la base de nombreuses méthodes de cryptanalyse.
+	\setsubsection{Historique}
 
-	\bigskip
+		Jusqu'en 1980, avant le papier de Hellman\cite{ehellman}, la cryptanalyse se faisait soit au détriment de la mémoire, soit au détriment du temps de recherche. Hellman propose alors une méthode faisant un compromis entre ces deux contraintes. Par la suite, en 1982, Rivest\cite{Rivest} propose une amélioration de ce compromis avec l'ajout de points distincts.
 
-	De nombreux problèmes comme le logarithme discret ou le problème du sac à dos permettent l'utilisation de ce compromis. Pour $N$ solutions à vérifier, le compromis temps-mémoire permet de trouver la solution en $T$ opérations avec $M$ mots de mémoire. On obtient alors le produit temps mémoire suivant : $TM = N$.
+		\bigskip
 
-	\bigskip
+		21 ans après, Oechslin\cite{Oech03} propose une autre amélioration du compromis temps-mémoire, différente de celle de Rivest, les tables arc-en-ciel. Deux ans plus tard, Gildas Avoine, Pascal Junod et Philippe Oechslin\cite{checkpoints} proposent une avancée pour le compromis, l'ajout de points de contrôles (points utilisables aussi avec les points distincts ou les tables arc-en-ciel).
 
-	La cryptanalyse est un problème de recherche permettant les deux extrêmes de recherches exhaustive ($T=N$, $M=1$) et ($T=1$, $M=N$). Cependant, avant E. Hellman\cite{ehellman}, aucun papier n'avait été publié sur un compromis entre les deux. De plus, avec des résultats de temps-mémoire tels que $T = M = N^{2/3}$ ou une complexité de $M + T$, le compromis est effectivement plus efficace et rentable qu'une recherche exhaustive ou une recherche de table. Ainsi, casser un DES 56-bit avec cette méthode est moins complexe que de casser un DES 38-bit avec une recherche exhaustive.
+		\bigskip
 
-	\bigskip
+		Enfin, en 2006, Elad Barkan propose une variante aux tables ac-en-ciel\cite{fuzzy}, les tables arc-en-ciel floues. Puis en 2008, Jin Hong, Kyung Jeong, Eun Kwon, In-Sok Lee, et Daegun Ma proposent une variantes à la méthode des points distincts. Depuis ces variante, aucune avancée majeure n'a été publiée sur ce sujet.
 
-	Cependant, pour les problèmes cités plus haut, le compromis temps-mémoire n'est pas des plus efficace, des solutions existants avec $T = M = N^{1/2}$. Cela ne montre pas l'inefficacité du compromis mais que son amélioration est possible.
+	\setsubsection{Origines}
 
-	\bigskip
+		Dans son article \og{}A Cryptanalytic Time-Memory Trade-Off\fg{}\cite{ehellman} publié en juillet 1980, Martin \bsc{E. Hellman} décrit pour la première fois un compromis temps-mémoire. Cette technique est à la base de nombreuses méthodes de cryptanalyse.
 
-	Une recherche exhaustive peut se faire avec une attaque par \gls{plaint} connu, alors qu'une recherche par table nécessite une attaque par \gls{plaint} choisi.
+		\bigskip
 
-	\bigskip
+		De nombreux problèmes comme le logarithme discret ou le problème du sac à dos permettent l'utilisation de ce compromis. Pour $N$ solutions à vérifier, le compromis temps-mémoire permet de trouver la solution en $T$ opérations avec $M$ mots de mémoire. On obtient alors le produit temps mémoire suivant : $TM = N$.
 
-	Dans une recherche exhaustive, le \gls{cipher} peut être déchiffré pour chaque clé et comparé au \gls{plaint}. Si les textes sont identiques, après quelques tests additionels rejetant les fausses alertes, la clé est trouvée.
+		\bigskip
 
-	\bigskip
+		La cryptanalyse est un problème de recherche permettant les deux extrêmes de recherches exhaustive ($T=N$, $M=1$) et ($T=1$, $M=N$). Cependant, avant E. Hellman\cite{ehellman}, aucun papier n'avait été publié sur un compromis entre les deux. De plus, avec des résultats de temps-mémoire tels que $T = M = N^{2/3}$ ou une complexité de $M + T$, le compromis est effectivement plus efficace et rentable qu'une recherche exhaustive ou une recherche de table. Ainsi, casser un DES 56-bit avec cette méthode est moins complexe que de casser un DES 38-bit avec une recherche exhaustive.
 
-	Dans une recherche par table, le cryptanalyste encrypte certains \gls{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \gls{cipher} sont enregistrés et triés dans des tables. Pour une nouvelle clé $K$ et le \gls{cipher} par cette clé $C_0 = S_K(P_0)$, le cryptanalyste retrouvera $C_0$ et la clé correspondante en $log_2 N$ opérations.
+		\bigskip
 
-	\bigskip
+		Cependant, pour les problèmes cités plus haut, le compromis temps-mémoire n'est pas des plus efficace, des solutions existants avec $T = M = N^{1/2}$. Cela ne montre pas l'inefficacité du compromis mais que son amélioration est possible.
 
-	La méthode du compromis temps-mémoire fonctionne avec ce type d'attaque en \gls{plaint} choisi. De plus il fonctionne aussi avec une attaque par \gls{cipher} seulement. Cependant, ce compromis est une méthode probabiliste. Le succès n'est pas garanti, il dépend des ressources allouées.
+		\bigskip
 
-	\bigskip
+		Une recherche exhaustive peut se faire avec une attaque par \gls{plaint} connu, alors qu'une recherche par table nécessite une attaque par \gls{plaint} choisi.
 
-	Afin de comprendre les tables arc-en-ciel et leurs avantages par rapport à d'autres méthodes, nous allons commencer par expliquer le principe du compromis temps-mémoire. Puis nous présenterons les tables arc-en-ciel en les comparant à la méthode des points distincts. Nous détaillerons ensuite cette méthode des points distincts. Enfin nous verrons une amélioration notable de ces tables.
+		\bigskip
+
+		Dans une recherche exhaustive, le \gls{cipher} peut être déchiffré pour chaque clé et comparé au \gls{plaint}. Si les textes sont identiques, après quelques tests additionels rejetant les fausses alertes, la clé est trouvée.
+
+		\bigskip
+
+		Dans une recherche par table, le cryptanalyste encrypte certains \gls{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \gls{cipher} sont enregistrés et triés dans des tables. Pour une nouvelle clé $K$ et le \gls{cipher} par cette clé $C_0 = S_K(P_0)$, le cryptanalyste retrouvera $C_0$ et la clé correspondante en $log_2 N$ opérations.
+
+		\bigskip
+
+		La méthode du compromis temps-mémoire fonctionne avec ce type d'attaque en \gls{plaint} choisi. De plus il fonctionne aussi avec une attaque par \gls{cipher} seulement. Cependant, ce compromis est une méthode probabiliste. Le succès n'est pas garanti, il dépend des ressources allouées.
+
+		\bigskip
+
+		Afin de comprendre les tables arc-en-ciel et leurs avantages par rapport à d'autres méthodes, nous allons commencer par expliquer le principe du compromis temps-mémoire. Puis nous présenterons les tables arc-en-ciel en les comparant à la méthode des points distincts. Nous détaillerons ensuite cette méthode des points distincts. Enfin nous verrons une amélioration notable de ces tables.
 
 \endinput{}
