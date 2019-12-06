@@ -22,6 +22,20 @@
 	\lastGls{#1}%
 }
 
+\let\lastglspl\glspl
+\renewcommand{\glspl}[1]{%
+	\refstepcounter{myindexs}%
+	\refstepcounter{myacronyms}%
+	\lastglspl{#1}%
+}
+
+\let\lastGlspl\Glspl
+\renewcommand{\Glspl}[1]{%
+	\refstepcounter{myindexs}%
+	\refstepcounter{myacronyms}%
+	\lastGlspl{#1}%
+}
+
 %% Acronyms
 \createacronym[%
 	%plural={},
