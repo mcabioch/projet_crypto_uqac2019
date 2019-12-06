@@ -8,7 +8,9 @@
 }
 \newcommandx{\createacronyms}[8][6=, 7=, 8=]{%
 	\newacronym[%
-		shortplural={\textbf{\textit{#4}}},%
+		shortplural={\textbf{\textit{%
+			\glsindex[#6][#7]{#4}[#8][#2]%
+		}}},%
 		longplural={#5}%
 	]{#1}{%
 		\glsindex[#6][#7]{#2}[#8][#2]%

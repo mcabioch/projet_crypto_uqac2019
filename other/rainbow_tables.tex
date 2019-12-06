@@ -2,15 +2,15 @@
 
 	\setsubsection{Comparaison et avantages}
 
-		Le problème des précédentes tables est que si deux chaînes entrent en collision, elles fusionnent. Il existe des méthodes pour que deux chaînes en collision ne fusionnent pas, les chaînes arc-en-ciel. Le principe : elles utilisent des fonctions de réductions différentes à chaque point de la chaîne.
+		Le problème des précédentes tables est que si deux chaînes entrent en collision, elles fusionnent. Il existe des méthodes pour que deux chaînes en collision ne fusionnent pas, les \glspl{rainbow}. Le principe : elles utilisent des fonctions de réductions différentes à chaque point de la chaîne.
 
-		Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique\cite{Oech03}, avec les chaînes arc-en-ciel les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
+		Les chances que deux chaînes fusionnent étaient de 1 avec la méthode classique\cite{Oech03}, avec les \glspl{rainbow} les chances de fusion sont de $\frac{1}{t}$. Le succès pour une table de taille $m*t$ :
 
 		\begin{align*}
 			P_{table} &= 1 - \overset{t}{\underset{i=1}{\Pi}}(1 - \frac{m_i}{N})
 		\end{align*}
 
-		Il est intéressant de noter que la probabilité de succès de $t$ tables classiques $m*t$ est la même qu'une table arc-en-ciel $mt*t$.
+		Il est intéressant de noter que la probabilité de succès de $t$ tables classiques $m*t$ est la même qu'une \gls{rainbow} $mt*t$.
 
 		\bigskip
 
@@ -18,12 +18,12 @@
 		\bi
 			\item La recherche dans les tables est diminuée d'un facteur $t$.
 			\item Il est facile de générer des tables sans fusion mais elles comporteront alors forcément des collisions.
-			\item Les chaînes arc-en-ciel ont une taille constante tandis que les chaînes à point distincts ont une taille variable. Ce qui réduit considérablement les fausses alertes.
+			\item Les \glspl{rainbow} ont une taille constante tandis que les chaînes à point distincts ont une taille variable. Ce qui réduit considérablement les fausses alertes.
 		\ei
 
 	\setsubsection{Expérimentations}
 
-		Le travail de Philippe Oechslin\cite{Oech03} nous permet d'obtenir des résultats expérimentaux comparant les tables à points distincts et les tables arc-en-ciel. Oechslin utilise comme test le crack de mots de passes du LanManager de MS Windows car il peut être effectué sur n'importe quel poste de travail standard.
+		Le travail de Philippe Oechslin\cite{Oech03} nous permet d'obtenir des résultats expérimentaux comparant les tables à points distincts et les \glspl{rainbow}. Oechslin utilise comme test le crack de mots de passes du LanManager de MS Windows car il peut être effectué sur n'importe quel poste de travail standard.
 
 		\bigskip
 
@@ -42,11 +42,11 @@
 
 		\bigskip
 
-		Cette expérimentation montre que pour la même quantité de données, les tables arc-en-ciel ont la même probabilité de succès que les tables classiques avec points caractéristiques.
+		Cette expérimentation montre que pour la même quantité de données, les \glspl{rainbow} ont la même probabilité de succès que les tables classiques avec points caractéristiques.
 
 		\bigskip
 
-		En comparant le temps de cryptanalyse, le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la table arc-en-ciel est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.
+		En comparant le temps de cryptanalyse, le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la \gls{rainbow} est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.
 
 		\bigskip
 
@@ -59,11 +59,11 @@
 
 	\setsubsection{Pistes d'améliorations}
 
-		La méthode de calcul peut encore être améliorée. Pour les tables arc-en-ciel, la quantité de calculs augmente de façon quadratique de 1 à $\frac{t^2-1}{2}$. Pour les tables classiques, c'est une augmentation linéaire $t^2$.
+		La méthode de calcul peut encore être améliorée. Pour les \glspl{rainbow}, la quantité de calculs augmente de façon quadratique de 1 à $\frac{t^2-1}{2}$. Pour les tables classiques, c'est une augmentation linéaire $t^2$.
 
 		\bigskip
 
-		Pour augmenter les chances de succès et la rapidité, il faut augmenter le nombre de tables arc-en-ciel et regarder les lignes de toutes les tables en même temps. En prenant l'exemple précédent avec 78\% de succès avec une table, avec 5 tables le succès passe à 99.9\%. Le résultat se trouvant dans les premières lignes, cela diminue le temps de recherche nécessaire.
+		Pour augmenter les chances de succès et la rapidité, il faut augmenter le nombre de \glspl{rainbow} et regarder les lignes de toutes les tables en même temps. En prenant l'exemple précédent avec 78\% de succès avec une table, avec 5 tables le succès passe à 99.9\%. Le résultat se trouvant dans les premières lignes, cela diminue le temps de recherche nécessaire.
 
 		Ce n'est évidemment pas la seule amélioration possible.
 
