@@ -3,13 +3,13 @@
 
 	\bigskip
 
-	Cette technique semble avoir un intérêt limité pour les tables arc-en-ciel. Mais de nombreuses recherches ont été mené menant a des solutions novatrice.
+	Cette technique semble avoir un intérêt limité pour les \gls{rainbows}. Mais de nombreuses recherches ont été mené menant a des solutions novatrice.
 
 	\bigskip
 
 	\setsubsection{Méthodes des points distincts}
 
-		Comme nous l'avons vue, nous créons des chaînes de taille variable, mais nous fixons des bornes par sécurité. En effet une chaîne peut réaliser une boucle en fusionnant avec elle-même et par conséquant ne jamais vérifier la condition d'arrêt. C'est pourquoi nous posons $\hat{t}=t_{max}$ la limite haute avant d'écarter une chaîne. De même, nous fixons une limite basse $\check{t}=t_{min}$ afin d'éviter d'avoir des chaînes trop courte. Ainsi nous pouvons appliqué la méthode des points distincts aux tables arc-en-ciel en fixant $\hat{t}$ fonctions de réduction. Toutes ne seront pas utilisés, mais nous en auront le minimun requis pour appliquer cette technique.
+		Comme nous l'avons vue, nous créons des chaînes de taille variable, mais nous fixons des bornes par sécurité. En effet une chaîne peut réaliser une boucle en fusionnant avec elle-même et par conséquant ne jamais vérifier la condition d'arrêt. C'est pourquoi nous posons $\hat{t}=t_{max}$ la limite haute avant d'écarter une chaîne. De même, nous fixons une limite basse $\check{t}=t_{min}$ afin d'éviter d'avoir des chaînes trop courte. Ainsi nous pouvons appliqué la méthode des points distincts aux \gls{rainbows} en fixant $\hat{t}$ fonctions de réduction. Toutes ne seront pas utilisés, mais nous en auront le minimun requis pour appliquer cette technique.
 
 		\bigskip
 
@@ -17,7 +17,7 @@
 
 		\bigskip
 
-		Le plus gros défaut de cette technique est la nécessité de stocker la taille des chaînes, ce qui rajoute un coût non-négligeable. C'est une des raisons pour lesquelles cette technique n'apporte que peu d'avantage en essayant de l'appliquer aux tables arc-en-ciel.
+		Le plus gros défaut de cette technique est la nécessité de stocker la taille des chaînes, ce qui rajoute un coût non-négligeable. C'est une des raisons pour lesquelles cette technique n'apporte que peu d'avantage en essayant de l'appliquer aux \gls{rainbows}.
 
 		\bigskip
 
@@ -27,7 +27,7 @@
 
 		\bigskip
 
-		Malheureusement cette technique ne semble pas plus efficace qu'une table arc-en-ciel classique \cite{VDP,Wang}. Nous avons d'ailleurs les résultats d'une analyse théorique dans le tableau proposé par \cite{VDP} joint ci-dessous.
+		Malheureusement cette technique ne semble pas plus efficace qu'une \gls{rainbow} classique \cite{VDP,Wang}. Nous avons d'ailleurs les résultats d'une analyse théorique dans le tableau proposé par \cite{VDP} joint ci-dessous.
 
 		\bigskip
 
@@ -47,9 +47,9 @@
 
 		Où nous avons $\hat{t}=t_{max}=c*t$, de plus ces donnés sont calculés selon le pire des cas. Mais comme nous pouvons le constater le facteur c a de forte chance de limiter l'intérêt de ces tables. Ainsi dans l'article \cite{VDP}, les auteurs ont cherché les paramètres optimaux pour rendre cette technique viable, mais ils n'y sont pas parvenue.
 
-	\setsubsection{Les tables arc-en-ciel floue}
+	\setsubsection{Les \gls{rainbows} floue}
 
-		Une autre alternative a été proposé \cite{fuzzy} dont l'idée consiste à agréger différntes de tables de Hellman associé à la technique des points distincts. Nous obtenons ainsi une table arc-en-ciel où en lieu et place de changer de fonction de réduction pour chaque colonne, nous en changeons à chaque fois que nous respectons le critère d'arrêt. La mise en place plus pratique a été étudié par \cite{fuzzyStudy}
+		Une autre alternative a été proposé \cite{fuzzy} dont l'idée consiste à agréger différntes de tables de Hellman associé à la technique des points distincts. Nous obtenons ainsi une \gls{rainbow} où en lieu et place de changer de fonction de réduction pour chaque colonne, nous en changeons à chaque fois que nous respectons le critère d'arrêt. La mise en place plus pratique a été étudié par \cite{fuzzyStudy}
 
 	\setsubsection{Conclusion}
 
