@@ -1,10 +1,18 @@
 %% Last modification : 07/04/2019
 
 %% New Commands
-\newcommandx{\createacronym}[7][1=, 5=, 6=, 7=]{%
-	\newacronym[#1]{#2}{%
-		\glsindex[#5][#6]{#3}[#7][#3]%
-	}{#4}%
+\newcommandx{\createacronym}[6][4=, 5=, 6=]{%
+	\newacronym{#1}{%
+		\glsindex[#4][#5]{#2}[#6][#2]%
+	}{#3}%
+}
+\newcommandx{\createacronyms}[8][6=, 7=, 8=]{%
+	\newacronym[%
+		shortplural={\textbf{\textit{#4}}},%
+		longplural={#5}%
+	]{#1}{%
+		\glsindex[#6][#7]{#2}[#8][#2]%
+	}{#3}%
 }
 
 %% Re Commands
@@ -37,15 +45,8 @@
 }
 
 %% Acronyms
-\createacronym[%
-	%plural={},
-	firstplural={variables aléatoires (VAs)}%
-]{va}{VA}{variable aléatoire}
-
-\createacronym[%
-	%plural={},
-	firstplural={indépendantes identiquements distibuées (IIDs)}%
-]{iid}{IID}{indépendante identiquement distibuée}
+\createacronyms{va}{VA}{variable aléatoire}{VAs}{variables aléatoires}
+\createacronyms{iid}{IID}{indépendante identiquement distibuée}{IIDs}{indépendantes identiquements distibuées}
 
 \createacronym{algo}{algo}{algorithme}
 
