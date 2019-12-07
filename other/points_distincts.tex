@@ -35,12 +35,12 @@
 
 		\begin{owntab}{l*{4}{|L{25mm}}}
 			& nombre d'entrée par table ($M$)	& nombre de recherche dans la table	& nombre d'évaluations de fonction	& équation de la courbe de compromis	\\\hline
-			Hellman			& $mt$ & $t^2$					& $t^2$						& $TM^2=N^2$				\extheight{}\\\hline
-			Arc-en-ciel		& $mt$ & $t$						& $\frac{1}{2}t^2$			& $TM^2=\frac{1}{2}N^2$		\extheight{}\\\hline
-			Hellman+DP		& $mt$ & $t$						& $\frac{1}{2}t^2$			& $TM^2=\frac{1}{2}N^2$		\extheight{}\\\hline
-			Hellman+VDP		& $mt$ & $t*\hat{t}$				& $t*\hat{t}$				& $TM^2=c*N^2$				\extheight{}\\\hline
-			Arc-en-ciel+DP	& $mt$ & $\hat{t}$				& $\frac{1}{2}\hat{t}^2$	& $TM^2=\frac{c^2}{2}N^2$	\extheight{}\\\hline
-			Arc-en-ciel+VDP	& $mt$ & $\frac{1}{2}\hat{t}^2$	& $\frac{1}{2}\hat{t}^2$	& $TM^2=\frac{c^2}{2}N^2$	\extheight{}\\
+			Hellman			& $mt$ & $t^2$					& $t^2$					 & $TM^2=N^2$				\extheight{}\\\hline
+			Arc-en-ciel		& $mt$ & $t$					& $\frac{1}{2}t^2$		 & $TM^2=\frac{1}{2}N^2$	\extheight{}\\\hline
+			Hellman+DP		& $mt$ & $t$					& $\frac{1}{2}t^2$		 & $TM^2=\frac{1}{2}N^2$	\extheight{}\\\hline
+			Hellman+VDP		& $mt$ & $t*\hat{t}$			& $t*\hat{t}$			 & $TM^2=c*N^2$				\extheight{}\\\hline
+			Arc-en-ciel+DP	& $mt$ & $\hat{t}$				& $\frac{1}{2}\hat{t}^2$ & $TM^2=\frac{c^2}{2}N^2$	\extheight{}\\\hline
+			Arc-en-ciel+VDP	& $mt$ & $\frac{1}{2}\hat{t}^2$	& $\frac{1}{2}\hat{t}^2$ & $TM^2=\frac{c^2}{2}N^2$	\extheight{}\\
 		\end{owntab}
 
 		\bigskip
@@ -50,8 +50,8 @@
 	\setsubsection{Les tables arc-en-ciel floues}
 
 		Une autre alternative a été proposé \cite{fuzzy} dont l'idée consiste à agréger différntes de tables de Hellman associé à la technique des points distincts. Nous obtenons ainsi une \gls{rainbow} où en lieu et place de changer de fonction de réduction pour chaque colonne, nous en changeons à chaque fois que nous respectons le critère d'arrêt. Nous obtenons alors le modèle ci-dessous. La mise en place plus pratique a été étudié par \cite{fuzzyStudy}
-\begin{figure}
-	\includegraphics[width=\linewidth]{other/fuzzy.png}
+\begin{figure}[h!]
+	\includegraphics[width=0.9\linewidth]{other/fuzzy.png}
 \end{figure}
 
 	\setsubsection{Conclusion}
