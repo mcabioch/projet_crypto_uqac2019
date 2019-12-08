@@ -53,8 +53,10 @@
 	\part*{\partstexts{}#1}%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{part}{\partstexts{}#1}%
+		\phantomsection%
 	}{%
 		\addcontentsline{toc}{part}{\partstexts{}#2}%
+		\phantomsection%
 	}%
 }
 \renewcommandx{\setchapter}{}
@@ -71,8 +73,10 @@
 	\section*{\partstexts{}#1}%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{chapter}{\partstexts{}#1}%
+		\phantomsection%
 	}{%
 		\addcontentsline{toc}{chapter}{\partstexts{}#2}%
+		\phantomsection%
 	}%
 }
 \renewcommandx{\setsubsection}[2][2=]{%
@@ -88,8 +92,10 @@
 	\subsection*{\partstexts{}#1}%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{section}{\tab{}\partstexts{}#1}%
+		\phantomsection%
 	}{%
 		\addcontentsline{toc}{section}{\tab{}\partstexts{}#2}%
+		\phantomsection%
 	}%
 }
 \renewcommandx{\setsubsubsection}[2][2=]{%
@@ -103,8 +109,10 @@
 	\subsubsection*{\partstexts{}#1}%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{subsection}{\tab{}\partstexts{}#1}%
+		\phantomsection%
 	}{%
 		\addcontentsline{toc}{subsection}{\tab{}\partstexts{}#2}%
+		\phantomsection%
 	}%
 }
 

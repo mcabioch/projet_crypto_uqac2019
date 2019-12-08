@@ -109,6 +109,7 @@
 	\maketitle
 
 	\if@toc
+		\phantomsection
 		\tableofcontents
 
 		\addtocontents{toc}{~\hfill\textbf{Page}\par}
@@ -131,6 +132,7 @@
 	\ifthenelse{\equal{\themybibs}{0}}{}{%
 		\bibliography{other/bibtex}{}
 		\addcontentsline{toc}{part}{\tocbibliographycontent}
+		\phantomsection
 		\refstepcounter{nbLastdocAdds}
 	}
 
@@ -141,6 +143,7 @@
 
 		\printglossary[type=\acronymtype]
 		\addcontentsline{toc}{part}{\tocacronymscontent}
+		\phantomsection
 		\refstepcounter{nbLastdocAdds}
 	}
 
@@ -151,6 +154,7 @@
 
 		\listoffigures
 		\addcontentsline{toc}{part}{\toclofcontent}
+		\phantomsection
 		\refstepcounter{nbLastdocAdds}
 	}
 
@@ -161,6 +165,7 @@
 
 		\listoftables
 		\addcontentsline{toc}{part}{\toclotcontent}
+		\phantomsection
 		\refstepcounter{nbLastdocAdds}
 	}
 
@@ -169,6 +174,7 @@
 			\clearpage%
 		}%
 
+		\phantomsection
 		\addcontentsline{toc}{part}{\tocindexcontent}
 		\printindex
 		\refstepcounter{nbLastdocAdds}
