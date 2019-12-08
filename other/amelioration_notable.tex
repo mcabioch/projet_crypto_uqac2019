@@ -1,5 +1,5 @@
 \setsection{Améliorations notables : fausses alertes et outils de mesure}
-	Comme nous l'avons vue précédement (section 3) le problème de fusion de chaîne a amené a créé les \glspl{rainbow}. Mais il se peut aussi qu'il y ait collision entre la chaîne que nous générons et une des chaînes des tables. Lorsque ce cas arrive nous parlons de fausse alertes \cite{checkpoints}.
+	Comme nous l'avons vue précédemment (section 3) le problème de fusion de chaîne a amené a créé les \glspl{rainbow}. Mais il se peut aussi qu'il y ait collision entre la chaîne que nous générons et une des chaînes des tables. Lorsque ce cas arrive nous parlons de fausse alertes \cite{checkpoints}.
 	De plus jusqu'à présent nous n'avons pas réellement présenté d'outils permettant de comparer les efficacités des différentes méthodes de \gls{TMTO}.
 
 \setsubsection{Points de contrôles}
@@ -32,11 +32,11 @@ pr\{g(x_{j,\alpha}) \neq g(y_{\alpha +s-t}) \mid x_{j,a} \neq y_{\alpha+s-t}\}=\
 
 \setsubsection{Tables parfaites}
 
-	Cette notion de fusion et de points de contrôles introduit alors un nouveau concept les tables dites parfaites, des tables sans fusion. En effet comme l'équation de la courbe de compromis est de la forme $TM^2=\alpha *N^2$, afin de profiter au maximum du \gls{TMTO} il faut miniser le coût mémoriel qui est élevé au carré. Et pour ce faire nous devons éviter de stocker de l'information redondante.
+	Cette notion de fusion et de points de contrôles introduit alors un nouveau concept les tables dites parfaites, des tables sans fusion. En effet comme l'équation de la courbe de compromis est de la forme $TM^2=\alpha *N^2$, afin de profiter au maximum du \gls{TMTO} il faut minimiser le coût mémoriel qui est élevé au carré. Et pour ce faire nous devons éviter de stocker de l'information redondante.
 	
 	\bigskip
 	
-	Pour créer une table de Hellman parfaite, il faut vérifier que chaque élément de la table soit distinct, ce qui est extrêment couteux à réaliser lors de la phase de pré-calcul. C'est vérification est nécessaire car une chaîne peut fusionner à n'importe quelle position d'une autre chaîne.
+	Pour créer une table de Hellman parfaite, il faut vérifier que chaque élément de la table soit distinct, ce qui est extrêmement coûteux à réaliser lors de la phase de pré-calcul. C'est vérification est nécessaire car une chaîne peut fusionner à n'importe quelle position d'une autre chaîne.
 	
 	\bigskip
 	
@@ -61,7 +61,7 @@ pr\{g(x_{j,\alpha}) \neq g(y_{\alpha +s-t}) \mid x_{j,a} \neq y_{\alpha+s-t}\}=\
 
 \begin{figure}[h!]
 	\includegraphics[scale=0.25]{other/graph_gamma_P.png}
-	\captionof{figure}{Graphique Temps-Memoire pour les tables classiques, arc-en-ciel et DP}
+	\captionof{figure}{Graphique Temps-Mémoire pour les tables classiques, arc-en-ciel et DP}
 	\label{fig:TMTO_carac}
 \end{figure}
 
