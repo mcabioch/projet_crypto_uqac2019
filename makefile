@@ -25,6 +25,8 @@ IST := $(addsuffix .log, $(NAME))
 IND := $(addsuffix .ind, $(NAME))
 IDX := $(addsuffix .idx, $(NAME))
 AUX := $(addsuffix .aux, $(NAME))
+TXT := $(addsuffix .txt, $(NAME))
+HTML := $(addsuffix .html, $(NAME))
 
 #
 #	Output software name
@@ -74,11 +76,13 @@ LIBDIRTEXOUT = mcdpack
 BIB_VALUES = $(shell cat $(OTHDIR)/$(BIB))
 
 LINE = @echo "\n------------------------------------------------------------------------"
+BEF_ARGS = 
+AFT_ARGS = 
 
 #
 #	Commands
 #
-TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(TEX)
+TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(BEF_ARGS)$(TEX)$(AFT_ARGS)
 
 #
 #	Rules
@@ -86,6 +90,12 @@ TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(TEX)
 all:
 	mkdir -p $(BINDIR)
 	reset
+	make $(PDF)
+
+$(PDF): $(BINDIR)/$(PDF)
+	mv $(BINDIR)/$(PDF) ./$(PDF)
+
+$(BINDIR)/$(PDF): $(TEX) $(OTHDIR)/$(BIB) $(OTHDIR)/$(GLOSSARIE)
 	$(TEXCOMMAND)
 	$(LINE)
 	$(TEXCOMMAND)
@@ -99,12 +109,21 @@ endif
 	$(TEXCOMMAND)
 	$(LINE)
 	$(TEXCOMMAND)
-	mv build/$(PDF) ./$(PDF)
+
+$(BINDIR)/$(TXT): clear
+	make all BEF_ARGS="\"\providecommand\toplaintext{true}\input{" AFT_ARGS="}\""
+	pdftotext $(PDF) $(BINDIR)/$(TXT)
+	tr '\n' ' ' < $(BINDIR)/$(TXT) > $(BINDIR)/$(TXT).tmp
+	mv $(BINDIR)/$(TXT).tmp $(BINDIR)/$(TXT)
+
+$(BINDIR)/$(HTML): clear
+	make all BEF_ARGS="\"\providecommand\toplaintext{true}\input{" AFT_ARGS="}\""
+	pdftohtml $(PDF) -stdout > $(BINDIR)/$(HTML)
 
 #
 #	Implicit rules
 #
-.PHONY: pdf clear remake get_error install_dependencies get sync
+.PHONY: pdf clear remake get_error txt html install_dependencies get sync
 
 clear:
 	rm -rf $(BINDIR)
@@ -124,6 +143,10 @@ pdf:
 
 get_error:
 	make all DEBUG=yes | grep "^!"
+
+txt: $(BINDIR)/$(TXT)
+
+html: $(BINDIR)/$(HTML)
 
 install_dependencies:
 	sudo apt install texlive-binaries texlive-latex-extra texlive-xetex

@@ -16,18 +16,18 @@
 
 		Ces tables offrent les mêmes avantages que les tables classiques sans certains inconvénients :
 		\bi
-			\item La recherche dans les tables est diminuée d'un facteur $t$.
-			\item Il est facile de générer des tables sans fusion mais elles comporteront alors forcément des collisions.
-			\item Les \glspl{rainbow} ont une taille constante tandis que les chaînes à point distincts ont une taille variable. Ce qui réduit considérablement les fausses alertes.
+			\item la recherche dans les tables est diminuée d'un facteur $t$.
+			\item il est facile de générer des tables sans fusion mais elles comporteront alors forcément des collisions.
+			\item les \glspl{rainbow} ont une taille constante tandis que les chaînes à points distincts ont une taille variable. Ce qui réduit considérablement les fausses alertes.
 		\ei
 
 	\setsubsection{Expérimentations}
 
-		Le travail de Philippe Oechslin\cite{Oech03} nous permet d'obtenir des résultats expérimentaux comparant les tables à points distincts et les \glspl{rainbow}. Oechslin utilise comme test le crack de mots de passes du LanManager de MS Windows car il peut être effectué sur n'importe quel poste de travail standard.
+		Le travail de Philippe Oechslin\cite{Oech03} nous permet d'obtenir des résultats expérimentaux comparant les tables à points distincts et les \glspl{rainbow}. Oechslin utilise comme test le crack de mots de passe du LanManager de MS Windows car il peut être effectué sur n'importe quel poste de travail standard.
 
 		\bigskip
 
-		En se basant sur les paramètres exprimés plus haut, il a choisit les valeurs suivantes pour les deux types de tables afin de comparer les résultats (après 500 mots de passes craqués) ;
+		En se basant sur les paramètres exprimés plus haut, il a choisi les valeurs suivantes pour les deux types de tables afin de comparer les résultats (après 500 mots de passe craqués) ;
 
 		\bigskip
 
@@ -46,15 +46,15 @@
 
 		\bigskip
 
-		En comparant le temps de cryptanalyse, le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la \gls{rainbow} est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la tailles des chaînes dans les tables classiques n'est pas constante.
+		En comparant le temps de cryptanalyse, le nombre d'opérations, et le nombre de fausses alertes par cryptanalyses, la \gls{rainbow} est 7 fois plus rapides et contient 2.8 fois moins de fausses alertes, ce qui réduit aussi le nombre d'opérations par cryptanalyse de 7.1 fois. Cela se traduit par le fait que la taille des chaînes dans les tables classiques n'est pas constante.
 
 		\bigskip
 
 		On voit alors ressortir l'importance pour les chaînes d'être constante. Deux points ressortent concernant la constance des chaînes\cite{Oech03} :
 
 		\bi
-			\item Attraction fatale : La variation de la longueur des chaînes entraîne une variation de la probabilité de fusion. Cela pose problème avec les fausses alertes. Elles apparaîtront plus fréquemment dans des grandes chaînes de par la fusion.
-			\item Frais plus important : Une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.
+			\item Attraction fatale : la variation de la longueur des chaînes entraîne une variation de la probabilité de fusion. Cela pose problème avec les fausses alertes. Elles apparaîtront plus fréquemment dans des grandes chaînes de par la fusion.
+			\item Frais plus important : une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.
 		\ei
 
 	\setsubsection{Pistes d'améliorations}

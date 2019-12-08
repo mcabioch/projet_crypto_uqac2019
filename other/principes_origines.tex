@@ -2,7 +2,7 @@
 
 	\setsubsection{Principe}
 
-		Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \gls{cipher} possible avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un \gls{TMTO}. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \gls{cipher} :
+		Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \glspl{cipher} possibles avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un \gls{TMTO}. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \glspl{cipher} :
 
 		\begin{align*}
 			k_i \overset{S_{k_i}(P_0)}{\longrightarrow} C_i \overset{R(C_i)}{\longrightarrow} k_{i+1}
@@ -16,11 +16,11 @@
 
 	\setsubsection{Une amélioration}
 
-		Nous pouvons noté que assez rapidement une amélioration a été proposé par Rivest \cite{Rivest}, cette amélioration consiste à utiliser un critère d'arrêt au lieu de générer des chaînes de taille fixe. Ainsi, la recherche d'une clé généré dans une table n'est réalisé que si cette clé respecte le critère d'arrêt, réduisant de ce fait le nombre de recherche dans une table.
+		Nous pouvons noter qu'assez rapidement une amélioration a été proposée par Rivest \cite{Rivest}, cette amélioration consiste à utiliser un critère d'arrêt au lieu de générer des chaînes de taille fixe. Ainsi, la recherche d'une clé générée dans une table n'est réalisée que si cette clé respecte le critère d'arrêt, réduisant de ce fait le nombre de recherche dans une table.
 
 		\bigskip
 
-		Cependant, plus la table est grande et plus les chances que deux chaînes commençant différemment entrent en collision et finissent avec les mêmes clés. La probabilité que ça arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :
+		Cependant, plus la table est grande et plus les chances que deux chaînes commençant différemment entrent en collision et finissent avec les mêmes clés augmentent. La probabilité que cela arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :
 
 		\bigskip
 
@@ -30,7 +30,7 @@
 
 		\bigskip
 
-		Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée parait être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
+		Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée paraît être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
 
 	\setsubsection{Paramètres}
 

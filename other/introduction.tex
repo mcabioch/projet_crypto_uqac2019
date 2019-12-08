@@ -6,11 +6,11 @@
 
 		\bigskip
 
-		21 ans après, Oechslin\cite{Oech03} propose une autre amélioration du \gls{TMTO}, différente de celle de Rivest, les \glspl{rainbow}. Deux ans plus tard, Gildas Avoine, Pascal Junod et Philippe Oechslin\cite{checkpoints} proposent une avancée pour le compromis, l'ajout de points de contrôles (points utilisables aussi avec les points distincts ou les \glspl{rainbow}).
+		21 ans après, Oechslin\cite{Oech03} propose une autre amélioration du \gls{TMTO}, différente de celle de Rivest, les \glspl{rainbow}. Deux ans plus tard, Gildas Avoine, Pascal Junod et Philippe Oechslin\cite{checkpoints} proposent une avancée pour le compromis, l'ajout de points de contrôle (points utilisables aussi avec les points distincts ou les \glspl{rainbow}).
 
 		\bigskip
 
-		Enfin, en 2006, Elad Barkan propose une variante se basant sur les \glspl{rainbow} et la méthode des points distincts\cite{fuzzy}, les \glspl{rainbow} floues. Puis en 2008, Jin Hong, Kyung Jeong, Eun Kwon, In-Sok Lee, et Daegun Ma proposent une variante à la méthode des points distincts. Depuis ces variantes, aucune avancée majeure n'a été publiée sur ce sujet.
+		Enfin, en 2006, Elad Barkan propose une variante se basant sur les \glspl{rainbow} et la méthode des points distincts\cite{fuzzy}, les \glspl{rainbow} floues. Puis en 2008, Jin Hong, Kyung Jeong, Eun Kwon, In-Sok Lee, et Daegun Ma proposent une variante à la méthode des points distincts. Depuis ces variantes, aucune avancée majeure n'a été publiée à ce sujet.
 
 	\setsubsection{Origines}
 
@@ -18,15 +18,15 @@
 
 		\bigskip
 
-		De nombreux problèmes comme le logarithme discret ou le problème du sac à dos permettent l'utilisation de ce compromis. Pour $N$ solutions à vérifier, le \gls{TMTO} permet de trouver la solution en $T$ opérations avec $M$ mots de mémoire. On obtient alors le produit temps mémoire suivant : $TM = N$.
+		De nombreux problèmes comme le logarithme discret ou le problème du sac à dos permettent l'utilisation de ce compromis. Pour $N$ solutions à vérifier, le \gls{TMTO} permet de trouver la solution en $T$ opérations avec $M$ mots de mémoire. On obtient alors le produit temps-mémoire suivant : $TM = N$.
 
 		\bigskip
 
-		La cryptanalyse est un problème de recherche permettant les deux extrêmes de recherches exhaustive ($T=N$, $M=1$) et ($T=1$, $M=N$). Cependant, avant E. Hellman\cite{ehellman}, aucun papier n'avait été publié sur un compromis entre les deux. De plus, avec des résultats de temps-mémoire tels que $T = M = N^{2/3}$ ou une complexité de $M + T$, le compromis est effectivement plus efficace et rentable qu'une recherche exhaustive ou une recherche de table. Ainsi, casser un DES 56-bit avec cette méthode est moins complexe que de casser un DES 38-bit avec une recherche exhaustive.
+		La cryptanalyse est un problème de recherche permettant les deux extrêmes de recherches exhaustives ($T=N$, $M=1$) et ($T=1$, $M=N$). Cependant, avant E. Hellman\cite{ehellman}, aucun papier n'avait été publié sur un compromis entre les deux. De plus, avec des résultats de temps-mémoire tels que $T = M = N^{2/3}$ ou une complexité de $M + T$, le compromis est effectivement plus efficace et rentable qu'une recherche exhaustive ou une recherche de table. Ainsi, casser un DES 56-bit avec cette méthode est moins complexe que de casser un DES 38-bit avec une recherche exhaustive.
 
 		\bigskip
 
-		Cependant, pour les problèmes cités plus haut, le \gls{TMTO} n'est pas des plus efficace, des solutions existants avec $T = M = N^{1/2}$. Cela ne montre pas l'inefficacité du compromis mais que son amélioration est possible.
+		Cependant, pour les problèmes cités plus haut, le \gls{TMTO} n'est pas des plus efficace, des solutions existant avec $T = M = N^{1/2}$. Cela ne montre pas l'inefficacité du compromis, mais que son amélioration est possible.
 
 		\bigskip
 
@@ -38,14 +38,14 @@
 
 		\bigskip
 
-		Dans une recherche par table, le cryptanalyste encrypte certains \gls{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \gls{cipher} sont enregistrés et triés dans des tables. Pour une nouvelle clé $K$ et le \gls{cipher} par cette clé $C_0 = S_K(P_0)$, le cryptanalyste retrouvera $C_0$ et la clé correspondante en $\log_2 N$ opérations.
+		Dans une recherche par table, le cryptanalyste encrypte certains \glspl{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \glspl{cipher} sont enregistrés et triés dans des tables. Pour une nouvelle clé $K$ et le \gls{cipher} par cette clé $C_0 = S_K(P_0)$, le cryptanalyste retrouvera $C_0$ et la clé correspondante en $\log_2 N$ opérations.
 
 		\bigskip
 
-		La méthode du \gls{TMTO} fonctionne avec ce type d'attaque en \gls{plaint} choisi. De plus il fonctionne aussi avec une attaque par \gls{cipher} seulement. Cependant, ce compromis est une méthode probabiliste. Le succès n'est pas garanti, il dépend des ressources allouées.
+		La méthode du \gls{TMTO} fonctionne avec ce type d'attaque en \gls{plaint} choisi. De plus, il fonctionne aussi avec une attaque par \gls{cipher} seulement. Cependant, ce compromis est une méthode probabiliste. Le succès n'est pas garanti, il dépend des ressources allouées.
 
 		\bigskip
 
-		Afin de comprendre les \glspl{rainbow} et leurs avantages par rapport à d'autres méthodes, nous allons commencer par expliquer le principe du \gls{TMTO}. Puis nous présenterons les \glspl{rainbow} en les comparant à la méthode des points distincts. Nous détaillerons ensuite cette méthode des points distincts. Enfin nous verrons une amélioration notable de ces tables.
+		Afin de comprendre les \glspl{rainbow} et leurs avantages par rapport à d'autres méthodes, nous allons commencer par expliquer le principe du \gls{TMTO}. Puis nous présenterons les \glspl{rainbow} en les comparant à la méthode des points distincts. Nous détaillerons ensuite cette méthode des points distincts. Enfin, nous verrons une amélioration notable de ces tables.
 
 \endinput{}

@@ -6,8 +6,10 @@
 	\part*{#1}%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{part}{#1}%
+		\phantomsection%
 	}{%
 		\addcontentsline{toc}{part}{#2}%
+		\phantomsection%
 	}%
 }
 
@@ -17,8 +19,10 @@
 	\chapter*{#1}%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{chapter}{#1}%
+		\phantomsection%
 	}{%
 		\addcontentsline{toc}{chapter}{#2}%
+		\phantomsection%
 	}%
 }
 
@@ -28,8 +32,10 @@
 	\section*{#1}%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{section}{#1}%
+		\phantomsection%
 	}{%
 		\addcontentsline{toc}{section}{#2}%
+		\phantomsection%
 	}%
 }
 
@@ -37,8 +43,10 @@
 	\subsection*{#1}%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{subsection}{#1}%
+		\phantomsection%
 	}{%
 		\addcontentsline{toc}{subsection}{#2}%
+		\phantomsection%
 	}%
 }
 

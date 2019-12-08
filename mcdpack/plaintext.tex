@@ -1,0 +1,76 @@
+%% Last modification : 05/09/2019
+
+%% Renews
+\ifthenelse{\equal{\toplaintext}{true}}{%
+	\renewcommand{\initdoc}{}%
+	\renewcommand{\lastdoc}{%
+		\input{mcdpack/language}%
+		\ifthenelse{\equal{\themybibs}{0}}{}{%
+			\bibliography{other/bibtex}{}
+			\addcontentsline{toc}{part}{\tocbibliographycontent}
+			\phantomsection
+			\refstepcounter{nbLastdocAdds}
+		}%
+	}%
+%
+	\renewcommandx{\makeinfos}[5][2=Mathias \bsc{Cabioch-Delalande}, 3=Mathias \bsc{C-D}, 4=not, 5=, usedefault]{
+		\title{#1}
+		\author{#2}
+		\date{\textit{\small\today}}
+		\additionalText{#5}
+
+		\hypersetup{
+			pdftitle = {#1},
+			pdfauthor = {#2}
+		}
+		\pagestyle{empty}
+	}%
+%
+	\renewcommandx{\setsubsubsubsection}[2][2=]{#1}
+	\renewcommandx{\setpart}[2][2=]{%
+		\if@numpart%
+			\stepcounter{part}%
+			\renewcommand{\partstexts}{\thepart{} }%
+		\else%
+			\renewcommand{\partstexts}{}%
+		\fi%
+		\partstexts{}#1%
+	}
+	\renewcommandx{\setchapter}{}
+	\renewcommandx{\setsection}[2][2=]{%
+		\if@numpart%
+			\stepcounter{chapter}%
+			\renewcommand{\partstexts}{\thesection{} }%
+		\else%
+			\renewcommand{\partstexts}{}%
+		\fi%
+		\partstexts{}#1%
+	}
+	\renewcommandx{\setsubsection}[2][2=]{%
+		\if@numpart%
+			\stepcounter{section}%
+			\renewcommand{\partstexts}{\thesubsection{} }%
+		\else%
+			\renewcommand{\partstexts}{}%
+		\fi%
+		\partstexts{}#1%
+	}
+	\renewcommandx{\setsubsubsection}[2][2=]{%
+		\if@numpart%
+			\stepcounter{subsection}%
+			\renewcommand{\partstexts}{\thesubsubsection{} }%
+		\else%
+			\renewcommand{\partstexts}{}%
+		\fi%
+		\partstexts{}#1%
+	}
+%
+	\renewcommand{\lettrine}[2]{#1#2}%
+%
+%
+	\hyphenpenalty 10000
+	\exhyphenpenalty 10000
+}{}
+
+%% End
+\endinput
