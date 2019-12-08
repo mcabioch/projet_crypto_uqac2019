@@ -2,7 +2,7 @@
 
 	\setsubsection{Principe}
 
-		Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \gls{cipher} possible avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un compromis temps-mémoire. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \gls{cipher} :
+		Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \gls{cipher} possible avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un \gls{TMTO}. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \gls{cipher} :
 
 		\begin{align*}
 			k_i \overset{S_{k_i}(P_0)}{\longrightarrow} C_i \overset{R(C_i)}{\longrightarrow} k_{i+1}
@@ -34,7 +34,7 @@
 
 	\setsubsection{Paramètres}
 
-		Il y a, dans cette méthode de compromis temps-mémoire, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :
+		Il y a, dans cette méthode de \gls{TMTO}, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :
 
 		\bigskip
 
@@ -46,7 +46,7 @@
 
 		\bigskip
 
-		Le compromis temps-mémoire a été décrit pour une utilisation avec un chiffrement par bloc\cite{ehellman}, mais la même approche fonctionne avec un chiffrement de flux synchrone\cite{ehellman}. Les $k$ premiers bits du flux de clés sont considérés comme la fonction $f(k)$, $k$ étant le nombre de bits de la clé. Cela peut être fait sous une attaque en texte clair connue.
+		Le \gls{TMTO} a été décrit pour une utilisation avec un chiffrement par bloc\cite{ehellman}, mais la même approche fonctionne avec un chiffrement de flux synchrone\cite{ehellman}. Les $k$ premiers bits du flux de clés sont considérés comme la fonction $f(k)$, $k$ étant le nombre de bits de la clé. Cela peut être fait sous une attaque en texte clair connue.
 
 		\bigskip
 
@@ -54,7 +54,7 @@
 
 		\bigskip
 
-		De plus, même un chiffrement par bloc peut contrecarrer le compromis temps-mémoire d'une attaque en \gls{plaint} connu par le chaînage de blocs de chiffrement ou d'autres techniques introduisant de la mémoire dans le chiffrement. Ensuite, même lorsque huit espaces apparaissent dans le texte en clair, leur chiffrement dépend du texte précédent.
+		De plus, même un chiffrement par bloc peut contrecarrer le \gls{TMTO} d'une attaque en \gls{plaint} connu par le chaînage de blocs de chiffrement ou d'autres techniques introduisant de la mémoire dans le chiffrement. Ensuite, même lorsque huit espaces apparaissent dans le texte en clair, leur chiffrement dépend du texte précédent.
 
 		\bigskip
 
@@ -62,7 +62,7 @@
 
 		\bigskip
 
-		Bien que cette technique cryptanalytique de compromis temps-mémoire puisse être facilement déjouée, elle fonctionne sur le DES, en mode bloc de base, nécessaire pour avoir une assurance raisonnable de sécurité.
+		Bien que cette technique cryptanalytique de \gls{TMTO} puisse être facilement déjouée, elle fonctionne sur le DES, en mode bloc de base, nécessaire pour avoir une assurance raisonnable de sécurité.
 
 		\bigskip
 
