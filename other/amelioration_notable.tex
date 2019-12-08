@@ -22,11 +22,11 @@ pr\{g(x_{j,\alpha}) \neq g(y_{\alpha +s-t}) \mid x_{j,a} \neq y_{\alpha+s-t}\}=\
 \begin{figure}[h!]
 	\begin{minipage}{.5\textwidth}
 		\includegraphics[width=0.9\linewidth]{other/FalseAlarmDetected.png}
-		%\captionof{figure}{Fausse alerte détecté avec une probabilité de 1/2}
+		\caption{}{Fausse alerte détecté}
 	\end{minipage}
 	\begin{minipage}{.5\textwidth}
 	    \includegraphics[width=0.9\linewidth]{other/FalseAlarmNotDetected.png}
-		%\caption{Fausse alerte non détecté}
+		\caption{}{Fausse alerte non détecté}
   	\end{minipage}
 \end{figure}
 
@@ -41,34 +41,27 @@ pr\{g(x_{j,\alpha}) \neq g(y_{\alpha +s-t}) \mid x_{j,a} \neq y_{\alpha+s-t}\}=\
 	De même, pour vérifier si une table de Hellman associé à la méthode des points distincts est parfaite, il suffit également de vérifier que chaque dernier éléments est distincts. Cette vérification est suffisante car peut importe où commence la fusion dans tous les cas elle amènera au même point qui respecte le critère d'arrêt.
 
 \setsubsection{Outils de comparaison}
-	Dans cette partie une méthode générique de caractérisation des différente compromis sera présentée, et utilisée comme outil de comparaison avec la table arc-en-ciel.
-\setsubsubsection{Graphes Temps-Mémoire}%Time-Memory Graphs
 	En connaissant les fonctions caractéristiques il est possible de tracer les graphiques temps-mémoire pour un taux de succès fixé. Ces graphiques montre que le temps de calcul diminue avec le carré de la mémoire utilisée.
-	Indépendant du taux de succès nous pouvons écrire:
 \begin{align*}\label{simple}
 	T=\frac{N^2}{M^2}\gamma(P)
 \end{align*}
-	Où $\gamma(P)$ est facteur dépendant du taux de succès. Le cas optimal de P=86\%, vue en \ref{perfect_config} donne un facteur de un. Il est possible alors de retrouvé le compromis typique proposé par Hellman, $M=T=N^{\frac{2}{3}}$
-	
-	\bigskip
+	Où $\gamma(P)$ est facteur dépendant du taux de succès. Le cas optimal de P=86\% selon \cite{checkpoints} donne un facteur de un. Il est possible alors de retrouvé le compromis typique proposé par Hellman \cite{ehellman}, $M=T=N^{\frac{2}{3}}$. La formule \ref{simple} permet de trouver un des paramètres optimaux, en se basant sur les 2 autres.
 
-	Dans d'autres travaux cet équation n'est pas retrouvé car généralement les calculs étaient basés sur des tables non-parfaite, dans le pire des cas, et sans considération du travail lié aux fausses alertes. La formule \ref{simple} permet de trouver un des paramètres optimaux, en se basant sur les 2 autres.
-
-\setsubsubsection{La Caractéristique Temps-Mémoire}%The Time-Memory Characteristic
 	Afin de comparer l'efficacité des différentes types méthodes de compromis, il est possible d'étudier l'évolution de $\gamma{P}$.
 	
-	Dans la section suivante les performances des tables arc-en-ciel sont comparés avec les tables classiques et DP. Les tables DP sont plus dures à analyser car la taille des chaînes n'est pas fixe.
-\setsubsubsection{Tables Classique et DP}%Classic and DP Tables
-
-	Les tables classiques et DP peuvent aussi être caractérisées par le facteur $\gamma$. Dans cet étude, il a été choisi de générer les plus grosses tables parfaites possibles, et autant de table que nécessaire pour atteindre un taux de succès P fixé. Les caractéristiques sont tracés en figure \ref{fig:TMTO_carac}, par ailleurs les saut de la courbe de la méthode arc-en-ciel correspond à la nécessité d'une table supplémentaire.
-\begin{figure}[h]
+	Les tables classiques et DP peuvent aussi être caractérisées par le facteur $\gamma$. Dans cet étude, il a été choisi de générer les plus grosses tables parfaites possibles, et autant de table que nécessaire pour atteindre un taux de succès P fixé. Les caractéristiques sont tracés en figure \ref{fig:TMTO_carac}, par ailleurs les sauts de la courbe de la méthode \gls{rainbow} correspond à la nécessité d'une table supplémentaire.
+\begin{figure}[h!]
 	\includegraphics[scale=0.25]{other/graph_gamma_P.png}
-	%\caption{Graphique Temps-Memoire pour les tables classiques, arc-en-ciel et DP}
+	\caption{}{Graphique Temps-Memoire pour les tables classiques, arc-en-ciel et DP}
 	\label{fig:TMTO_carac}
 \end{figure}
-	La théorie et l'expérience montre qu'à partir d'un taux de succès de 80\%, les tables arc-en-ciel est la meilleure solution. En-dessous de ce taux, il semblerait que les tables classiques soit un peu meilleure. Mais ce n'est généralement pas le cas, lié à la nécessité de t fois plus de boucles dans une table classique, qui ne peuvent pas forcément être optimisées.
+	La théorie et l'expérience montre qu'à partir d'un taux de succès de 80\%, les \glspl{rainbow} proposent le meilleur compromis. En-dessous de ce taux, il semblerait que les tables classiques soit un peu meilleure. Mais elles conservent un coût de temps de calcul plus élevé, lié à la nécessité de t fois plus de boucles lors de la recherche dans les tables.
 
 \setsubsection{Conclusion}
+	La méthode des points de contrôles est une évolution extrémement intéressant qui permet de limiter le coût en temps de calcul, de plus elle peut s'appliquer à toutes les méthodes de compromis.
 
+	\bigskip
+
+	Nous avons également vue plus en détail la méthode de comparaison entre les différents compromis.
 
 \endinput{}
