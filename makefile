@@ -104,7 +104,7 @@ endif
 #
 #	Implicit rules
 #
-.PHONY: pdf clear remake install_dependencies get sync
+.PHONY: pdf clear remake get_error install_dependencies get sync
 
 clear:
 	rm -rf $(BINDIR)
@@ -121,6 +121,9 @@ remake: clear
 
 pdf:
 	evince $(PDF) &
+
+get_error:
+	make all DEBUG=yes | grep "^!"
 
 install_dependencies:
 	sudo apt install texlive-binaries texlive-latex-extra texlive-xetex
