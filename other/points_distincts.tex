@@ -50,12 +50,18 @@
 	\setsubsection{Les tables arc-en-ciel floues}
 
 		Une autre alternative a été proposé \cite{fuzzy} dont l'idée consiste à agréger différntes de tables de Hellman associé à la technique des points distincts. Nous obtenons ainsi une \gls{rainbow} où en lieu et place de changer de fonction de réduction pour chaque colonne, nous en changeons à chaque fois que nous respectons le critère d'arrêt. Nous obtenons alors le modèle ci-dessous. La mise en place plus pratique a été étudié par \cite{fuzzyStudy}
-\begin{figure}[h!]
-	\includegraphics[width=0.9\linewidth]{other/fuzzy.png}
-\end{figure}
+		\begin{align*}
+			SP \bullet{}
+			\underbrace{f_1f_1f_1\ldots{}f_1}_{\sim t} \buildrel{DP}\over{\bullet{}}
+			\underbrace{f_2f_2f_2\ldots{}f_2}_{\sim t} \buildrel{DP}\over{\bullet{}}
+			\underbrace{f_3f_3f_3\ldots{}f_3}_{\sim t} \buildrel{DP}\over{\bullet{}}
+			\ldots{} \buildrel{DP}\over{\bullet{}}
+			\underbrace{f_sf_sf_s\ldots{}f_s}_{\sim t} \bullet{}
+			EP
+		\end{align*}
 
 	\setsubsection{Conclusion}
 
-		La méthode des points distincts est encore aujourd'hui exploré mais jusqu'à présent elle n'a pas donné de résultat probant. Une autre méthode pour limiter le coût des recherches dans les tables a été présenté par \cite{checkpoints} en 2005. C'est une méthode basé sur des points de contrôle. Nous la verrons plus en détail dans la prochaine section
-		
+		La méthode des points distincts est encore aujourd'hui exploré mais jusqu'à présent elle n'a pas donné de résultat probant. Une autre méthode pour limiter le coût des recherches dans les tables a été présenté par \cite{checkpoints} en 2005. C'est une méthode basé sur des points de contrôle. Nous la verrons plus en détail dans la prochaine section.
+
 \endinput{}
