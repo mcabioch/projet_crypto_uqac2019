@@ -1,4 +1,4 @@
-\setsection{Méthode des Points Distincts et ses variantes}
+\setpart{Méthode des Points Distincts et ses variantes}
 	Comme nous l'avons vue précédemment la méthode des points distincts introduite en 1982 \cite{Rivest}, consiste à fixer un critère d'arrêt. Ainsi, nous vérifions si le dernier élément de la chaîne se trouve dans une table seulement s'il respecte le même critère d'arrêt, limitant de ce fait le nombre de ces vérifications.
 
 	\bigskip
@@ -7,7 +7,7 @@
 
 	\bigskip
 
-	\setsubsection{Méthodes des points distincts}
+	\setsection{Méthodes des points distincts}
 
 		Comme nous l'avons vue, nous créons des chaînes de taille variable, mais nous fixons des bornes par sécurité. En effet une chaîne peut réaliser une boucle en fusionnant avec elle-même et, par conséquent, ne jamais vérifier la condition d'arrêt. C'est pourquoi nous posons $\hat{t}=t_{max}$ la limite haute avant d'écarter une chaîne. De même, nous fixons une limite basse $\check{t}=t_{min}$ afin d'éviter d'avoir des chaînes trop courtes. Ainsi nous pouvons appliquer la méthode des points distincts aux \glspl{rainbow} en fixant $\hat{t}$ fonctions de réduction. Toutes ne seront pas utilisés, mais nous en auront le minimum requis pour appliquer cette technique.
 
@@ -21,7 +21,7 @@
 
 		\bigskip
 
-	\setsubsection{Première Variante}
+	\setsection{Première Variante}
 
 		Une première idée proposée dans cet article \cite{VDP}, est de faire varier la condition d'arrêt en fonction du point de départ. L'un des avantages est qu'ainsi nous avons des informations sur le point de départ dans le point final. La conséquence est que nous ne sommes plus obligés de stocker le point de départ.
 
@@ -47,7 +47,7 @@
 
 		Où nous avons $\hat{t}=t_{max}=c*t$, de plus ces donnés sont calculés selon le pire des cas. Mais comme nous pouvons le constater le facteur c, dans l'équation de la courbe du compromis, à de fortes chances de limiter l'intérêt de ces tables. Ainsi dans l'article \cite{VDP}, les auteurs ont cherché les paramètres optimaux pour rendre cette technique viable, mais ils n'y sont pas parvenue.
 
-	\setsubsection{Les tables arc-en-ciel floues}
+	\setsection{Les tables arc-en-ciel floues}
 
 		Une autre alternative a été proposée \cite{fuzzy} dont l'idée consiste à agréger différentes tables de Hellman associé à la technique des points distincts. Nous obtenons ainsi une \gls{rainbow} où en lieu et place de changer de fonction de réduction pour chaque colonne, nous en changeons à chaque fois que nous respectons le critère d'arrêt. Nous obtenons alors le modèle ci-dessous. La mise en place plus pratique a été étudiée par \cite{fuzzyStudy}
 		\begin{align*}
@@ -60,7 +60,7 @@
 			EP
 		\end{align*}
 
-	\setsubsection{Conclusion}
+	\setsection{Conclusion}
 
 		La méthode des points distincts est encore aujourd'hui explorée mais jusqu'à présent elle n'a pas donné de résultats probants. Une autre méthode pour limiter le coût des recherches dans les tables a été présentée par \cite{checkpoints} en 2005. C'est une méthode basée sur des points de contrôle. Nous la verrons plus en détail dans la prochaine section.
 

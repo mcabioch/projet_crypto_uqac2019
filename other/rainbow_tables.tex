@@ -1,6 +1,6 @@
-\setsection{Tables arc-en-ciel}
+\setpart{Tables arc-en-ciel}
 
-	\setsubsection{Comparaison et avantages}
+	\setsection{Comparaison et avantages}
 
 		Le problème des précédentes tables est que si deux chaînes entrent en collision, elles fusionnent. Il existe des méthodes pour que deux chaînes en collision ne fusionnent pas, les \glspl{rainbow}. Le principe : elles utilisent des fonctions de réductions différentes à chaque point de la chaîne.
 
@@ -21,7 +21,7 @@
 			\item les \glspl{rainbow} ont une taille constante tandis que les chaînes à points distincts ont une taille variable. Ce qui réduit considérablement les fausses alertes.
 		\ei
 
-	\setsubsection{Expérimentations}
+	\setsection{Expérimentations}
 
 		Le travail de Philippe Oechslin\cite{Oech03} nous permet d'obtenir des résultats expérimentaux comparant les tables à points distincts et les \glspl{rainbow}. Oechslin utilise comme test le crack de mots de passe du LanManager de MS Windows car il peut être effectué sur n'importe quel poste de travail standard.
 
@@ -57,7 +57,7 @@
 			\item Frais plus important : une fausse alerte dans une grande chaîne va demander beaucoup de calculs, cette chaîne ayant une grande chance de fusionner avec une autre grande chaîne, ce qui augmente le coût pour vérifier la fausse alerte. De plus, lorsque la taille de la chaîne est inconnue, il faut regénérer toute la chaîne.
 		\ei
 
-	\setsubsection{Pistes d'améliorations}
+	\setsection{Pistes d'améliorations}
 
 		La méthode de calcul peut encore être améliorée. Pour les \glspl{rainbow}, la quantité de calculs augmente de façon quadratique de 1 à $\frac{t^2-1}{2}$. Pour les tables classiques, c'est une augmentation linéaire $t^2$.
 

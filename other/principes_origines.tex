@@ -1,6 +1,6 @@
-\setsection{Principe de la méthode}
+\setpart{Principe de la méthode}
 
-	\setsubsection{Principe}
+	\setsection{Principe}
 
 		Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \glspl{cipher} possibles avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un \gls{TMTO}. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \glspl{cipher} :
 
@@ -14,7 +14,7 @@
 
 		Pour retrouver la clé d'un \gls{cipher}, l'algorithme de recherche génère une clé avec le \gls{cipher} ($k' = R(C')$) et fait une chaîne de la taille de celles qui ont été stockées. Si une des clés générées correspond à une des clés sauvegardées, il suffit de reconstruire la chaîne concernée et de retrouver l'emplacement qui correspond à la clé avant $R(C')$.
 
-	\setsubsection{Une amélioration}
+	\setsection{Une amélioration}
 
 		Nous pouvons noter qu'assez rapidement une amélioration a été proposée par Rivest \cite{Rivest}, cette amélioration consiste à utiliser un critère d'arrêt au lieu de générer des chaînes de taille fixe. Ainsi, la recherche d'une clé générée dans une table n'est réalisée que si cette clé respecte le critère d'arrêt, réduisant de ce fait le nombre de recherche dans une table.
 
@@ -32,7 +32,7 @@
 
 		Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée paraît être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
 
-	\setsubsection{Paramètres}
+	\setsection{Paramètres}
 
 		Il y a, dans cette méthode de \gls{TMTO}, trois paramètres pouvant être ajustés : la taille des chaînes $t$, le nombre de chaînes par table $m$ et le nombre de tables $l$. Ils permettent d'ajuster les limites sur la mémoire $M$, le temps de cryptanalyse $T$ et la probabilité de succès $P_{success}$\cite{Oech03} :
 

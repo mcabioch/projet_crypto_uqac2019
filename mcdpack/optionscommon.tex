@@ -24,8 +24,11 @@
 	\@frenchfalse%
 }
 
-\newif\if@toc \@toctrue
-\DeclareOption{notoc}{\@tocfalse}
+\newif\if@hastoc \@hastoctrue
+\DeclareOption{notoc}{\@hastocfalse}
 
 \newif\if@numpart \@numpartfalse
 \DeclareOption{numpart}{\@numparttrue}
+
+\newif\if@haspart \@hasparttrue
+\DeclareOption{nopart}{\@haspartfalse}

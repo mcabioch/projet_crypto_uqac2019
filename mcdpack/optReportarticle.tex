@@ -34,8 +34,14 @@
 \newcommand{\partstexts}{}
 
 \if@numpart%
-	\renewcommand{\thepart}{\Roman{part}}
-	\renewcommand{\thesection}{\arabic{chapter}}
+	\if@haspart
+		\renewcommand{\thepart}{\Roman{part}}
+		\renewcommand{\thesection}{\arabic{chapter}}
+	\else
+		\renewcommand{\thepart}{\arabic{part}}
+		\renewcommand{\thesection}{\thepart{}.\arabic{chapter}}
+	\fi
+
 	\renewcommand{\thesubsection}{\thesection{}.\alph{section}}
 	\renewcommand{\thesubsubsection}{\thesubsection{}-\roman{subsection}}
 \fi%
@@ -43,14 +49,18 @@
 \renewcommandx{\setpart}[2][2=]{%
 	\renewcommand{\actualdocpart}{#1}%
 %
+	\stepcounter{part}%
 	\if@numpart%
-		\stepcounter{part}%
 		\renewcommand{\partstexts}{\thepart{} }%
 	\else%
 		\renewcommand{\partstexts}{}%
 	\fi%
 %
-	\part*{\partstexts{}#1}%
+	\if@haspart%
+		\part*{\partstexts{}#1}%
+	\else%
+		\section*{\partstexts{}#1}%
+	\fi%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{part}{\partstexts{}#1}%
 		\phantomsection%
@@ -63,14 +73,18 @@
 \renewcommandx{\setsection}[2][2=]{%
 	\renewcommand{\actualdocpart}{#1}%
 %
+	\stepcounter{chapter}%
 	\if@numpart%
-		\stepcounter{chapter}%
 		\renewcommand{\partstexts}{\thesection{} }%
 	\else%
 		\renewcommand{\partstexts}{}%
 	\fi%
 %
-	\section*{\partstexts{}#1}%
+	\if@haspart
+		\section*{\partstexts{}#1}%
+	\else
+		\subsection*{\partstexts{}#1}%
+	\fi
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{chapter}{\partstexts{}#1}%
 		\phantomsection%
@@ -82,14 +96,18 @@
 \renewcommandx{\setsubsection}[2][2=]{%
 	\renewcommand{\actualdocpart}{#1}%
 %
+	\stepcounter{section}%
 	\if@numpart%
-		\stepcounter{section}%
 		\renewcommand{\partstexts}{\thesubsection{} }%
 	\else%
 		\renewcommand{\partstexts}{}%
 	\fi%
 %
-	\subsection*{\partstexts{}#1}%
+	\if@haspart
+		\subsection*{\partstexts{}#1}%
+	\else
+		\subsubsection*{\partstexts{}#1}%
+	\fi
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{section}{\tab{}\partstexts{}#1}%
 		\phantomsection%
@@ -106,7 +124,11 @@
 		\renewcommand{\partstexts}{}%
 	\fi%
 %
-	\subsubsection*{\partstexts{}#1}%
+	\if@haspart
+		\subsubsection*{\partstexts{}#1}%
+	\else
+		\subsubsubsection*{\partstexts{}#1}%
+	\fi
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{subsection}{\tab{}\partstexts{}#1}%
 		\phantomsection%

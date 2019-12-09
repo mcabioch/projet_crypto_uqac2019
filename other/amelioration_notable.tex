@@ -1,9 +1,9 @@
-\setsection{Améliorations notables : fausses alertes et outils de mesure}
+\setpart{Améliorations notables : fausses alertes et outils de mesure}
 
 	Comme nous l'avons vue précédemment (section 3) le problème de fusion de chaîne a amené à créer les \glspl{rainbow}. Mais il se peut aussi qu'il y ait collision entre la chaîne que nous générons et une des chaînes des tables. Lorsque ce cas arrive nous parlons de fausse alertes \cite{checkpoints}.
 	De plus jusqu'à présent nous n'avons pas réellement présenté d'outils permettant de comparer les efficacités des différentes méthodes de \gls{TMTO}.
 
-\setsubsection{Points de contrôles}
+\setsection{Points de contrôles}
 
 	Afin de vérifier que 2 chaînes ne fusionnent pas, il a été proposé par \cite{checkpoints} d'instaurer des points de contrôle. Pour ce faire, $\alpha_i$ positions sont fixées. Pour chaque chaîne, la fonction G est évaluée et la valeur est stockée, à chacune de ces positions. Lors de la génération de la chaîne $Y_1,Y_2,\ldots{},Y_s$ nous évaluons également les $G(Y_{\alpha_i+s-t})$. La moindre différence entre les points de contrôle de cette chaîne et celle de la table correspond à une fausse alerte.
 
@@ -33,7 +33,7 @@
 	\end{figure}
 \end{samepage}
 
-\setsubsection{Tables parfaites}
+\setsection{Tables parfaites}
 
 	Cette notion de fusion et de points de contrôle introduit alors un nouveau concept les tables dites parfaites, des tables sans fusion. En effet comme l'équation de la courbe de compromis est de la forme $TM^2=\alpha *N^2$, afin de profiter au maximum du \gls{TMTO} il faut minimiser le coût mémoriel qui est élevé au carré. Et pour ce faire nous devons éviter de stocker de l'information redondante.
 
@@ -49,7 +49,7 @@
 
 	De même, pour vérifier si une table de Hellman associé à la méthode des points distincts est parfaite, il suffit également de vérifier que chaque dernier élément est distinct. Cette vérification est suffisante car peu importe où commence la fusion dans tous les cas elle amènera au même point qui respecte le critère d'arrêt.
 
-\setsubsection{Outils de comparaison}
+\setsection{Outils de comparaison}
 
 	En connaissant les fonctions caractéristiques il est possible de tracer les graphiques temps-mémoire pour un taux de succès fixé. Ces graphiques montrent que le temps de calcul diminue avec le carré de la mémoire utilisée.
 
@@ -74,7 +74,7 @@
 
 	La théorie et l'expérience montrent qu'à partir d'un taux de succès de 80\%, les \glspl{rainbow} proposent le meilleur compromis. En dessous de ce taux, il semblerait que les tables classiques soient un peu meilleures. Mais elles conservent un coût de temps de calcul plus élevé, lié à la nécessité de t fois plus de boucles lors de la recherche dans les tables.
 
-\setsubsection{Conclusion}
+\setsection{Conclusion}
 
 	La méthode des points de contrôle est une évolution extrêmement intéressante qui permet de limiter le coût en temps de calcul, de plus elle peut s'appliquer à toutes les méthodes de \gls{TMTO}.
 
