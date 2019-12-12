@@ -2,7 +2,7 @@
 
 	\setsection{Historique}
 
-		\lettrine{J}{usqu'en 1980}, avant le papier de Hellman\cite{ehellman}, la cryptanalyse se faisait soit au détriment de la mémoire, soit au détriment du temps de recherche. Hellman propose alors une méthode faisant un compromis entre ces deux contraintes. Par la suite, en 1982, Rivest\cite{Rivest} propose une amélioration de ce compromis avec l'ajout de points distincts.
+		\lettrine{J}{usqu'en 1980}, avant le papier de Hellman\cite{ehellman}, la cryptanalyse se faisait soit au détriment de la mémoire, soit au détriment du temps de recherche. Hellman propose alors une méthode faisant un compromis entre ces deux contraintes. Par la suite, en 1982, Rivest\cite{Rivest} propose une amélioration de ce compromis avec l'ajout de \glspl{DP}.
 
 		\bigskip
 
@@ -38,9 +38,8 @@
 
 		\bigskip
 
-		Dans une recherche par table, le cryptanalyste encrypte certains \glspl{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \glspl{cipher} sont enregistrés et triés dans des tables. Pour une nouvelle clé $K$ et le \gls{cipher} par cette clé $C_0 = S_K(P_0)$, le cryptanalyste retrouvera $C_0$ et la clé correspondante en $\log_2 N$ opérations.
+		Dans une recherche par table, le cryptanalyste encrypte un \gls{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \glspl{cipher} sont enregistrés et triés dans des tables. Pour une clé $K$ et un \gls{cipher} donnés nous avons $C_0 = S_K(P_0)$. Le cryptanalyste retrouvera $C_0$ et la clé correspondante en $\log_2 N$ opérations.
 
-		Dans une recherche par table, le cryptanalyste encrypte un \gls{plaint} $P_0$ pour chaque clé $N$ possible. Ces $N$ \glspl{cipher} sont enregistrés et triés dans des tables. Pour une clé $K$ et un \gls{cipher} donnés nous avons $C_0 = S_K(P_0)$, le cryptanalyste retrouvera $C_0$ et la clé correspondante en $\log_2 N$ opérations.
 		\bigskip
 
 		La méthode du \gls{TMTO} fonctionne avec ce type d'attaque en \gls{plaint} choisi. De plus, il fonctionne aussi avec une attaque par \gls{cipher} seulement. Cependant, ce compromis est une méthode probabiliste. Le succès n'est pas garanti, il dépend des ressources allouées.
