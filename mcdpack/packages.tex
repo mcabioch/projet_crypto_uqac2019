@@ -4,8 +4,8 @@
 
 %%%% Options
 \PassOptionsToPackage{outputdir=build}{minted}
-\PassOptionsToPackage{xindy}{glossaries}
 \PassOptionsToPackage{xetex, unicode}{hyperref}
+\PassOptionsToPackage{marginparwidth=4.6cm, marginparsep=3mm}{geometry}
 
 %%%% Language
 \RequirePackage{%
@@ -40,7 +40,8 @@
 				mathrsfs,%
 				calc,%
 				mathtools,%
-				fp%
+				fp,%
+				float%
 			   }
 
 %%%% Page setup
@@ -49,7 +50,6 @@
 				blindtext,%
 				fancyhdr,%
 				makeidx,%
-				glossaries,%
 				titlesec,%
 				titletoc,%
 				tocloft,%
@@ -62,7 +62,6 @@
 				enumitem,%
 				marginnote,%
 				multicol,%
-				geometry,%
 				mdframed%
 			   }
 
@@ -115,8 +114,7 @@
 %%%% Others
 \RequirePackage{%
 				lmodern,%
-				datetime2,%
-				float%
+				datetime2%
 			   }
 
 \usetikzlibrary{babel}
@@ -124,6 +122,8 @@
 %%%% Hyperref and specs
 \RequirePackage{%
 				hyperref,%
+				geometry,%
+				glossaries,%
 				hypcap%
 			   }
 

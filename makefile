@@ -76,13 +76,26 @@ LIBDIRTEXOUT = mcdpack
 BIB_VALUES = $(shell cat $(OTHDIR)/$(BIB))
 
 LINE = @echo "\n------------------------------------------------------------------------"
-BEF_ARGS = 
-AFT_ARGS = 
+BEFORE_ARGS =
+BEF_ARGS =
+AFT_ARGS =
 
 #
 #	Commands
 #
+ifeq ($(DEBUG), yes)
+BEFORE_ARGS=\providecommand\debug{true}
+endif
+
+ifneq ($(BEF_ARGS),)
+TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) "$(BEFORE_ARGS)$(BEF_ARGS)\input{$(TEX)}"$(AFT_ARGS)
+else
+ifneq ($(BEFORE_ARGS),)
+TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) "$(BEFORE_ARGS)$(BEF_ARGS)\input{$(TEX)}"$(AFT_ARGS)
+else
 TEXCOMMAND = $(PDFLATEX) $(TEXFLAGS) $(BEF_ARGS)$(TEX)$(AFT_ARGS)
+endif
+endif
 
 #
 #	Rules
@@ -107,17 +120,17 @@ ifneq ($(BIB_VALUES),)
 endif
 	$(LINE)
 	$(TEXCOMMAND)
-	$(LINE)
+	reset
 	$(TEXCOMMAND)
 
 $(BINDIR)/$(TXT): clear
-	make all BEF_ARGS="\"\providecommand\toplaintext{true}\input{" AFT_ARGS="}\""
+	make all BEF_ARGS="\providecommand\\toplaintext{true}"
 	pdftotext $(PDF) $(BINDIR)/$(TXT)
 	tr '\n' ' ' < $(BINDIR)/$(TXT) > $(BINDIR)/$(TXT).tmp
 	mv $(BINDIR)/$(TXT).tmp $(BINDIR)/$(TXT)
 
 $(BINDIR)/$(HTML): clear
-	make all BEF_ARGS="\"\providecommand\toplaintext{true}\input{" AFT_ARGS="}\""
+	make all BEF_ARGS="\providecommand\\toplaintext{true}"
 	pdftohtml $(PDF) -stdout > $(BINDIR)/$(HTML)
 
 #
