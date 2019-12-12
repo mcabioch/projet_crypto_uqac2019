@@ -145,5 +145,43 @@
 	}{}%
 }
 
+\newcounter{importc}
+\newcounter{subimportc}
+
+\setcounter{importc}{0}
+
+\newcommandx{\import@path}{.}
+\newcommandx{\import}[2][1=.]{
+	\stepcounter{importc}
+	\setcounter{subimportc}{0}%
+	\typeout{Path \theimportc.\thesubimportc.1 '\import@path'}%
+	\typeout{Path \theimportc.\thesubimportc.1 '\currfiledir'}%
+	\edef\import@path{\currfiledir#1}%
+	\typeout{Path \theimportc.\thesubimportc.2 '\import@path'}%
+	\typeout{Path \theimportc.\thesubimportc.2 '\currfiledir'}%
+	\input{\import@path/#2}%
+	\setcounter{subimportc}{0}%
+	\typeout{Path \theimportc.\thesubimportc.3 '\import@path'}%
+	\typeout{Path \theimportc.\thesubimportc.3 '\currfiledir'}%
+	\renewcommandx{\import@path}{\currfiledir}%
+	\typeout{Path \theimportc.\thesubimportc.4 '\import@path'}%
+	\typeout{Path \theimportc.\thesubimportc.4 '\currfiledir'}%
+}
+\newcommandx{\subimport}[2][1=.]{
+	\stepcounter{subimportc}%
+	\typeout{Path \theimportc.\thesubimportc.1 '\import@path'}%
+	\typeout{Path \theimportc.\thesubimportc.1 '\currfiledir'}%
+	\edef\import@path{\currfiledir#1}%
+	\typeout{Path \theimportc.\thesubimportc.2 '\import@path'}%
+	\typeout{Path \theimportc.\thesubimportc.2 '\currfiledir'}%
+	\input{\import@path/#2}%
+	\addtocounter{subimportc}{-1}%
+	\typeout{Path \theimportc.\thesubimportc.3 '\import@path'}%
+	\typeout{Path \theimportc.\thesubimportc.3 '\currfiledir'}%
+	\edef\import@path{\currfiledir}%
+	\typeout{Path \theimportc.\thesubimportc.4 '\import@path'}%
+	\typeout{Path \theimportc.\thesubimportc.4 '\currfiledir'}%
+}
+
 %% End
 \endinput

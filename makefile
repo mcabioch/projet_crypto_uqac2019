@@ -123,7 +123,7 @@ $(BINDIR)/$(HTML): clear
 #
 #	Implicit rules
 #
-.PHONY: pdf clear remake get_error txt html install_dependencies get sync
+.PHONY: pdf clear remake debug get_error txt html install_dependencies get sync
 
 clear:
 	rm -rf $(BINDIR)
@@ -135,14 +135,16 @@ clear:
 	rm -rf *.toc
 
 remake: clear
-	rm -rf $(BINDIR)/*
 	make
 
 pdf:
 	evince $(PDF) &
 
+debug: clear
+	make all DEBUG=yes
+
 get_error:
-	make all DEBUG=yes | grep "^!"
+	make debug | grep "^!"
 
 txt: $(BINDIR)/$(TXT)
 

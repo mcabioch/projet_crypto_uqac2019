@@ -13,9 +13,13 @@
 			\addcontentsline{lof}{figure}{#2}%
 		}%
 	}%
+	\lastincludegraphics[#1]{\import@path/#3}%
+}
+
+\newcommandx{\centerincludegraphics}[3][1=, 2=]{%
 	\begin{center}
-		\lastincludegraphics[#1]{#3}
-	\end{center}
+		\includegraphics[#1][#2]{#3}
+	\end{center}%
 }
 
 \let\lasturl\url

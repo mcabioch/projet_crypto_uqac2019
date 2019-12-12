@@ -6,8 +6,10 @@
 \newcommand*{\@additionalText}{}
 
 \renewcommand{\maketitle}{%
-	\begin{titlepage}
-		{\raggedleft\@titlepic\par}\vspace{1cm}%
+	\begin{titlepage}%
+		\begin{center}
+			{\@titlepic\par}%
+		\end{center}
 %
 		\centering%
 		\vspace{1cm}%
@@ -105,19 +107,18 @@
 }
 
 \newcommand{\initdoc}{%
-	\scrollmode
-	\pagenumbering{roman}
-	\setcounter{page}{0}
-	\maketitle
+	\maketitle%
+	\scrollmode%
+	\pagenumbering{roman}%
+	\setcounter{page}{0}%
 
 	\if@hastoc
 		\phantomsection%
-		\if@hastoc%
-			\tableofcontents%
+		\tableofcontents%
 %
-			\addtocontents{toc}{~\hfill\textbf{Page}\par}%
-			\addcontentsline{toc}{part}{\toctoccontent}%
-			\renewcommand{\actualdocpart}{\toctoccontent}%
+		\addtocontents{toc}{~\hfill\textbf{Page}\par}%
+		\addcontentsline{toc}{part}{\toctoccontent}%
+		\renewcommand{\actualdocpart}{\toctoccontent}%
 %
 	\fi
 %

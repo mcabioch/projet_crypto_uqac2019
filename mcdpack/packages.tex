@@ -4,6 +4,7 @@
 
 %%%% Options
 \PassOptionsToPackage{outputdir=build}{minted}
+\PassOptionsToPackage{xindy}{glossaries}
 \PassOptionsToPackage{xetex, unicode}{hyperref}
 
 %%%% Language
@@ -51,8 +52,10 @@
 				glossaries,%
 				titlesec,%
 				titletoc,%
+				tocloft,%
 				appendix,%
-				cite%
+				cite,%
+				currfile%
 			   }
 
 \RequirePackage{%

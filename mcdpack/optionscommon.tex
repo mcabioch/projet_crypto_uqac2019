@@ -7,8 +7,6 @@
 \newif\if@article \@articlefalse
 \DeclareOption{article}{\@articletrue}
 
-\DeclareOption*{}
-
 \newif\if@reportarticle \@reportarticlefalse
 \DeclareOption{reportarticle}{\@reportarticletrue}
 
@@ -32,3 +30,5 @@
 
 \newif\if@haspart \@hasparttrue
 \DeclareOption{nopart}{\@haspartfalse}
+
+\DeclareOption*{\PackageWarning{mcdpack}{Unknown option '\CurrentOption'}}
