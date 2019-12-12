@@ -6,12 +6,14 @@
 
 %% New Commands
 \newcommandx{\setsubsubsubsection}[2][2=]{%
+	\phantomsection%
 	\subsubsection*{#1}%
 	\ifthenelse{\equal{#2}{}}{%
-		\addcontentsline{toc}{subsubsection}{\tab{}#1}%
+		\addcontentsline{toc}{subsubsection}{\tab#1}%
 	}{%
-		\addcontentsline{toc}{subsubsection}{\tab{}#2}%
+		\addcontentsline{toc}{subsubsection}{\tab#2}%
 	}%
+	\phantomsection%
 }
 
 \newcommandx{\from}[3][2=, 3=]{%
@@ -55,6 +57,7 @@
 		\renewcommand{\partstexts}{}%
 	\fi%
 %
+	\phantomsection%
 	\if@haspart%
 		\part*{\partstexts{}#1}%
 	\else%
@@ -62,11 +65,10 @@
 	\fi%
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{part}{\partstexts{}#1}%
-		\phantomsection%
 	}{%
 		\addcontentsline{toc}{part}{\partstexts{}#2}%
-		\phantomsection%
 	}%
+	\phantomsection%
 }
 \renewcommandx{\setchapter}{}
 \renewcommandx{\setsection}[2][2=]{%
@@ -79,6 +81,7 @@
 		\renewcommand{\partstexts}{}%
 	\fi%
 %
+	\phantomsection%
 	\if@haspart
 		\section*{\partstexts{}#1}%
 	\else
@@ -86,11 +89,10 @@
 	\fi
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{chapter}{\partstexts{}#1}%
-		\phantomsection%
 	}{%
 		\addcontentsline{toc}{chapter}{\partstexts{}#2}%
-		\phantomsection%
 	}%
+	\phantomsection%
 }
 \renewcommandx{\setsubsection}[2][2=]{%
 	\renewcommand{\actualdocpart}{#1}%
@@ -102,6 +104,7 @@
 		\renewcommand{\partstexts}{}%
 	\fi%
 %
+	\phantomsection%
 	\if@haspart
 		\subsection*{\partstexts{}#1}%
 	\else
@@ -109,11 +112,10 @@
 	\fi
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{section}{\tab{}\partstexts{}#1}%
-		\phantomsection%
 	}{%
 		\addcontentsline{toc}{section}{\tab{}\partstexts{}#2}%
-		\phantomsection%
 	}%
+	\phantomsection%
 }
 \renewcommandx{\setsubsubsection}[2][2=]{%
 	\if@numpart%
@@ -123,6 +125,7 @@
 		\renewcommand{\partstexts}{}%
 	\fi%
 %
+	\phantomsection%
 	\if@haspart
 		\subsubsection*{\partstexts{}#1}%
 	\else
@@ -130,11 +133,10 @@
 	\fi
 	\ifthenelse{\equal{#2}{}}{%
 		\addcontentsline{toc}{subsection}{\tab{}\partstexts{}#1}%
-		\phantomsection%
 	}{%
 		\addcontentsline{toc}{subsection}{\tab{}\partstexts{}#2}%
-		\phantomsection%
 	}%
+	\phantomsection%
 }
 
 %% New Environments
