@@ -1,5 +1,4 @@
 \setpart{Principe de la méthode}
-
 	\setsection{Principe}
 
 		Avec $P_0$ un \gls{plaint}, $C_0$ le \gls{cipher} correspondant crypté avec $S$ en utilisant une clé $k \in N$, on essaye de générer en avance, sous forme de chaîne, tous les \glspl{cipher} possibles avec les $N$ clés. Ne sont sauvegardés que le premier et le dernier élément de la chaîne afin de faire un \gls{TMTO}. Pour générer les clés, une fonction de réduction $R$ est appliquée aux \glspl{cipher} :
@@ -20,7 +19,7 @@
 
 		\bigskip
 
-		Cependant, plus la table est grande et plus les chances que deux chaînes commençant différemment entrent en collision et finissent avec les mêmes clés augmentent. La probabilité que cela arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés :
+		Cependant, plus la table est grande et plus les chances que deux chaînes commençant différemment entrent en collision et finissent avec les mêmes clés augmentent. La probabilité que cela arrive, d'après le papier original\cite{ehellman}, dans une table de $m$ lignes de $t$ clés, est :
 
 		\bigskip
 
@@ -30,7 +29,7 @@
 
 		\bigskip
 
-		Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, attention aux fausses alertes. Ce n'est pas parce que la chaîne générée paraît être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
+		Afin d'augmenter l'efficacité, il faudrait générer plusieurs tables $l$ avec des fonctions de réduction différentes. De plus, il faut se méfier des fausses alertes. Ce n'est pas parce que la chaîne générée paraît être dans la table qu'elle l'est forcément. De par les collisions, deux chaînes peuvent se finir pareil sans démarrer au même point.
 
 	\setsection{Paramètres}
 
@@ -46,7 +45,7 @@
 
 		\bigskip
 
-		Le \gls{TMTO} a été décrit pour une utilisation avec un chiffrement par bloc\cite{ehellman}, mais la même approche fonctionne avec un chiffrement de flux synchrone\cite{ehellman}. Les $k$ premiers bits du flux de clés sont considérés comme la fonction $f(k)$, $k$ étant le nombre de bits de la clé. Cela peut être fait sous une attaque en texte clair connue.
+		Le \gls{TMTO} a été décrit pour une utilisation avec un chiffrement par bloc\cite{ehellman}, mais la même approche fonctionne avec un chiffrement de flux synchrone\cite{ehellman}. Les $k$ premiers bits du flux de clés sont considérés comme la fonction $f(k)$, $k$ étant le nombre de bits de la clé. Cela peut être fait sous une attaque \gls{plaint} connue.
 
 		\bigskip
 
