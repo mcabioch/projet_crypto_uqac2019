@@ -1,25 +1,36 @@
 %% Last modification : 07/04/2019
 
 %% New Commands
-\newcommandx{\createacronym}[6][4=, 5=, 6=]{%
-	\newacronym[%
-		shortplural={\textbf{\textit{%
-			\glsindex[#4][#5]{#2}[#6][#2]s%
-		}}},%
-		longplural={#3s}%
-	]{#1}{%
-		\glsindex[#4][#5]{#2}[#6][#2]%
-	}{#3}%
-}
-\newcommandx{\createacronyms}[8][6=, 7=, 8=]{%
-	\newacronym[%
-		shortplural={\textbf{\textit{%
+%\newcommandx{\createacronym}[6][4=, 5=, 6=]{%
+%	\newacronym[%
+%		shortplural={\textbf{\textit{%
+%			\glsindex[#4][#5]{#2}[#6][#2]s%
+%		}}},%
+%		longplural={#3s}%
+%	]{#1}{%
+%		\glsindex[#4][#5]{#2}[#6][#2]%
+%	}{#3}%
+%}
+\newcommandx{\createacronym}[8][4=, 5=, 6=, 7=, 8=]{%
+	\ifthenelse{\equal{#4}{}}{%
+		\newacronym[%
+			shortplural={\textbf{\textit{%
+				\glsindex[#4][#5]{#2}[#6][#2]s%
+			}}},%
+			longplural={#3s}%
+		]{#1}{%
+			\glsindex[#4][#5]{#2}[#6][#2]%
+		}{#3}%
+	}{%
+		\newacronym[%
+			shortplural={\textbf{\textit{%
+				\glsindex[#6][#7]{#4}[#8][#2]%
+			}}},%
+			longplural={#5}%
+		]{#1}{%
 			\glsindex[#6][#7]{#2}[#8][#2]%
-		}}},%
-		longplural={#5}%
-	]{#1}{%
-		\glsindex[#6][#7]{#2}[#8][#2]%
-	}{#3}%
+		}{#3}%
+	}%
 }
 
 %% Re Commands
@@ -52,8 +63,8 @@
 }
 
 %% Acronyms
-\createacronyms{va}{VA}{variable aléatoire}{VAs}{variables aléatoires}
-\createacronyms{iid}{IID}{indépendante identiquement distibuée}{IIDs}{indépendantes identiquements distibuées}
+\createacronym{va}{VA}{variable aléatoire}[VAs][variables aléatoires]
+\createacronym{iid}{IID}{indépendante identiquement distibuée}[IIDs][indépendantes identiquements distibuées]
 
 \createacronym{algo}{algo}{algorithme}
 
