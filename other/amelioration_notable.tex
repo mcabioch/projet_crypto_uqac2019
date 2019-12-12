@@ -53,10 +53,9 @@
 
 	En connaissant les fonctions caractéristiques il est possible de tracer les graphiques temps-mémoire pour un taux de succès fixé. Ces graphiques montrent que le temps de calcul diminue avec le carré de la mémoire utilisée.
 
-	\begin{align*}
-		\label{simple}
-		T=\frac{N^2}{M^2}\gamma(P)
-	\end{align*}
+	\begin{align}
+		T=\frac{N^2}{M^2}\gamma(P) \label{simple} 
+	\end{align}
 
 	Où $\gamma(P)$ est facteur dépendant du taux de succès. Le cas optimal de P=86\% selon \cite{checkpoints} donne un facteur de $1$. Il est possible alors de retrouver le compromis typique proposé par Hellman \cite{ehellman}, $M=T=N^{\frac{2}{3}}$. La formule \ref{simple} permet de trouver un des paramètres optimaux, en se basant sur les 2 autres.
 
@@ -67,6 +66,7 @@
 	Les tables classiques et DP peuvent aussi être caractérisées par le facteur $\gamma$. Dans cette étude, il a été choisi de générer les plus grosses tables parfaites possibles, et autant de tables que nécessaire pour atteindre un taux de succès P fixé. Les caractéristiques sont tracées en figure \ref{fig:TMTO_carac}, par ailleurs les sauts de la courbe de la méthode \gls{rainbow} correspondent à la nécessité d'une table supplémentaire.
 
 	\begin{figure}[H]
+		\centering
 		\includegraphics[scale=0.25]{graph_gamma_P.png}
 		\captionof{figure}{Graphique Temps-Mémoire pour les tables classiques, arc-en-ciel et DP}
 		\label{fig:TMTO_carac}
