@@ -1,5 +1,5 @@
 \setpart{Méthode des Points Distincts et ses variantes}
-	Comme nous l'avons vue précédemment la méthode des points distincts introduite en 1982 \cite{Rivest}, consiste à fixer un critère d'arrêt. Ainsi, nous vérifions si le dernier élément de la chaîne se trouve dans une table seulement s'il respecte le même critère d'arrêt, limitant de ce fait le nombre de ces vérifications.
+	Comme nous l'avons vue précédemment la méthode des \acrfull{DP} introduite en 1982 \cite{Rivest}, consiste à fixer un critère d'arrêt. Ainsi, nous vérifions si le dernier élément de la chaîne se trouve dans une table seulement s'il respecte le même critère d'arrêt, limitant de ce fait le nombre de ces vérifications.
 
 	\bigskip
 
@@ -37,9 +37,9 @@
 			& nombre d'entrée par table ($M$)	& nombre de recherche dans la table	& nombre d'évaluations de fonction	& équation de la courbe de compromis	\\\hline
 			Hellman			& $mt$ & $t^2$					& $t^2$					 & $TM^2=N^2$				\extheight{}\\\hline
 			Arc-en-ciel		& $mt$ & $t$					& $\frac{1}{2}t^2$		 & $TM^2=\frac{1}{2}N^2$	\extheight{}\\\hline
-			Hellman +DP		& $mt$ & $t$					& $\frac{1}{2}t^2$		 & $TM^2=\frac{1}{2}N^2$	\extheight{}\\\hline
+			Hellman +\gls{DP}		& $mt$ & $t$					& $\frac{1}{2}t^2$		 & $TM^2=\frac{1}{2}N^2$	\extheight{}\\\hline
 			Hellman +VDP		& $mt$ & $t*\hat{t}$			& $t*\hat{t}$			 & $TM^2=c*N^2$				\extheight{}\\\hline
-			Arc-en-ciel+DP	& $mt$ & $\hat{t}$				& $\frac{1}{2}\hat{t}^2$ & $TM^2=\frac{c^2}{2}N^2$	\extheight{}\\\hline
+			Arc-en-ciel+\gls{DP}	& $mt$ & $\hat{t}$				& $\frac{1}{2}\hat{t}^2$ & $TM^2=\frac{c^2}{2}N^2$	\extheight{}\\\hline
 			Arc-en-ciel+VDP	& $mt$ & $\frac{1}{2}\hat{t}^2$	& $\frac{1}{2}\hat{t}^2$ & $TM^2=\frac{c^2}{2}N^2$	\extheight{}\\
 		\end{centertab}
 
@@ -62,6 +62,6 @@
 
 	\setsection{Conclusion}
 
-		La méthode des points distincts est encore aujourd'hui explorée mais jusqu'à présent elle n'a pas donné de résultats probants. Une autre méthode pour limiter le coût des recherches dans les tables a été présentée par \cite{checkpoints} en 2005. C'est une méthode basée sur des points de contrôle. Nous la verrons plus en détail dans la prochaine section.
+		La méthode des \glspl{DP} est encore aujourd'hui explorée mais jusqu'à présent elle n'a pas donné de résultats probants. Une autre méthode pour limiter le coût des recherches dans les tables a été présentée par \cite{checkpoints} en 2005. C'est une méthode basée sur des points de contrôle. Nous la verrons plus en détail dans la prochaine section.
 
 \endinput{}
