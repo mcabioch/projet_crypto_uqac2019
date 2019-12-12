@@ -1,6 +1,6 @@
 \setpart{Améliorations notables : fausses alertes et outils de mesure}
 
-	Comme nous l'avons vue précédemment (section 3) le problème de fusion de chaîne a amené à créer les \glspl{rainbow}. Mais il se peut aussi qu'il y ait collision entre la chaîne que nous générons et une des chaînes des tables. Lorsque ce cas arrive nous parlons de fausse alertes \cite{checkpoints}.
+	Comme nous l'avons vue précédemment (section 3) le problème de fusion de chaîne a amené à créer les \glspl{rainbow}. Mais il se peut aussi qu'il y ait collision  et fusion entre la chaîne que nous générons et une des chaînes des tables. Lorsque ce cas arrive nous parlons de fausse alertes \cite{checkpoints}.
 	De plus jusqu'à présent nous n'avons pas réellement présenté d'outils permettant de comparer les efficacités des différentes méthodes de \gls{TMTO}.
 
 \setsection{Points de contrôles}
@@ -47,7 +47,7 @@
 
 	\bigskip
 
-	De même, pour vérifier si une table de Hellman associé à la méthode des \glspl{DP} est parfaite, il suffit également de vérifier que chaque dernier élément est distinct. Cette vérification est suffisante car peu importe où commence la fusion dans tous les cas elle amènera au même point qui respecte le critère d'arrêt.
+	De même, pour vérifier si une table de Hellman associé à la méthode des \glspl{DP} est parfaite, il suffit également de vérifier que chaque dernier élément est distinct. Cette vérification est suffisante car peu importe où commence la fusion, dans tous les cas, elle amènera au même point qui respecte le critère d'arrêt.
 
 \setsection{Outils de comparaison}
 
@@ -57,11 +57,11 @@
 		T=\frac{N^2}{M^2}\gamma(P) \label{simple} 
 	\end{align}
 
-	Où $\gamma(P)$ est facteur dépendant du taux de succès. Le cas optimal de P=86\% selon \cite{checkpoints} donne un facteur de $1$. Il est possible alors de retrouver le compromis typique proposé par Hellman \cite{ehellman}, $M=T=N^{\frac{2}{3}}$. La formule \ref{simple} permet de trouver un des paramètres optimaux, en se basant sur les 2 autres.
+	Où $\gamma(P)$ est facteur dépendant du taux de succès. Le cas optimal de P=86\% selon \cite{checkpoints} donne un facteur de $1$. Il est possible alors de retrouver le compromis typique proposé par Hellman \cite{ehellman}, $M=T=N^{\frac{2}{3}}$. La formule \ref{simple} permet, en ce cas, de trouver un des paramètres optimaux, en se basant sur les 2 autres.
 
 	\bigskip
 
-	Afin de comparer l'efficacité des différentes méthodes de \gls{TMTO}, il est possible d'étudier l'évolution de $\gamma{P}$.
+	Afin de comparer l'efficacité des différentes méthodes de \gls{TMTO}, il est possible d'étudier l'évolution de $\gamma(P)$.
 
 	Les tables classiques et DP peuvent aussi être caractérisées par le facteur $\gamma$. Dans cette étude, il a été choisi de générer les plus grosses tables parfaites possibles, et autant de tables que nécessaire pour atteindre un taux de succès P fixé. Les caractéristiques sont tracées en figure \ref{fig:TMTO_carac}, par ailleurs les sauts de la courbe de la méthode \gls{rainbow} correspondent à la nécessité d'une table supplémentaire.
 
@@ -72,14 +72,10 @@
 		\label{fig:TMTO_carac}
 	\end{figure}
 
-	La théorie et l'expérience montrent qu'à partir d'un taux de succès de 80\%, les \glspl{rainbow} proposent le meilleur compromis. En dessous de ce taux, il semblerait que les tables classiques soient un peu meilleures. Mais elles conservent un coût de temps de calcul plus élevé, lié à la nécessité de t fois plus de boucles lors de la recherche dans les tables.
+	La théorie et l'expérience montrent qu'à partir d'un taux de succès de 80\%, les \glspl{rainbow} proposent le meilleur compromis. En dessous de ce taux, il semblerait que les tables classiques soient un peu meilleures. Mais elles conservent un coût de temps de calcul plus élevé, lié à la nécessité de réalisé t fois plus de boucles lors de la recherche dans les tables.
 
 \setsection{Conclusion}
 
-	La méthode des points de contrôle est une évolution extrêmement intéressante qui permet de limiter le coût en temps de calcul, de plus elle peut s'appliquer à toutes les méthodes de \gls{TMTO}.
-
-	\bigskip
-
-	Nous avons également vu plus en détail la méthode de comparaison entre les différentes méthodes de \gls{TMTO}.
+	La méthode des points de contrôle est une évolution extrêmement intéressante qui permet de limiter le coût en temps de calcul, de plus elle peut s'appliquer à toutes les méthodes de \gls{TMTO}. Cela nous a permit d'introduire la notion de table parfaite, ce qui permet de supprimer les redondances par fusion. Nous avons également abordé un élément de comparaison intéressant à savoir l'évolution du facteur $\gamma(P)$.
 
 \endinput{}

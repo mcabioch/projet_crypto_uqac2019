@@ -13,7 +13,7 @@
 
 		\bigskip
 
-		Étant donné que les chaînes des tables s'arrêtent au premier point distinct compris dans les bornes, si nous ne trouvons pas de correspondance entre la chaîne que nous générons et une table, alors nous pouvons être sûr que notre clé ne se trouve pas dans cette table. Ainsi par table, nous ne réalisons qu'une seule vérification. Le nombre de vérifications nécessaires est estimé être réduit par un facteur de $2^d$ où $d=\frac{1}{3}\log_2 N$
+		Étant donné que les chaînes des tables s'arrêtent au premier point distinct compris dans les bornes, si nous ne trouvons pas de correspondance entre la chaîne que nous générons dans une table, alors nous pouvons être sûr que notre clé ne se trouve pas dans cette table. Ainsi par table, nous ne réalisons qu'une seule vérification. Le nombre de vérifications nécessaires est estimé être réduit par un facteur de $2^d$ où $d=\frac{1}{3}\log_2 N$
 
 		\bigskip
 
@@ -23,11 +23,11 @@
 
 	\setsection{Première Variante}
 
-		Une première idée proposée dans cet article \cite{VDP}, est de faire varier la condition d'arrêt en fonction du point de départ. L'un des avantages est qu'ainsi nous avons des informations sur le point de départ dans le point final. La conséquence est que nous ne sommes plus obligés de stocker le point de départ.
+		Une première idée proposée dans cet article \cite{VDP}, est de faire varier la condition d'arrêt en fonction du point de départ. L'un des avantages est qu'ainsi nous avons des informations sur le point de départ dans le point final. Nous ne sommes, alors, plus obligés de stocker le point de départ.
 
 		\bigskip
 
-		Malheureusement cette technique ne semble pas plus efficace qu'une \gls{rainbow} classique \cite{VDP,Wang}. Nous avons d'ailleurs les résultats d'une analyse théorique dans le tableau proposé par \cite{VDP} joint ci-dessous. Nous verrons plus en détail la méthode de comparaison utilisé en section 5.c.
+		Malheureusement cette technique ne semble pas plus efficace qu'une \gls{rainbow} classique \cite{VDP,Wang}. Nous avons d'ailleurs les résultats d'une analyse théorique dans le tableau proposé par \cite{VDP} joint ci-dessous. Nous verrons plus en détail la méthode de comparaison utilisé en section 5.3.
 
 		\bigskip
 
